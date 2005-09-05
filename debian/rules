@@ -61,11 +61,11 @@ clean:
 	dh_testdir
 	dh_testroot
 	-rm -f build
-	perl util/perlpath.pl /usr/bin
-	./Configure $(CONFARGS) debian-$(DEB_HOST_ARCH)
+	-perl util/perlpath.pl /usr/bin
+	-./Configure $(CONFARGS) debian-$(DEB_HOST_ARCH)
 	-make -f Makefile  clean clean-shared
 	#-make -f Makefile  dclean
-	perl util/perlpath.pl /usr/local/bin
+	-perl util/perlpath.pl /usr/local/bin
 #	perl util/ssldir.pl /usr/local/ssl
 	-rm -f test/.rnd test/testkey.pem test/testreq.pem test/certCA.srl
 	-rm -f util/mk1mf.bak Makefile.bak `find . -name Makefile.save` 
