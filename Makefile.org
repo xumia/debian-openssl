@@ -57,6 +57,7 @@ OPENSSLDIR=/usr/local/ssl
 # equal 4.
 # PKCS1_CHECK - pkcs1 tests.
 
+#TOP=$(shell pwd)
 CC= gcc
 #CFLAG= -DL_ENDIAN -DTERMIO -O3 -fomit-frame-pointer -m486 -Wall -Wuninitialized -DSHA1_ASM -DMD5_ASM -DRMD160_ASM
 CFLAG= -DTERMIOS -DL_ENDIAN -fomit-frame-pointer -O3 -m486 -Wall -DSHA1_ASM -DMD5_ASM -DRMD160_ASM
@@ -175,7 +176,7 @@ LIBKRB5=
 # we might set SHLIB_MARK to '$(SHARED_LIBS)'.
 SHLIB_MARK=
 
-DIRS=   crypto fips ssl $(SHLIB_MARK) sigs apps test tools
+DIRS=   crypto fips ssl $(SHLIB_MARK) sigs apps doc tools
 SHLIBDIRS= fips crypto ssl
 
 # dirs in crypto to build
@@ -194,10 +195,10 @@ TESTS = alltests
 
 MAKEFILE= Makefile
 
-MANDIR=$(OPENSSLDIR)/man
+MANDIR=/usr/share/man
 MAN1=1
 MAN3=3
-MANSUFFIX=
+MANSUFFIX=ssl
 SHELL=/bin/sh
 
 TOP=    .
@@ -816,7 +817,7 @@ install_sw:
 	do \
 		if [ -f "$$i" ]; then \
 		(       echo installing $$i; \
-			cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
+			cp -d $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
 			if egrep 'define OPENSSL_FIPS' $(TOP)/include/openssl/opensslconf.h > /dev/null; then \
 				: ; \
 			else \

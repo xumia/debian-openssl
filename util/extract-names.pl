@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 
 $/ = "";			# Eat a paragraph at once.
 while(<STDIN>) {

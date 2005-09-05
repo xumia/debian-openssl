@@ -109,3 +109,8 @@ int SSL_library_init(void)
 	return(1);
 	}
 
+#undef SSLeay_add_ssl_algorithms
+int SSLeay_add_ssl_algorithms(void)
+    {
+         return SSL_library_init();
+    }

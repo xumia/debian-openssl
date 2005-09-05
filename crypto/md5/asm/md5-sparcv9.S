@@ -74,14 +74,14 @@
 #define Dval	R8
 
 #if defined(MD5_BLOCK_DATA_ORDER)
-# if defined(OPENSSL_SYSNAME_ULTRASPARC)
+/*# if defined(OPENSSL_SYSNAME_ULTRASPARC)*/
 #  define	LOAD			lda
 #  define	X(i)			[%i1+i*4]%asi
 #  define	md5_block		md5_block_asm_data_order_aligned
 #  define	ASI_PRIMARY_LITTLE	0x88
-# else
+/*# else
 #  error "MD5_BLOCK_DATA_ORDER is supported only on UltraSPARC!"
-# endif
+# endif*/
 #else
 # define	LOAD			ld
 # define	X(i)			[%i1+i*4]

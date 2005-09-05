@@ -11,11 +11,11 @@ SHLIB_VERSION_NUMBER=0.9.7
 SHLIB_VERSION_HISTORY=
 SHLIB_MAJOR=0
 SHLIB_MINOR=9.7
-SHLIB_EXT=
-PLATFORM=dist
-OPTIONS= no-krb5
-CONFIGURE_ARGS=dist
-SHLIB_TARGET=
+SHLIB_EXT=.so.$(SHLIB_MAJOR).$(SHLIB_MINOR)
+PLATFORM=debian-i386
+OPTIONS=--prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 no-krb5
+CONFIGURE_ARGS=--prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 debian-i386
+SHLIB_TARGET=linux-shared
 
 # HERE indicates where this Makefile lives.  This can be used to indicate
 # where sub-Makefiles are expected to be.  Currently has very limited usage,
@@ -26,10 +26,10 @@ HERE=.
 # for, say, /usr/ and yet have everything installed to /tmp/somedir/usr/.
 # Normally it is left empty.
 INSTALL_PREFIX=
-INSTALLTOP=/usr/local/ssl
+INSTALLTOP=/usr
 
 # Do not edit this manually. Use Configure --openssldir=DIR do change this!
-OPENSSLDIR=/usr/local/ssl
+OPENSSLDIR=/usr/lib/ssl
 
 # NO_IDEA - Define to build without the IDEA algorithm
 # NO_RC4  - Define to build without the RC4 algorithm
@@ -59,12 +59,13 @@ OPENSSLDIR=/usr/local/ssl
 # equal 4.
 # PKCS1_CHECK - pkcs1 tests.
 
-CC= cc
+#TOP=$(shell pwd)
+CC= gcc
 #CFLAG= -DL_ENDIAN -DTERMIO -O3 -fomit-frame-pointer -m486 -Wall -Wuninitialized -DSHA1_ASM -DMD5_ASM -DRMD160_ASM
-CFLAG= -DOPENSSL_NO_KRB5 -O
-DEPFLAG= 
+CFLAG= -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DOPENSSL_NO_KRB5 -DOPENSSL_NO_IDEA -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 -DL_ENDIAN -DTERMIO -O3 -fomit-frame-pointer -Wall
+DEPFLAG= -DOPENSSL_NO_IDEA -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 
 PEX_LIBS= 
-EX_LIBS= 
+EX_LIBS= -ldl
 EXE_EXT= 
 ARFLAGS= 
 AR=ar $(ARFLAGS) r
@@ -72,7 +73,7 @@ RANLIB= /usr/bin/ranlib
 PERL= /usr/bin/perl
 TAR= tar
 TARFLAGS= --no-recursion
-MAKEDEPPROG=makedepend
+MAKEDEPPROG= gcc
 
 # We let the C compiler driver to take care of .s files. This is done in
 # order to be excused from maintaining a separate set of architecture
@@ -177,13 +178,13 @@ LIBKRB5=
 # we might set SHLIB_MARK to '$(SHARED_LIBS)'.
 SHLIB_MARK=
 
-DIRS=   crypto fips ssl $(SHLIB_MARK) sigs apps test tools
+DIRS=   crypto fips ssl $(SHLIB_MARK) sigs apps doc tools
 SHLIBDIRS= fips crypto ssl
 
 # dirs in crypto to build
 SDIRS=  objects \
-	md2 md4 md5 sha mdc2 hmac ripemd \
-	des rc2 rc4 rc5 idea bf cast \
+	md2 md4 md5 sha hmac ripemd \
+	des rc2 rc4 bf cast \
 	bn ec rsa dsa dh dso engine aes \
 	buffer bio stack lhash rand err \
 	evp asn1 pem x509 x509v3 conf txt_db pkcs7 pkcs12 comp ocsp ui krb5
@@ -196,10 +197,10 @@ TESTS = alltests
 
 MAKEFILE= Makefile
 
-MANDIR=$(OPENSSLDIR)/man
+MANDIR=/usr/share/man
 MAN1=1
 MAN3=3
-MANSUFFIX=
+MANSUFFIX=ssl
 SHELL=/bin/sh
 
 TOP=    .
@@ -211,7 +212,7 @@ SIGS=	libcrypto.a.sha1
 SHARED_CRYPTO=libcrypto$(SHLIB_EXT)
 SHARED_SSL=libssl$(SHLIB_EXT)
 SHARED_LIBS=
-SHARED_LIBS_LINK_EXTS=
+SHARED_LIBS_LINK_EXTS=.so
 SHARED_LDFLAGS=
 
 GENERAL=        Makefile
@@ -818,7 +819,7 @@ install_sw:
 	do \
 		if [ -f "$$i" ]; then \
 		(       echo installing $$i; \
-			cp $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
+			cp -d $$i $(INSTALL_PREFIX)$(INSTALLTOP)/lib/$$i.new; \
 			if egrep 'define OPENSSL_FIPS' $(TOP)/include/openssl/opensslconf.h > /dev/null; then \
 				: ; \
 			else \
