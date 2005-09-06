@@ -19,7 +19,7 @@ export VERSION=$(shell dpkg-parsechangelog | grep '^Version:' | sed -e 's/^.*://
 # The binary architeture
 DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-CONFARGS  = --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5
+CONFARGS  = --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 zlib-dynamic
 OPT_alpha = ev4 ev5
 OPT_i386  = i486 i586 i686/cmov
 OPT_sparc = v8 v9
@@ -65,7 +65,7 @@ clean:
 	-./Configure $(CONFARGS) debian-$(DEB_HOST_ARCH)
 	-make -f Makefile  clean clean-shared
 	#-make -f Makefile  dclean
-	-perl util/perlpath.pl /usr/local/bin
+	-perl util/perlpath.pl /usr/local/bin/perl
 #	perl util/ssldir.pl /usr/local/ssl
 	-rm -f test/.rnd test/testkey.pem test/testreq.pem test/certCA.srl
 	-rm -f util/mk1mf.bak Makefile.bak `find . -name Makefile.save` 

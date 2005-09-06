@@ -1,3 +1,29 @@
+openssl (0.9.7g-1) unstable; urgency=low
+
+  * New upstream release
+    * Added support for proxy certificates according to RFC 3820.
+      Because they may be a security thread to unaware applications,
+      they must be explicitely allowed in run-time.  See
+      docs/HOWTO/proxy_certificates.txt for further information.
+    * Prompt for pass phrases when appropriate for PKCS12 input format.
+    * Back-port of selected performance improvements from development
+      branch, as well as improved support for PowerPC platforms.
+    * Add lots of checks for memory allocation failure, error codes to indicate
+      failure and freeing up memory if a failure occurs.
+    * Perform some character comparisons of different types in X509_NAME_cmp:
+      this is needed for some certificates that reencode DNs into UTF8Strings
+      (in violation of RFC3280) and can't or wont issue name rollover
+      certificates.
+  * corrected watchfile
+  * added upstream source url (closes: #292904)
+  * fix typo in CA.pl.1 (closes: #290271)
+  * change debian-powerpc64 to debian-ppc64 and adapt the configure
+    options to be the same like upstream (closes: #289841)
+  * include -signcert option in CA.pl usage
+  * compile with zlib-dynamic to use system zlib (closes: #289872)
+
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Mon,  9 May 2005 23:32:03 +0200
+
 openssl (0.9.7e-3) unstable; urgency=high
 
   * really fix der_chop. The fix from -1 was not really included (closes:
