@@ -2,7 +2,8 @@ Source: openssl
 Build-Depends: debhelper (>= 4.2.0), zlib1g-dev
 Section: utils
 Priority: optional
-Maintainer: Christoph Martin <christoph.martin@uni-mainz.de>
+Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
+Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>
 Standards-Version: 3.6.1
 
 Package: openssl

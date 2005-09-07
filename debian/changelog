@@ -1,3 +1,21 @@
+openssl (0.9.7g-2) unstable; urgency=low
+
+  * really include nl translation
+  * remove special ia64 code from rc4 code to make the abi compatible to
+    older 0.9.7 versions (closes: #310489, #309274)
+  * fix compile flag for debian-ppc64 (closes: #318750)
+  * small fix in libssl0.9.7.postinst (closes: #239956)
+  * fix pk7_mime.c to prevent garbled messages because of to early memory
+    free (closes: #310184)
+  * include vietnamese debconf translation (closes: #316689)
+  * make optimized i386 libraries have non executable stack (closes:
+    #321721)
+  * remove leftover files from ssleay
+  * move from dh_installmanpages to dh_installman
+  * change Maintainer to pkg-openssl-devel@lists.alioth.debian.org
+
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Wed,  7 Sep 2005 15:32:54 +0200
+
 openssl (0.9.7g-1) unstable; urgency=low
 
   * New upstream release

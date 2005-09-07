@@ -91,7 +91,7 @@ binary-arch:	build
 	dh_testroot
 	dh_clean
 #	-rm -rf debian/tmp `find debian/* -type d`
-	install -d debian/tmp debian/libssl0.9.7 debian/libssl-dev debian/ssleay/usr/share/doc
+	install -d debian/tmp debian/libssl0.9.7 debian/libssl-dev
 #	cd debian/tmp && install -d `cat ../dirs`
 #	cd debian/libssl09 && install -d `cat ../libssl09.dirs`
 #	cd debian/libssl09-dev && install -d `cat ../libssl09-dev.dirs`
@@ -121,14 +121,6 @@ binary-arch:	build
 	mv debian/tmp/usr/lib/ssl/{certs,openssl.cnf,private} debian/tmp/etc/ssl/
 	ln -s /etc/ssl/{certs,openssl.cnf,private} debian/tmp/usr/lib/ssl/
 	cp -pf debian/tmp/usr/lib/libcrypto.so.* debian/libcrypto0.9.7-udeb/usr/lib/
-#ssleay install
-	#ln -s openssl debian/ssleay/usr/share/doc/ssleay
-#libssl install
-#	install -m 644 libcrypto.so.08.1 libssl.so.08.1 debian/libssl08/usr/lib/
-#	ln -s libssl.so.08 debian/libssl08-dev/usr/lib/libssl.so
-#	ln -s libcrypto.so.08 debian/libssl08-dev/usr/lib/libcrypto.so
-#	debian/libtool install -m 644 crypto/libcrypto.la
-#	debian/libtool install -m 644 ssl/libssl.la
 	cp -auv lib*.so* debian/tmp/usr/lib/
 #	cp -auv lib*.a debian/tmp/usr/lib/
 	for opt in $(OPTS); do set -xe; mkdir -p debian/tmp/usr/lib/$$opt; cp -auv $$opt/lib*.so* debian/tmp/usr/lib/$$opt/; done
@@ -139,12 +131,12 @@ binary-arch:	build
 #	(cd debian/tmp/usr/doc/openssl/doc; for f in *.doc*; do mv "$$f" "$$(echo $$f | sed -e 's/doc/txt/')";done)
 #	(cd doc; for f in *; do install "$$f" ../debian/tmp/usr/share/doc/openssl/doc/"$$(echo $$f | sed -e 's/doc/txt/')";done)
 #	debstd -u CHANGES* LICENSE README NEWS
-	dh_installdocs -Nssleay CHANGES.SSLeay LICENSE README NEWS debian/README.optimization
+	dh_installdocs CHANGES.SSLeay LICENSE README NEWS debian/README.optimization
 	dh_installexamples
-	dh_installchangelogs -Nssleay CHANGES
+	dh_installchangelogs CHANGES
 #	dh_installmenu
 #	dh_installcron
-	dh_installmanpages -popenssl
+	dh_installman -popenssl
 	dh_installdebconf
 #	dh_undocumented c_rehash.1
 	dh_movefiles
