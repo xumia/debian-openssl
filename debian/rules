@@ -19,7 +19,7 @@ export VERSION=$(shell dpkg-parsechangelog | grep '^Version:' | sed -e 's/^.*://
 # The binary architeture
 DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-CONFARGS  = --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 zlib-dynamic
+CONFARGS  = --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 zlib-dynamic debug
 OPT_alpha = ev4 ev5
 OPT_i386  = i486 i586 i686/cmov
 OPT_sparc = v8 v9
@@ -144,10 +144,10 @@ binary-arch:	build
 #	rmdir debian/tmp/usr/include/openssl
 #	rmdir debian/tmp/usr/include
 #	for opt in $(OPTS); do set -xe; rm -fr debian/tmp/usr/lib/$$opt; done
-	dh_strip
 	dh_compress
 	chmod 700 debian/openssl/etc/ssl/private
 	dh_fixperms -X etc/ssl/private
+	dh_strip --dbg-package=libssl0.9.7
 	dh_perl -d
 #	dh_suidregister
 	dh_shlibdeps -l`pwd` -Xlibssl.so

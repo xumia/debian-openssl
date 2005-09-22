@@ -1,3 +1,12 @@
+openssl (0.9.7g-3) UNRELEASED; urgency=low
+
+  * change Configure line for debian-freebsd-i386 to debian-kfreebsd-i386
+    (closes: #327692)
+  * include -dbg version. That implies compiling with -g and without
+    -fomit-frame-pointer (closes: #293823, #153811)
+
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Thu, 22 Sep 2005 16:16:49 +0200
+
 openssl (0.9.7g-2) unstable; urgency=low
 
   * really include nl translation

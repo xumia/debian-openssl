@@ -1,5 +1,5 @@
 Source: openssl
-Build-Depends: debhelper (>= 4.2.0), zlib1g-dev
+Build-Depends: debhelper (>= 4.2.0), binutils (>= 2.14.90.0.7), zlib1g-dev
 Section: utils
 Priority: optional
 Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
@@ -27,7 +27,7 @@ Description: Secure Socket Layer (SSL) binary and related cryptographic tools
 
 Package: libssl0.9.7
 Section: libs
-Priority: standard
+Priority: important
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: ssleay (<< 0.9.2b), libssl, openssl (<< 0.9.6-2), libssl096-dev (<< 0.9.6-2)
@@ -59,3 +59,11 @@ Description: SSL development libraries, header files and documentation
  libssl and libcrypt development libraries, header files and manpages
  .
  It is part of the OpenSSL implementation of SSL.
+
+Package: libssl0.9.7-dbg
+Section: libdevel
+Priority: optional
+Architecture: any
+Depends: libssl0.9.7 (= ${Source-Version})
+Description: Symbol tables for libssl and libcrypt
+ This package is part of the OpenSSL implementation of SSL.
