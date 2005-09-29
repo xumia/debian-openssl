@@ -1,4 +1,4 @@
-Template: libssl0.9.7/restart-services
+Template: libssl0.9.8/restart-services
 Type: string
 _Description: Which services should be restarted to make them use the new libraries?
  Security holes were fixed with this release. Services may not use these

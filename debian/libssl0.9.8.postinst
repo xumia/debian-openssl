@@ -55,7 +55,7 @@ filerc() {
 if [ "$1" = "configure" ]
 then
     if [ ! -z "$2" ]; then
-	if dpkg --compare-versions "$2" lt 0.9.7d-1; then
+	if dpkg --compare-versions "$2" lt 0.9.8-1; then
 	    echo -n "Checking for services that may need to be restarted..."
 
 	    check="sendmail ssh"
@@ -86,11 +86,11 @@ then
 	    if [ -n "$services" ]; then
 		db_version 2.0
 
-		db_reset libssl0.9.7/restart-services
-		db_set libssl0.9.7/restart-services "$services"
-		db_input critical libssl0.9.7/restart-services || true
+		db_reset libssl0.9.8/restart-services
+		db_set libssl0.9.8/restart-services "$services"
+		db_input critical libssl0.9.8/restart-services || true
 		db_go || true
-		db_get libssl0.9.7/restart-services
+		db_get libssl0.9.8/restart-services
 		# Arghhh, close all the stupid debconf pipes
 		db_stop
 		
@@ -132,7 +132,7 @@ then
 		    echo
 		fi
 	    fi
-	fi # end upgrading and $2 lt 0.9.7c-1
+	fi # end upgrading and $2 lt 0.9.8-1
     fi # Upgrading
 fi
 

@@ -1,3 +1,9 @@
+openssl (0.9.8-1) unstable; urgency=low
+
+  * New upstream release (closes: #311826)
+
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Thu, 29 Sep 2005 14:20:04 +0200
+
 openssl (0.9.7g-3) unstable; urgency=low
 
   * change Configure line for debian-freebsd-i386 to debian-kfreebsd-i386

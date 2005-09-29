@@ -25,7 +25,7 @@ Description: Secure Socket Layer (SSL) binary and related cryptographic tools
   o  SSL/TLS Client and Server Tests
   o  Handling of S/MIME signed or encrypted Mail
 
-Package: libssl0.9.7
+Package: libssl0.9.8
 Section: libs
 Priority: important
 Architecture: any
@@ -37,13 +37,13 @@ Description: SSL shared libraries
  .
  It is part of the OpenSSL implementation of SSL.
 
-Package: libcrypto0.9.7-udeb
+Package: libcrypto0.9.8-udeb
 XC-Package-Type: udeb
 Section: debian-installer
 Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: libssl0.9.7
+Provides: libssl0.9.8
 Description: crypto shared library - udeb
  libcrypto shared library.
  .
@@ -53,17 +53,17 @@ Package: libssl-dev
 Section: libdevel
 Priority: optional
 Architecture: any
-Depends: libssl0.9.7 (= ${Source-Version})
+Depends: libssl0.9.8 (= ${Source-Version})
 Conflicts: ssleay (<< 0.9.2b), libssl08-dev, libssl09-dev, libssl095a-dev, libssl096-dev
 Description: SSL development libraries, header files and documentation
  libssl and libcrypt development libraries, header files and manpages
  .
  It is part of the OpenSSL implementation of SSL.
 
-Package: libssl0.9.7-dbg
+Package: libssl0.9.8-dbg
 Section: libdevel
 Priority: optional
 Architecture: any
-Depends: libssl0.9.7 (= ${Source-Version})
+Depends: libssl0.9.8 (= ${Source-Version})
 Description: Symbol tables for libssl and libcrypt
  This package is part of the OpenSSL implementation of SSL.
