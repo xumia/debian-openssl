@@ -1,6 +1,7 @@
 openssl (0.9.8-3) unstable; urgency=low
 
   * Apply security fix for CAN-2005-2969. (Closes: #333500)
+  * Change priority of -dbg package to extra.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed, 12 Oct 2005 22:38:58 +0200
 
