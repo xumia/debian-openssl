@@ -1,3 +1,9 @@
+openssl (0.9.8-3) unstable; urgency=low
+
+  * Apply security fix for CAN-2005-2969. (Closes: #333500)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 12 Oct 2005 22:38:58 +0200
+
 openssl (0.9.8-2) unstable; urgency=low
 
   * Don't use arch specific assembler.  Should fix build failure on
