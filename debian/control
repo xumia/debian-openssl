@@ -3,7 +3,7 @@ Build-Depends: debhelper (>= 4.2.0), binutils (>= 2.14.90.0.7), zlib1g-dev
 Section: utils
 Priority: optional
 Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
-Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>
+Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>, Kurt Roeckx <kurt@roeckx.be>
 Standards-Version: 3.6.1
 
 Package: openssl
@@ -62,7 +62,7 @@ Description: SSL development libraries, header files and documentation
 
 Package: libssl0.9.8-dbg
 Section: libdevel
-Priority: extra
+Priority: optional
 Architecture: any
 Depends: libssl0.9.8 (= ${Source-Version})
 Description: Symbol tables for libssl and libcrypt

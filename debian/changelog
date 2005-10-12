@@ -1,3 +1,11 @@
+openssl (0.9.8-2) unstable; urgency=low
+
+  * Don't use arch specific assembler.  Should fix build failure on
+    ia64, sparc and amd64. (Closes: #332758)
+  * Add myself to the uploaders.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 10 Oct 2005 19:22:36 +0200
+
 openssl (0.9.8-1) unstable; urgency=low
 
   * New upstream release (closes: #311826)
