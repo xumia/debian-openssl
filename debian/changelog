@@ -1,3 +1,10 @@
+openssl (0.9.8-4) unstable; urgency=low
+
+  Christoph Martin:
+  * fix asm entries for some architectures, fixing #332758 properly.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 13 Oct 2005 20:15:49 +0200
+
 openssl (0.9.8-3) unstable; urgency=low
 
   * Apply security fix for CAN-2005-2969. (Closes: #333500)
