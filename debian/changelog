@@ -4,8 +4,9 @@ openssl (0.9.8-4) UNRELEASED; urgency=low
   * fix asm entries for some architectures, fixing #332758 properly.
   * add noexecstack option to i386 subarch
   * include symbol versioning in Configure
+  * include debian-armeb arch (closes: #333579)
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Fri, 14 Oct 2005 10:47:02 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Fri, 14 Oct 2005 11:22:11 +0200
 
 openssl (0.9.8-3) unstable; urgency=low
 
