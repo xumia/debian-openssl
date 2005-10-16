@@ -6,6 +6,10 @@ openssl (0.9.8-4) UNRELEASED; urgency=low
   * include symbol versioning in Configure
   * include debian-armeb arch (closes: #333579)
 
+  Kurt Roeckx:
+  * Also add noexecstack option for amd64, since it now has an 
+    executable stack with the assembler fixes for amd64.
+
  -- Christoph Martin <christoph.martin@uni-mainz.de>  Fri, 14 Oct 2005 11:22:11 +0200
 
 openssl (0.9.8-3) unstable; urgency=low
