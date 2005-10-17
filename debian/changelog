@@ -6,12 +6,15 @@ openssl (0.9.8a-1) unstable; urgency=low
   * include symbol versioning in Configure (closes: #330867)
   * include debian-armeb arch (closes: #333579)
   * include new upstream patches; includes some minor fixes
+  * fix dh_shlibdeps line, removing the redundant dependency on
+    libssl0.9.8 (closes: #332755)
+  * add swedish debconf template (closes: #330554)
 
   Kurt Roeckx:
   * Also add noexecstack option for amd64, since it now has an 
     executable stack with the assembler fixes for amd64.
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Mon, 17 Oct 2005 11:24:23 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Mon, 17 Oct 2005 17:01:06 +0200
 
 openssl (0.9.8-3) unstable; urgency=low
 

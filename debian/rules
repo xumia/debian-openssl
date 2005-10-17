@@ -150,19 +150,9 @@ binary-arch:	build
 	dh_strip --dbg-package=libssl0.9.8
 	dh_perl -d
 #	dh_suidregister
-	dh_shlibdeps -l`pwd` -Xlibssl.so
-	# Hack, to depend on version of libc6 which supports the i686 directory
-	if [ "${DEB_HOST_ARCH}" == "i386" ]; \
-	then \
-	  SHLIB=`cat debian/libssl0.9.8.substvars`; \
-	  LIBC_VERSION=`echo $$SHLIB | sed s'/.*libc6 (>= \(.*\))/\1/'`; \
-	  if dpkg --compare-versions ${WANTED_LIBC_VERSION} gt $$LIBC_VERSION; \
-	  then \
-	    echo $$SHLIB | sed s'/libc6 (>= \(.*\))/libc6 (>= ${WANTED_LIBC_VERSION})/' > debian/libssl0.9.8.substvars; \
-	  fi \
-	fi
+	dh_shlibdeps -L libssl0.9.8 -l debian/libssl0.9.8/usr/lib
 	dh_gencontrol
-	dh_makeshlibs -m 0.9.8
+	dh_makeshlibs
 	dh_installdeb
 	dh_md5sums
 	dh_builddeb

@@ -9,7 +9,7 @@ Standards-Version: 3.6.1
 Package: openssl
 Priority: optional
 Architecture: any
-Depends: ${shlibs:Depends}, ${perl:Depends}
+Depends: libssl0.9.8 (= ${Source-Version}), ${shlibs:Depends}, ${perl:Depends}
 Conflicts: ssleay (<< 0.9.2b)
 Suggests: ca-certificates
 Description: Secure Socket Layer (SSL) binary and related cryptographic tools
