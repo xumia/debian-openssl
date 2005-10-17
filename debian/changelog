@@ -1,4 +1,4 @@
-openssl (0.9.8a-1) UNRELEASED; urgency=low
+openssl (0.9.8a-1) unstable; urgency=low
 
   Christoph Martin:
   * fix asm entries for some architectures, fixing #332758 properly.
@@ -11,7 +11,7 @@ openssl (0.9.8a-1) UNRELEASED; urgency=low
   * Also add noexecstack option for amd64, since it now has an 
     executable stack with the assembler fixes for amd64.
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Fri, 14 Oct 2005 11:22:11 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Mon, 17 Oct 2005 11:24:23 +0200
 
 openssl (0.9.8-3) unstable; urgency=low
 
