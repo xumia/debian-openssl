@@ -2,6 +2,8 @@ openssl (0.9.8a-2) unstable; urgency=low
 
   * Add Build-Dependency on m4, since sparc needs it to generate
     it's assembler files.  (Closes: #334542)
+  * Don't use rc4-x86_64.o on amd64 for now, it seems to be broken
+    and causes a segfault.  (Closes: #334501, #334502)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Tue, 18 Oct 2005 19:05:53 +0200
 
