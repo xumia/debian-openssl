@@ -1,3 +1,16 @@
+openssl (0.9.8a-3) unstable; urgency=high
+
+  * Link to libz instead of dynamicly loading it.  It gets loaded
+    at the moment the library is initialised, so there is no point
+    in not linking to it.  It's now failing in some cases since
+    it's not opened by it's soname, but by the symlink to it.
+    This should hopefully solve most of the bugs people have reported
+    since the move to libssl0.9.8.
+    (Closes: #334180, #336140, #335271)
+  * Urgency set to high because it fixes a grave bug affecting testing.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue,  1 Nov 2005 14:56:40 +0100
+
 openssl (0.9.8a-2) unstable; urgency=low
 
   * Add Build-Dependency on m4, since sparc needs it to generate
