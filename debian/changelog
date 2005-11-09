@@ -8,6 +8,8 @@ openssl (0.9.8a-4) unstable; urgency=low
     only require the version as required by the shlibs.
   * Make libssl-dev depend on zlib1g-dev, since it's now required for
     static linking. (Closes: #338313)
+  * Generate .pc files that make use of Libs.private, so things only
+    link to the libraries they should when linking shared.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed,  9 Nov 2005 22:05:39 +0100
 
