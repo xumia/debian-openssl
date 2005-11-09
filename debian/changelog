@@ -6,6 +6,8 @@ openssl (0.9.8a-4) unstable; urgency=low
     (Closes: #338284)
   * The openssl package had a duplicate dependency on libssl0.9.8,
     only require the version as required by the shlibs.
+  * Make libssl-dev depend on zlib1g-dev, since it's now required for
+    static linking. (Closes: #338313)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed,  9 Nov 2005 22:05:39 +0100
 
