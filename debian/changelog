@@ -4,6 +4,8 @@ openssl (0.9.8a-4) unstable; urgency=low
     it in shlibs.local, which doesn't seem to do anything.  0.9.8a-1
     added symbol versioning, so it should have bumped the shlibs.
     (Closes: #338284)
+  * The openssl package had a duplicate dependency on libssl0.9.8,
+    only require the version as required by the shlibs.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed,  9 Nov 2005 22:05:39 +0100
 
