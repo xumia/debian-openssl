@@ -1,3 +1,12 @@
+openssl (0.9.8a-4) unstable; urgency=low
+
+  * Call dh_makeshlibs with the proper version instead of putting
+    it in shlibs.local, which doesn't seem to do anything.  0.9.8a-1
+    added symbol versioning, so it should have bumped the shlibs.
+    (Closes: #338284)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed,  9 Nov 2005 22:05:39 +0100
+
 openssl (0.9.8a-3) unstable; urgency=high
 
   * Link to libz instead of dynamicly loading it.  It gets loaded
