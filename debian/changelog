@@ -10,6 +10,9 @@ openssl (0.9.8a-4) unstable; urgency=low
     static linking. (Closes: #338313)
   * Generate .pc files that make use of Libs.private, so things only
     link to the libraries they should when linking shared.
+  * Use -m64 instead of -bpowerpc64-linux on ppc64. (Closes: #335486)
+  * Make powerpc and ppc64 use the assembler version for bn.  ppc64
+    had the location in the string wrong, powerpc had it missing.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed,  9 Nov 2005 22:05:39 +0100
 
