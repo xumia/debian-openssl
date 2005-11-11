@@ -34,6 +34,7 @@ build:
 #	chmod +x debian/libtool
 	./Configure no-shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
 	make -f Makefile DIRS="crypto ssl" all
+	-make test
 	mv libcrypto.a libcrypto.static
 	mv libssl.a libssl.static
 	make -f Makefile DIRS="crypto ssl" clean
@@ -42,6 +43,7 @@ build:
 		set -xe; \
 		./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)-$$opt; \
 		make -f Makefile DIRS="crypto ssl" all; \
+		-make test; \
 		mkdir -p $$opt; \
 		mv libcrypto.so* libssl.so* $$opt/; \
 		make -f Makefile DIRS="crypto ssl" clean; \
@@ -51,6 +53,7 @@ build:
 	ln -sf apps/openssl.pod crypto/crypto.pod ssl/ssl.pod doc/
 #	make -f Makefile linux-shared
 	make -f Makefile all
+	-make test
 #	strip apps/openssl
 #	make -f Makefile clean DIRS="crypto ssl"
 #	./Configure --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 debian-$(DEB_HOST_ARCH)
