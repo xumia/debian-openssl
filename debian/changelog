@@ -17,6 +17,7 @@ openssl (0.9.8a-4) unstable; urgency=low
     ripemd.h and sha.h.  (Closes: #333101)
   * Run make test for each of the versions we build, make it 
     not fail the build process if an error is found.
+  * Add build dependency on bc for the regression tests.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed, 13 Nov 2005 16:01:05 +0100
 
