@@ -43,7 +43,7 @@ build:
 		set -xe; \
 		./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)-$$opt; \
 		make -f Makefile DIRS="crypto ssl" all; \
-		-make test; \
+		make test || /bin/true; \
 		mkdir -p $$opt; \
 		mv libcrypto.so* libssl.so* $$opt/; \
 		make -f Makefile DIRS="crypto ssl" clean; \
