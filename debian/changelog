@@ -1,3 +1,10 @@
+openssl (0.9.8a-5) unstable; urgency=low
+
+  * Stop ssh from crashing randomly on sparc (Closes: #335912)
+    Patch from upstream cvs.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 13 Dec 2005 21:37:42 +0100
+
 openssl (0.9.8a-4) unstable; urgency=low
 
   * Call dh_makeshlibs with the proper version instead of putting
