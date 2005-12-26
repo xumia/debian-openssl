@@ -1,3 +1,10 @@
+openssl (0.9.8a-6) unstable; urgency=low
+
+  * Remove empty postinst/preinst/prerm scripts.  There is no need
+    to have empty ones, debhelper will add them when needed.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 26 Dec 2005 01:14:14 +0100
+
 openssl (0.9.8a-5) unstable; urgency=low
 
   * Stop ssh from crashing randomly on sparc (Closes: #335912)
