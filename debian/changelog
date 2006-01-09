@@ -2,6 +2,9 @@ openssl (0.9.8a-6) unstable; urgency=low
 
   * Remove empty postinst/preinst/prerm scripts.  There is no need
     to have empty ones, debhelper will add them when needed.
+  * Remove the static pic libraries.  Nobody should be linking
+    it's shared libraries static to libssl or libcrypto.
+    This was added for opensc who now links to it shared.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 26 Dec 2005 01:14:14 +0100
 

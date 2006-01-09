@@ -107,8 +107,9 @@ binary-arch:	build
 #	rm debian/tmp/usr/share/man/man3/ssl.3
 #	rm debian/tmp/usr/lib/libcrypto.a
 #	rm debian/tmp/usr/lib/libssl.a
-	mv debian/tmp/usr/lib/libcrypto.a debian/tmp/usr/lib/libcrypto_pic.a
-	mv debian/tmp/usr/lib/libssl.a debian/tmp/usr/lib/libssl_pic.a
+	# pic static libraries, nobody should need them
+#	mv debian/tmp/usr/lib/libcrypto.a debian/tmp/usr/lib/libcrypto_pic.a
+#	mv debian/tmp/usr/lib/libssl.a debian/tmp/usr/lib/libssl_pic.a
 	cp -pf libcrypto.static debian/tmp/usr/lib/libcrypto.a
 	cp -pf libssl.static debian/tmp/usr/lib/libssl.a
 #	mv debian/tmp/usr/lib/ssl/bin debian/tmp/usr/bin/ssl
