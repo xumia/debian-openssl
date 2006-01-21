@@ -5,8 +5,14 @@ openssl (0.9.8a-6) unstable; urgency=low
   * Remove the static pic libraries.  Nobody should be linking
     it's shared libraries static to libssl or libcrypto.
     This was added for opensc who now links to it shared.
+  * Do not assume that in case the sequence number is 0 and the
+    packet has an odd number of bytes that the other side has
+    the block padding bug, but try to check that it actually
+    has the bug.  The wrong detection of this bug resulted
+    in an "decryption failed or bad record mac" error in case
+    both sides were using zlib compression.  (Closes: #338006)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 26 Dec 2005 01:14:14 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 21 Jan 2006 16:25:41 +0100
 
 openssl (0.9.8a-5) unstable; urgency=low
 
