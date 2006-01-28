@@ -1,3 +1,10 @@
+openssl (0.9.8a-7) unstable; urgency=low
+
+  * Add italian debconf templates.  Thanks to Luca Monducci.
+    (Closes: #350249)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 28 Jan 2006 13:39:54 +0100
+
 openssl (0.9.8a-6) unstable; urgency=low
 
   * Remove empty postinst/preinst/prerm scripts.  There is no need
