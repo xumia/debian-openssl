@@ -2,6 +2,9 @@ openssl (0.9.8a-7) unstable; urgency=low
 
   * Add italian debconf templates.  Thanks to Luca Monducci.
     (Closes: #350249)
+  * Change the debconf question to use version 0.9.8-3
+    instead of 0.9.8-1, since that's the last version
+    with a security fix.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 28 Jan 2006 13:39:54 +0100
 
