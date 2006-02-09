@@ -1,12 +1,14 @@
-openssl (0.9.8a-7) unstable; urgency=low
+openssl (0.9.8a-7) unstable; urgency=high
 
   * Add italian debconf templates.  Thanks to Luca Monducci.
     (Closes: #350249)
   * Change the debconf question to use version 0.9.8-3
     instead of 0.9.8-1, since that's the last version
     with a security fix.
+  * Call conn_state() if the BIO is not in the BIO_CONN_S_OK state
+    (Closes: #352047).  RC bug affecting testing, so urgency high.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 28 Jan 2006 13:39:54 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat,  9 Feb 2006 19:07:56 +0100
 
 openssl (0.9.8a-6) unstable; urgency=low
 
