@@ -3,6 +3,7 @@ openssl (0.9.8a-8) unstable; urgency=low
   * Call pod2man with the proper section.  Section changed
     from 1 to 1ssl and 3 to 3ssl.  The name of the files
     already had the ssl in, the section didn't.
+  * Don't install the LICENSE file, it's already in the copyright file.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 11 Feb 2006 14:14:37 +0100
 
