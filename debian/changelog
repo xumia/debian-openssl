@@ -1,3 +1,11 @@
+openssl (0.9.8a-8) unstable; urgency=low
+
+  * Call pod2man with the proper section.  Section changed
+    from 1 to 1ssl and 3 to 3ssl.  The name of the files
+    already had the ssl in, the section didn't.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 11 Feb 2006 14:14:37 +0100
+
 openssl (0.9.8a-7) unstable; urgency=high
 
   * Add italian debconf templates.  Thanks to Luca Monducci.
