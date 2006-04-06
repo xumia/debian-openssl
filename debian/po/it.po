@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: openssl 0.9.8a italian debconf templates\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-15 05:03-0700\n"
+"Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-04-06 20:34+0200\n"
 "PO-Revision-Date: 2006-01-26 20:57+0100\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -19,8 +19,7 @@ msgstr ""
 #. Description
 #: ../libssl0.9.8.templates:3
 msgid "Which services should be restarted to make them use the new libraries?"
-msgstr ""
-"Servizi da riavviare per fare in modo che utilizzino le nuove librerie"
+msgstr "Servizi da riavviare per fare in modo che utilizzino le nuove librerie"
 
 #. Type: string
 #. Description
@@ -31,8 +30,8 @@ msgid ""
 "existing connections."
 msgstr ""
 "In questa release sono stati corretti dei problemi di sicureza. I servizi "
-"che non utilizzano queste correzioni se non sono riavviati. Nota: il "
-"riavvio di sshd non influenza nessuna delle connessioni esistenti."
+"che non utilizzano queste correzioni se non sono riavviati. Nota: il riavvio "
+"di sshd non influenza nessuna delle connessioni esistenti."
 
 #. Type: string
 #. Description
@@ -45,9 +44,8 @@ msgid ""
 msgstr ""
 "Segue un elenco dei servizi che devono essere riavviati, se nell'elenco si "
 "riscontrano degli errori si devono correggere. I nomi dei servizi devono "
-"essere identiti ai nomi degli script in /etc/init.d e devono essere "
-"separati con degli spazi. Se l'elenco è vuoto non verrà riaviato nessun "
-"servizio."
+"essere identiti ai nomi degli script in /etc/init.d e devono essere separati "
+"con degli spazi. Se l'elenco è vuoto non verrà riaviato nessun servizio."
 
 #. Type: string
 #. Description
@@ -57,6 +55,6 @@ msgid ""
 "necessary to restart them too.  We strongly recommend you to reboot your "
 "machine to avoid the SSL related trouble."
 msgstr ""
-"Se dopo questo aggiornamento si risconstrano dei problemi con altri "
-"servizi potrebbe essere necessario riavviarli. Si raccomanda di riavviare "
-"la macchina per evitare qualsiasi problema legato a SSL."
+"Se dopo questo aggiornamento si risconstrano dei problemi con altri servizi "
+"potrebbe essere necessario riavviarli. Si raccomanda di riavviare la "
+"macchina per evitare qualsiasi problema legato a SSL."

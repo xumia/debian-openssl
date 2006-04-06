@@ -1,3 +1,10 @@
+openssl (0.9.8a-9) unstable; urgency=low
+
+  * Run debconf-updatepo, which really already was in the -8 version
+    as it was uploaded.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
+
 openssl (0.9.8a-8) unstable; urgency=low
 
   * Call pod2man with the proper section.  Section changed
