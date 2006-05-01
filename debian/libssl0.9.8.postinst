@@ -1,6 +1,8 @@
-#!/bin/sh -e
+#!/bin/bash
 
 . /usr/share/debconf/confmodule
+
+set -e
 
 package_name()
 {

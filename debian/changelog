@@ -4,6 +4,10 @@ openssl (0.9.8a-9) unstable; urgency=low
     as it was uploaded.
   * Add Galician debconf translation.  Patch from
     Jacobo Tarrio <jtarrio@trasno.net>  (Closes: #361266)
+  * libssl0.9.8.postinst makes uses of bashisms (local variables)
+    so use #!/bin/bash
+  * libssl0.9.8.postinst: Call set -e after sourcing the debconf
+    script.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
