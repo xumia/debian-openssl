@@ -16,6 +16,8 @@ openssl (0.9.8a-9) unstable; urgency=low
       fetchmail ftpd-ssl proftpd proftpd-ldap proftpd-mysql proftpd-pgsql
   * libssl0.9.8.postinst: The check to see if something was installed
     wasn't working.
+  * libssl0.9.8.postinst: Add workaround to find the name of the init 
+    script for proftpd and dovecot.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
