@@ -8,6 +8,12 @@ openssl (0.9.8a-9) unstable; urgency=low
     so use #!/bin/bash
   * libssl0.9.8.postinst: Call set -e after sourcing the debconf
     script.
+  * libssl0.9.8.postinst: Change list of service that may need
+    to be restarted:
+    - Replace ssh by openssh-server
+    - Split postgresql in postgresql-7.4 postgresql-8.0 postgresql-8.1
+    - Add: dovecot-common bind9 ntp-refclock ntp-simple openntpd clamcour
+      fetchmail ftpd-ssl proftpd proftpd-ldap proftpd-mysql proftpd-pgsql
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
