@@ -4,7 +4,7 @@ Section: utils
 Priority: optional
 Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>, Kurt Roeckx <kurt@roeckx.be>
-Standards-Version: 3.6.1
+Standards-Version: 3.7.0
 
 Package: openssl
 Priority: optional
