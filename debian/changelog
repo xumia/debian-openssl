@@ -18,6 +18,7 @@ openssl (0.9.8a-9) unstable; urgency=low
     wasn't working.
   * libssl0.9.8.postinst: Add workaround to find the name of the init 
     script for proftpd and dovecot.
+  * libssl0.9.8.postinst: Use invoke-rc.d when it's available.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
