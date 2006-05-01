@@ -14,6 +14,8 @@ openssl (0.9.8a-9) unstable; urgency=low
     - Split postgresql in postgresql-7.4 postgresql-8.0 postgresql-8.1
     - Add: dovecot-common bind9 ntp-refclock ntp-simple openntpd clamcour
       fetchmail ftpd-ssl proftpd proftpd-ldap proftpd-mysql proftpd-pgsql
+  * libssl0.9.8.postinst: The check to see if something was installed
+    wasn't working.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
