@@ -21,6 +21,8 @@ openssl (0.9.8a-9) unstable; urgency=low
   * libssl0.9.8.postinst: Use invoke-rc.d when it's available.
   * Change Standards-Version to 3.7.0:
     - Make use of invoke-rc.d
+  * Add comment to README.Debian that rc5, mdc2 and idea have been
+    disabled (since 0.9.6b-3)  (Closes: #362754)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
