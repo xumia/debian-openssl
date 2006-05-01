@@ -138,7 +138,6 @@ then
 			    idl=$(ls /etc/rc${rl}.d/S??${service} 2> /dev/null | head -n 1)
 			fi
 
-			idl=$(ls /etc/rc${rl}.d/S??${service} 2> /dev/null | head -n 1)
 			echo -n "  $service: stopping..."
 			$idl stop > /dev/null 2>&1 || true
 			sleep 1
