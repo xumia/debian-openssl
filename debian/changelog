@@ -23,6 +23,9 @@ openssl (0.9.8a-9) unstable; urgency=low
     - Make use of invoke-rc.d
   * Add comment to README.Debian that rc5, mdc2 and idea have been
     disabled (since 0.9.6b-3)  (Closes: #362754)
+  * Don't add uninitialised data to the random number generator.  This stop
+    valgrind from giving error messages in unrelated code.
+    (Closes: #363516)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  6 Apr 2006 20:34:07 +0200
 
