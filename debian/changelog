@@ -2,7 +2,10 @@ openssl (0.9.8b-1) unstable; urgency=low
 
   * New upstream release
     - New functions added (EVP_CIPHER_CTX_new, EVP_CIPHER_CTX_free), bump shlibs.
-  * Run debconf-updatepo, which really already was in the -8 version
+    - CA.pl/CA.sh now calls openssl ca with -extensions v3_ca, setting CA:TRUE
+      instead of FALSE.
+    - CA.pl/CA.sh creates crlnumber now.  (Closes: #347612)
+  * Run debconf-updatepo, which really already was in the 0.9.8a-8 version
     as it was uploaded.
   * Add Galician debconf translation.  Patch from
     Jacobo Tarrio <jtarrio@trasno.net>  (Closes: #361266)
