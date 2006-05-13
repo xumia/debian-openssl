@@ -31,6 +31,7 @@ openssl (0.9.8b-1) unstable; urgency=low
   * Don't add uninitialised data to the random number generator.  This stop
     valgrind from giving error messages in unrelated code.
     (Closes: #363516)
+  * Put the FAQ in the openssl docs.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu,  4 May 2006 20:40:03 +0200
 
