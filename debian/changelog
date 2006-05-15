@@ -2,6 +2,11 @@ openssl (0.9.8b-2) unstable; urgency=low
 
   * Don't call gcc with -mcpu on i386, we already use -march, so no need for
     -mtune either.
+  * Always make all directories when building something:
+    - The engines directory didn't get build for the static directory, so
+      where missing in libcrypo.a
+    - The apps directory didn't always get build, so we didn't have an openssl
+      and a small part of the regression tests failed.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 15 May 2006 16:00:58 +0000
 

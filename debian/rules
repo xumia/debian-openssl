@@ -33,20 +33,20 @@ build:
 #	perl util/ssldir.pl /usr/lib/ssl
 #	chmod +x debian/libtool
 	./Configure no-shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
-	make -f Makefile DIRS="crypto ssl" all
+	make -f Makefile all
 	-make test
 	mv libcrypto.a libcrypto.static
 	mv libssl.a libssl.static
-	make -f Makefile DIRS="crypto ssl" clean
+	make -f Makefile clean
 	test -z "$(OPTS)" || for opt in $(OPTS); \
 	do \
 		set -xe; \
 		./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)-$$opt; \
-		make -f Makefile DIRS="crypto ssl" all; \
+		make -f Makefile all; \
 		make test || /bin/true; \
 		mkdir -p $$opt; \
 		mv libcrypto.so* libssl.so* $$opt/; \
-		make -f Makefile DIRS="crypto ssl" clean; \
+		make -f Makefile clean; \
 	done
 	./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
 	#make -f Makefile depend
@@ -55,9 +55,9 @@ build:
 	make -f Makefile all
 	-make test
 #	strip apps/openssl
-#	make -f Makefile clean DIRS="crypto ssl"
+#	make -f Makefile clean
 #	./Configure --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 debian-$(DEB_HOST_ARCH)
-#	make -f Makefile all DIRS="crypto ssl"
+#	make -f Makefile all
 	touch build
 
 clean:
