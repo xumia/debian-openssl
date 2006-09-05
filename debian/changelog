@@ -2,6 +2,8 @@ openssl (0.9.8b-3) unstable; urgency=high
 
   * Fix RSA Signature Forgery (CVE-2006-4339) using patch provided
     by upstream.
+  * Restart services using a smaller version that 0.9.8b-3, so
+    they get the fixed version.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Tue,  5 Sep 2006 18:26:10 +0000
 
