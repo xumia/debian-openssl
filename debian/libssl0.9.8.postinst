@@ -64,7 +64,7 @@ then
 	    check="$check apache2-common ssh-nonfree exim4"
 	    check="$check apache-ssl libapache-mod-ssl openvpn spamassassin"
 	    check="$check courier-imap-ssl courier-mta-ssl courier-pop-ssl"
-	    check="$check postfix-tls cyrus21-imapd cyrus21-pop3d"
+	    check="$check postfix cyrus21-imapd cyrus21-pop3d"
 	    check="$check postgresql-7.4 postgresql-8.0 postgresql-8.1"
 	    check="$check racoon dovecot-common bind9"
 	    check="$check ntp-refclock ntp-simple openntpd clamcour"
