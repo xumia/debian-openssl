@@ -12,6 +12,8 @@ openssl (0.9.8c-1) unstable; urgency=low
   * Add partimage-server conserver-server and tor to the list of service
     to check for restart.  Add workaround for openssh-server so it finds
     the init script.  (Closes: #386365, #386400, #386513)
+  * Add manpage for c_rehash.
+    Thanks to James Westby <jw+debian@jameswestby.net> (Closes: #215618)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 13:28:02 +0000
 
