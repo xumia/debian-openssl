@@ -4,10 +4,12 @@ openssl (0.9.8c-1) unstable; urgency=low
     - block padding bug with compression now fixed upstream, using
       their patch.
     - Includes the RSA Signature Forgery (CVE-2006-4339) patch.
+    - New functions AES_bi_ige_encrypt and AES_ige_encrypt:
+      bumping shlibs to require 0.9.8c-1.
   * Change the postinst script to check that ntp is installed instead
     of ntp-refclock and ntp-simple.  The binary is now in the ntp
     package.
-  * Move the modified rand/md_rand.c file to the right place, 
+  * Move the modified rand/md_rand.c file to the right place,
     really fixing #363516.
   * Add partimage-server conserver-server and tor to the list of service
     to check for restart.  Add workaround for openssh-server so it finds
@@ -20,7 +22,7 @@ openssl (0.9.8c-1) unstable; urgency=low
     Thanks to Kazuhiro Inaoka <inaoka.kazuhiro@renesas.com>
     (Closes: #378689)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 13:28:02 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 14:47:59 +0000
 
 openssl (0.9.8b-3) unstable; urgency=high
 
