@@ -1,10 +1,14 @@
-openssl (0.9.8b-4) unstable; urgency=low
+openssl (0.9.8c-1) unstable; urgency=low
 
+  * New upstream release
+    - block padding bug with compression now fixed upstream, using
+      their patch.
+    - Includes the RSA Signature Forgery (CVE-2006-4339) patch.
   * Change the postinst script to check that ntp is installed instead
     of ntp-refclock and ntp-simple.  The binary is now in the ntp
     package.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Tue,  5 Sep 2006 20:31:27 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 13:28:02 +0000
 
 openssl (0.9.8b-3) unstable; urgency=high
 
