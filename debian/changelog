@@ -16,6 +16,9 @@ openssl (0.9.8c-1) unstable; urgency=low
     Thanks to James Westby <jw+debian@jameswestby.net> (Closes: #215618)
   * Add Lithuanian debconf translation.
     Thanks to Gintautas Miliauskas <gintas@akl.lt>  (Closes: #374364)
+  * Add m32r support.
+    Thanks to Kazuhiro Inaoka <inaoka.kazuhiro@renesas.com>
+    (Closes: #378689)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 13:28:02 +0000
 
