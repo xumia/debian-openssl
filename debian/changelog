@@ -7,6 +7,8 @@ openssl (0.9.8c-1) unstable; urgency=low
   * Change the postinst script to check that ntp is installed instead
     of ntp-refclock and ntp-simple.  The binary is now in the ntp
     package.
+  * Move the modified rand/md_rand.c file to the right place, 
+    really fixing #363516.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 17 Sep 2006 13:28:02 +0000
 
