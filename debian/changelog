@@ -1,3 +1,10 @@
+openssl (0.9.8c-2) unstable; urgency=low
+
+  * Add German debconf translation.  Thanks to 
+    Johannes Starosta <feedback-an-johannes@arcor.de> (Closes: #388108)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 18 Sep 2006 17:51:06 +0000
+
 openssl (0.9.8c-1) unstable; urgency=low
 
   * New upstream release
