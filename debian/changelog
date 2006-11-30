@@ -1,3 +1,9 @@
+openssl (0.9.8c-3) unstable; urgency=low
+
+  * Fix patch for CVE-2006-2940, it left ctx unintiliased.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon,  2 Oct 2006 18:05:00 +0200
+
 openssl (0.9.8c-2) unstable; urgency=high
 
   * Fix security vulnerabilities (CVE-2006-2937, CVE-2006-2940,
