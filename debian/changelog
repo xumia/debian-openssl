@@ -1,3 +1,10 @@
+openssl (0.9.8c-4) unstable; urgency=low
+
+ * Add German debconf translation.  Thanks to
+   Johannes Starosta <feedback-an-johannes@arcor.de> (Closes: #388108)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 30 Nov 2006 20:57:46 +0000
+
 openssl (0.9.8c-3) unstable; urgency=low
 
   * Fix patch for CVE-2006-2940, it left ctx unintiliased.
