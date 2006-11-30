@@ -8,6 +8,8 @@ openssl (0.9.8c-4) unstable; urgency=low
  * Use & instead of && to check a flag in the X509 policy checking.
    Patch from upstream cvs.  (Closes: #397151)
  * Also restart slapd for security updates (Closes: #400221)
+ * Add Romanian debconf translation.  Thanks to
+   stan ioan-eugen <stan.ieugen@gmail.com> (Closes: #393507)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 30 Nov 2006 20:57:46 +0000
 
