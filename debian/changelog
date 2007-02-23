@@ -5,6 +5,8 @@ openssl (0.9.8e-1) unstable; urgency=low
       CVE-2006-3738, CVE-2006-4343
     - s_client now properly works with SMTP.  Also added support
       for IMAP.  (closes: #221689)
+  * Add clamav-freshclam and clamav-daemon to the list of service that
+    need to be restarted.  (Closes: #391191)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 23 Feb 2007 18:56:15 +0000
 
