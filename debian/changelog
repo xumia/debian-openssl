@@ -2,7 +2,7 @@ openssl (0.9.8e-1) unstable; urgency=low
 
   * New upstream release
     - Inludes security fixes for CVE-2006-2937, CVE-2006-2940,
-      CVE-2006-3738, CVE-2006-4343
+      CVE-2006-3738, CVE-2006-4343 (Closes: #408902)
     - s_client now properly works with SMTP.  Also added support
       for IMAP.  (closes: #221689)
   * Add clamav-freshclam and clamav-daemon to the list of service that
