@@ -9,6 +9,7 @@ openssl (0.9.8e-1) unstable; urgency=low
     need to be restarted.  (Closes: #391191)
   * Add armel support.  Thanks to Guillem Jover <guillem.jover@nokia.com>
     for the patch.  (Closes: #407196)
+  * Add Portuguese translations.  Thanks to Carlos Lisboa.  (Closes: 408157)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 23 Feb 2007 18:56:15 +0000
 
