@@ -13,7 +13,7 @@ openssl (0.9.8e-1) unstable; urgency=low
   * Add Norwegian translations.  Thanks to Bjørn Steensrud
     <bjornst@powertech.no> (Closes: #412326)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Fri, 23 Feb 2007 18:56:15 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 25 Feb 2007 18:06:28 +0000
 
 openssl (0.9.8c-4) unstable; urgency=low
 
