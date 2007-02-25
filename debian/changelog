@@ -1,3 +1,10 @@
+openssl (0.9.8e-2) unstable; urgency=low
+
+  * Undo include changes that change defines into real functions,
+    but keep the new functions in the library.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 25 Feb 2007 19:19:19 +0000
+
 openssl (0.9.8e-1) unstable; urgency=low
 
   * New upstream release
