@@ -12,6 +12,7 @@ openssl (0.9.8e-1) unstable; urgency=low
       CVE-2006-3738, CVE-2006-4343 (Closes: #408902)
     - s_client now properly works with SMTP.  Also added support
       for IMAP.  (closes: #221689)
+    - Load padlock modules (Closes: #345656, #368476)
   * Add clamav-freshclam and clamav-daemon to the list of service that
     need to be restarted.  (Closes: #391191)
   * Add armel support.  Thanks to Guillem Jover <guillem.jover@nokia.com>
