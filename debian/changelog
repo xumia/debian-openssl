@@ -2,8 +2,12 @@ openssl (0.9.8e-3) unstable; urgency=low
 
   * Add nagios-nrpe-server to the list of services to be checked
     (Closes: #391188)
+  * EVP_CIPHER_CTX_key_length() should return the set key length in the
+    EVP_CIPHER_CTX structure which may not be the same as the underlying
+    cipher key length for variable length ciphers.
+    From upstream CVS.  (Closes: #412979)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Tue, 27 Feb 2007 17:28:50 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun,  4 Mar 2007 23:22:51 +0000
 
 openssl (0.9.8e-2) unstable; urgency=low
 
