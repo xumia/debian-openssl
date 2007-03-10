@@ -1,3 +1,13 @@
+openssl (0.9.8e-4) unstable; urgency=low
+
+  * openssl should depend on libssl0.9.8 0.9.8e-1 since it 
+    uses some of the defines that changed to functions.
+    Other things build against libssl or libcrypto shouldn't 
+    have this problem since they use the old headers.
+    (Closes: #414283)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Mar 2007 17:11:46 +0000
+
 openssl (0.9.8e-3) unstable; urgency=low
 
   * Add nagios-nrpe-server to the list of services to be checked
