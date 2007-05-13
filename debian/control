@@ -43,7 +43,6 @@ Section: debian-installer
 Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Provides: libssl0.9.8
 Description: crypto shared library - udeb
  libcrypto shared library.
  .
