@@ -14,56 +14,56 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: openssl 0.9.7d-1\n"
+"Project-Id-Version: openssl 0.9.8e-4\n"
 "Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-02-23 20:01+0000\n"
-"PO-Revision-Date: 2004-03-24 23:41+0900\n"
-"Last-Translator: Hideki Yamane <henrich@samba.gr.jp>\n"
+"POT-Creation-Date: 2007-04-11 08:25+0200\n"
+"PO-Revision-Date: 2007-04-20 19:59+0900\n"
+"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: string
 #. Description
 #: ../libssl0.9.8.templates:1001
-msgid "Which services should be restarted to make them use the new libraries?"
-msgstr "¤É¤Î¥µ¡¼¥Ó¥¹¤ò¿·¤·¤¤¥é¥¤¥Ö¥é¥ê¤ò»È¤¦¤¿¤á¤ËºÆµ¯Æ°¤·¤Ş¤¹¤«?"
+msgid "Services to restart to make them use the new libraries:"
+msgstr "æ–°ã—ã„ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ã†ãŸã‚ã«å†èµ·å‹•ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹:"
 
 #. Type: string
 #. Description
 #: ../libssl0.9.8.templates:1001
 msgid ""
-"Security holes were fixed with this release. Services may not use these "
-"fixes until they are restarted. Note: restarting sshd should not affect any "
-"existing connections."
+"This release of OpenSSL fixes some security issues. Services will not use "
+"these fixes until they are restarted. Please note that restarting the SSH "
+"server (sshd) should not affect any existing connections."
 msgstr ""
-"º£²ó¤Î¥ê¥ê¡¼¥¹¤Ç¥»¥­¥å¥ê¥Æ¥£¥Û¡¼¥ë¤¬½¤Àµ¤µ¤ì¤Ş¤·¤¿¡£³Æ¥µ¡¼¥Ó¥¹¤ÏºÆµ¯Æ°¤ò¹Ô¤¦"
-"¤Ş¤Ç¤³¤Î½¤Àµ¤µ¤ì¤¿¥é¥¤¥Ö¥é¥ê¤òÍøÍÑ¤·¤Ş¤»¤ó¡£Ãí°Õ: sshd ¤ÎºÆµ¯Æ°¤Ï¸½¾õ¤ÎÀÜÂ³¤Ë"
-"¤Ï²¿¤é±Æ¶Á¤·¤Ş¤»¤ó¡£"
+"OpenSSL ã¯ã€ä»Šå›ã®ãƒªãƒªãƒ¼ã‚¹ã§ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ä¸Šã®å•é¡ŒãŒä¿®æ­£ã•ã‚Œã¾ã—ãŸã€‚å„ã‚µãƒ¼ãƒ“ã‚¹"
+"ã¯å†èµ·å‹•ã•ã‚Œãªã„ã¨ä¿®æ­£ãŒé©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚SSH ã‚µãƒ¼ãƒ (sshd) ã®å†èµ·å‹•ã‚’è¡Œã£ã¦"
+"ã‚‚ã€ç¾åœ¨ã®æ¥ç¶šã«ã¯ä½•ã‚‰å½±éŸ¿ã—ãªã„ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚"
 
 #. Type: string
 #. Description
 #: ../libssl0.9.8.templates:1001
 msgid ""
-"Following is a list of detected services that need to be restarted. Please "
-"correct the list, if you think it is incorrect. The services names must be "
-"identical to the script names in /etc/init.d and must be separated by "
-"spaces. If you clear the list, no services will be restarted."
+"Please check the list of detected services that need to be restarted and "
+"correct it, if needed. The services names must be identical to the "
+"initialization script names in /etc/init.d and separated by spaces. No "
+"services will be restarted if the list is empty."
 msgstr ""
-"°Ê²¼¤¬ºÆµ¯Æ°¤¬É¬Í×¤À¤ÈÈ½ÃÇ¤µ¤ì¤¿¥µ¡¼¥Ó¥¹¤Î¥ê¥¹¥È¤Ç¤¹¡£´Ö°ã¤Ã¤Æ¤¤¤ë¤È»×¤Ã¤¿¤é"
-"½¤Àµ¤·¤Æ¤¯¤À¤µ¤¤¡£¥µ¡¼¥Ó¥¹Ì¾¤Ï /etc/init.d ¤Ë¤¢¤ë¥¹¥¯¥ê¥×¥È¤ÎÌ¾Á°¤ò»Ø¤·¡¢¶õÇò"
-"¤Ç¶èÀÚ¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£¥ê¥¹¥È¤¬¶õ¤Î¾ì¹ç¤Ï¡¢¥µ¡¼¥Ó¥¹¤ÎºÆµ¯Æ°¤ÏÉ¬Í×¤¢¤ê¤Ş¤»"
-"¤ó¡£"
+"ä»¥ä¸‹ãŒå†èµ·å‹•ãŒå¿…è¦ã ã¨åˆ¤æ–­ã•ã‚ŒãŸã‚µãƒ¼ãƒ“ã‚¹ã®ãƒªã‚¹ãƒˆã§ã™ã€‚é–“é•ã£ã¦ã„ã‚‹ã¨æ€ã†å ´åˆ"
+"ã¯ä¿®æ­£ã‚’ã—ã¦ãã ã•ã„ã€‚ã‚µãƒ¼ãƒ“ã‚¹åã¯ /etc/init.d ã«ã‚ã‚‹åˆæœŸåŒ–ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®åå‰ã‚’"
+"ä½¿ã„ã€ç©ºç™½ã§åŒºåˆ‡ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ãƒªã‚¹ãƒˆãŒç©ºã®å ´åˆã¯ã€ã©ã®ã‚µãƒ¼ãƒ“ã‚¹ã‚‚å†èµ·å‹•ã•"
+"ã‚Œã¾ã›ã‚“ã€‚"
 
 #. Type: string
 #. Description
 #: ../libssl0.9.8.templates:1001
 msgid ""
-"If other services begin to fail mysteriously after this upgrade, it may be "
-"necessary to restart them too.  We strongly recommend you to reboot your "
-"machine to avoid the SSL related trouble."
+"Any service that later fails unexpectedly after this upgrade should be "
+"restarted. It is recommended to reboot this host to avoid any SSL-related "
+"trouble."
 msgstr ""
-"Â¾¤Î¥µ¡¼¥Ó¥¹¤¬¤³¤³¤Ç¤Î¥¢¥Ã¥×¥°¥ì¡¼¥É¤Î¸å¤Ë²¿¸Î¤«¥¨¥é¡¼¤òµ¯¤³¤·»Ï¤á¤¿¾ì¹ç¡¢¤½"
-"¤ì¤é¤âºÆµ¯Æ°¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£SSL ´ØÏ¢¤Î¥È¥é¥Ö¥ë¤òÈò¤±¤ë¤¿¤á¤Ë¥Ş¥·¥ó¤òºÆµ¯"
-"Æ°¤¹¤ë¤Î¤ò¶¯¤¯¤ª´«¤á¤·¤Ş¤¹¡£"
+"ã„ãšã‚Œã®ã‚µãƒ¼ãƒ“ã‚¹ã§ã‚‚ã€ã“ã®ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ã®å¾Œã«ä½•æ•…ã‹ã‚¨ãƒ©ãƒ¼ã‚’èµ·ã“ã—å§‹ã‚ãŸå ´"
+"åˆã€ãã‚Œã‚‰ã‚‚å†èµ·å‹•ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚SSL é–¢é€£ã®ãƒˆãƒ©ãƒ–ãƒ«ã‚’é¿ã‘ã‚‹ãŸã‚ã«ãƒã‚·ãƒ³"
+"ã‚’å†èµ·å‹•ã™ã‚‹ã“ã¨ã‚’ãŠå‹§ã‚ã—ã¾ã™ã€‚"
