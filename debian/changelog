@@ -22,13 +22,13 @@ openssl (0.9.8e-5) unstable; urgency=low
     - Dutch. Closes: #420925
     - Malayalam. Closes: #420986
     - Portuguese. Closes: #421032
-    - Spanish. Closes: #421336
     - Romanian. Closes: #421708
 
   [ Kurt Roeckx ]
   * Remove the Provides for -udeb.  Patch from Frans Pop.  (Closes: #419608)
+  * Updated Spanish debconf template.  (Closes: #421336)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 13 May 2007 19:37:09 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 13 May 2007 19:42:24 +0200
 
 openssl (0.9.8e-4) unstable; urgency=low
 
