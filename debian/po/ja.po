@@ -1,23 +1,9 @@
-#
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
-#    Developers do not need to manually edit POT or PO files.
-#
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: openssl 0.9.8e-4\n"
 "Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
 "POT-Creation-Date: 2007-04-11 08:25+0200\n"
-"PO-Revision-Date: 2007-04-20 19:59+0900\n"
+"PO-Revision-Date: 2007-05-04 23:37+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,9 +24,9 @@ msgid ""
 "these fixes until they are restarted. Please note that restarting the SSH "
 "server (sshd) should not affect any existing connections."
 msgstr ""
-"OpenSSL は、今回のリリースでセキュリティ上の問題が修正されました。各サービス"
-"は再起動されないと修正が適用されません。SSH サーバ (sshd) の再起動を行って"
-"も、現在の接続には何ら影響しないことに注意してください。"
+"OpenSSL は、今回のリリースでセキュリティホールが修正されました。各サービスは"
+"再起動を行わないと、この修正されたライブラリを利用しません。注意: SSH サーバ "
+"(sshd) を再起動しても、現状の接続には何ら影響しません。"
 
 #. Type: string
 #. Description
@@ -51,10 +37,9 @@ msgid ""
 "initialization script names in /etc/init.d and separated by spaces. No "
 "services will be restarted if the list is empty."
 msgstr ""
-"以下が再起動が必要だと判断されたサービスのリストです。間違っていると思う場合"
-"は修正をしてください。サービス名は /etc/init.d にある初期化スクリプトの名前を"
-"使い、空白で区切る必要があります。リストが空の場合は、どのサービスも再起動さ"
-"れません。"
+"再起動が必要だと判断されたサービスのリストを確認してください。必要であれば修正"
+"してください。サービス名は /etc/init.d にあるスクリプトの名前を指し、空白"
+"で区切る必要があります。リストが空の場合は、どのサービスも再起動されません。"
 
 #. Type: string
 #. Description
@@ -64,6 +49,7 @@ msgid ""
 "restarted. It is recommended to reboot this host to avoid any SSL-related "
 "trouble."
 msgstr ""
-"いずれのサービスでも、このアップグレードの後に何故かエラーを起こし始めた場"
-"合、それらも再起動する必要があります。SSL 関連のトラブルを避けるためにマシン"
-"を再起動することをお勧めします。"
+"他のサービスがここでのアップグレードの後に何故かエラーを起こし始めた場合、そ"
+"れらも再起動する必要があります。SSL 関連のトラブルを避けるためには、マシンを"
+"再起動するのをお勧めします。"
+

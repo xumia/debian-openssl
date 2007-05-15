@@ -29,8 +29,9 @@ openssl (0.9.8e-5) unstable; urgency=low
   * Updated Spanish debconf template.  (Closes: #421336)
   * Do the header changes, changing those defines into real functions,
     and bump the shlibs to match.
+  * Update Japanese debconf translation.  (Closes: #422270)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 13 May 2007 19:56:29 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 15 May 2007 17:21:08 +0000
 
 openssl (0.9.8e-4) unstable; urgency=low
 
