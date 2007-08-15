@@ -1,4 +1,4 @@
-openssl (0.9.8e-6) unstable; urgency=low
+openssl (0.9.8e-6) unstable; urgency=high
 
   * Add fix for CVE-2007-3108 (Closes: #438142)
 
