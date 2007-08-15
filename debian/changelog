@@ -1,3 +1,9 @@
+openssl (0.9.8e-6) unstable; urgency=low
+
+  * Add fix for CVE-2007-3108 (Closes: #438142)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 15 Aug 2007 19:49:54 +0200
+
 openssl (0.9.8e-5) unstable; urgency=low
 
   [ Christian Perrier ]
