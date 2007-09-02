@@ -1,8 +1,10 @@
 openssl (0.9.8e-7) unstable; urgency=low
 
   * Fix problems with gcc-4.2 (Closes: #429740)
+  * Stop using -Bsymbolic to create the shared library.
+  * 
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 02 Sep 2007 13:38:04 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 02 Sep 2007 13:57:16 +0000
 
 openssl (0.9.8e-6) unstable; urgency=high
 
