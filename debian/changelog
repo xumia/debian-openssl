@@ -1,3 +1,10 @@
+openssl (0.9.8e-8) unstable; urgency=low
+
+  * Fix another case of the "if this code is reached, the program will abort"
+    (Closes: #429740)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 02 Sep 2007 18:12:11 +0200
+
 openssl (0.9.8e-7) unstable; urgency=low
 
   * Fix problems with gcc-4.2 (Closes: #429740)
