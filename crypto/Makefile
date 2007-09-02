@@ -70,7 +70,7 @@ uplink.o:	../ms/uplink.c
 uplink-cof.s:	../ms/uplink.pl
 	$(PERL) ../ms/uplink.pl coff > $@
 
-x86_64cpuid.s: x86_64cpuid.pl
+x86_64cpuid.S: x86_64cpuid.pl
 	$(PERL) x86_64cpuid.pl $@
 ia64cpuid.s: ia64cpuid.S
 	$(CC) $(CFLAGS) -E ia64cpuid.S > $@
