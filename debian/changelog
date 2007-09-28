@@ -1,3 +1,10 @@
+openssl (0.9.8e-9) unstable; urgency=high
+
+  * CVE-2007-5135: Fix off by one error in SSL_get_shared_ciphers().
+    (Closes: #444435)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 28 Sep 2007 19:47:33 +0200
+
 openssl (0.9.8e-8) unstable; urgency=low
 
   * Fix another case of the "if this code is reached, the program will abort"
