@@ -66,6 +66,7 @@ then
 	    check="$check courier-imap-ssl courier-mta-ssl courier-pop-ssl"
 	    check="$check postfix cyrus21-imapd cyrus21-pop3d"
 	    check="$check postgresql-7.4 postgresql-8.0 postgresql-8.1"
+	    check="$check postgresql-8.2"
 	    check="$check racoon dovecot-common bind9"
 	    check="$check ntp openntpd clamcour nagios-nrpe-server"
 	    check="$check clamav-freshclam clamav-daemon"

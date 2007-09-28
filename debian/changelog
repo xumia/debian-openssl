@@ -2,6 +2,7 @@ openssl (0.9.8e-9) unstable; urgency=high
 
   * CVE-2007-5135: Fix off by one error in SSL_get_shared_ciphers().
     (Closes: #444435)
+  * Add postgresql-8.2 to the list of services to check.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 28 Sep 2007 19:47:33 +0200
 
