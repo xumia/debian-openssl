@@ -9,6 +9,7 @@ openssl (0.9.8f-1) unstable; urgency=low
     - Vietnamese (Closes: #426988)
     - Danish (Closes: #426774)
     - Slovak (Closes: #440723)
+    - Finnish (Closes: #444258)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 13 Oct 2007 00:47:22 +0200
 
