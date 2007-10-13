@@ -3,6 +3,7 @@ openssl (0.9.8f-1) unstable; urgency=low
   * New upstream release
     - Fixes DTLS issues, also fixes CVE-2007-4995
     - Proper inclusion of opensslconf.h in pq_compat.h (Closes: #408686)
+    - New function SSL_set_SSL_CTX: bump shlibs.
   * Remove build dependency on gcc > 4.2
   * Remove the openssl preinst, it looks like a workaround
     for a change in 0.9.2b where config files got moved.  (Closes: #445095)
