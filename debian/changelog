@@ -2,6 +2,7 @@ openssl (0.9.8f-1) unstable; urgency=low
 
   * New upstream release
     - Fixes DTLS issues, also fixes CVE-2007-4995
+  * Remove build dependency on gcc > 4.2
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 13 Oct 2007 00:47:22 +0200
 
