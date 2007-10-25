@@ -57,7 +57,7 @@ buildinf.h: ../Makefile
 	echo "  #define DATE \"`LC_ALL=C LC_TIME=C date`\""; \
 	echo '#endif' ) >buildinf.h
 
-x86cpuid-elf.s:	x86cpuid.pl perlasm/x86asm.pl
+x86cpuid-elf.S:	x86cpuid.pl perlasm/x86asm.pl
 	$(PERL) x86cpuid.pl elf $(CFLAGS) $(PROCESSOR) > $@
 x86cpuid-cof.s: x86cpuid.pl perlasm/x86asm.pl
 	$(PERL) x86cpuid.pl coff $(CFLAGS) $(PROCESSOR) > $@
