@@ -9,7 +9,8 @@ openssl (0.9.8g-2) unstable; urgency=low
       via the PLT to avoid a relocation.
     - x86unix.pl: Call the init function via the PLT, avoiding a relocation
       in case of a PIC object.
-    - Disable the des en bf assembler versions.
+    - cbc.pl: Call functions via the PLT.
+    - desboth.pl: Call DES_encrypt2 via the PLT.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 25 Oct 2007 23:57:42 +0200
 
