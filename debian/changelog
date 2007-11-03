@@ -13,8 +13,9 @@ openssl (0.9.8g-2) unstable; urgency=low
     - desboth.pl: Call DES_encrypt2 via the PLT.
   * CA.sh should use the v3_ca extention when called with -newca
     (Closes: #428051)
+  * Use -Wa,--noexecstack for all arches in Debian.  (Closes: #430583)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Nov 2007 12:09:30 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Nov 2007 12:15:17 +0100
 
 openssl (0.9.8g-1) unstable; urgency=low
 
