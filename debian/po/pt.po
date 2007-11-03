@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openssl\n"
 "Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-04-11 08:25+0200\n"
+"POT-Creation-Date: 2007-11-03 12:37+0100\n"
 "PO-Revision-Date: 2007-04-25 23:55+0100\n"
 "Last-Translator: Carlos Lisboa <carloslisboa@gmail.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
@@ -59,3 +59,31 @@ msgstr ""
 "Qualquer serviço que mais tarde falha de forma inesperada após esta "
 "actualização deverá ser reiniciado. É recomendado que reinicie este "
 "computador para evitar qualquer problema relacionado como SSL."
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "Failure restarting some services for OpenSSL upgrade"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"The following services could not be restarted for the OpenSSL library "
+"upgrade:"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "${services}"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"You will need to start these manually by running '/etc/init.d/<service> "
+"start'."
+msgstr ""

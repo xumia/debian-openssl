@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openssl_0.9.7d-1_templates\n"
 "Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-04-11 08:25+0200\n"
+"POT-Creation-Date: 2007-11-03 12:37+0100\n"
 "PO-Revision-Date: 2007-05-30 22:26+0200\n"
 "Last-Translator: Claus Hindsgaul <claus.hindsgaul@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -30,7 +30,9 @@ msgstr ""
 #. Description
 #: ../libssl0.9.8.templates:1001
 msgid "Services to restart to make them use the new libraries:"
-msgstr "Services, der skal genstartes, for at få dem til at benytte de nye biblioteker:"
+msgstr ""
+"Services, der skal genstartes, for at få dem til at benytte de nye "
+"biblioteker:"
 
 #. Type: string
 #. Description
@@ -53,9 +55,10 @@ msgid ""
 "initialization script names in /etc/init.d and separated by spaces. No "
 "services will be restarted if the list is empty."
 msgstr ""
-"Tjek listen over fundne services, som skal genstartes, og ret den om nødvendigt. "
-"Servicenavnene skal være identiske med initialiseringsscriptenes navne i /etc/init.d, "
-"og være adskilt med mellemrum. Hvis listen er tom, vil ingen services blive genstartet."
+"Tjek listen over fundne services, som skal genstartes, og ret den om "
+"nødvendigt. Servicenavnene skal være identiske med initialiseringsscriptenes "
+"navne i /etc/init.d, og være adskilt med mellemrum. Hvis listen er tom, vil "
+"ingen services blive genstartet."
 
 #. Type: string
 #. Description
@@ -65,6 +68,34 @@ msgid ""
 "restarted. It is recommended to reboot this host to avoid any SSL-related "
 "trouble."
 msgstr ""
-"Enhver service, der fejler uden grund efter denne opgradering, bør genstartes. Det "
-"anbefales at genstarte denne maskine for at undgå SSL-relaterede problemer."
+"Enhver service, der fejler uden grund efter denne opgradering, bør "
+"genstartes. Det anbefales at genstarte denne maskine for at undgå SSL-"
+"relaterede problemer."
 
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "Failure restarting some services for OpenSSL upgrade"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"The following services could not be restarted for the OpenSSL library "
+"upgrade:"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "${services}"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"You will need to start these manually by running '/etc/init.d/<service> "
+"start'."
+msgstr ""

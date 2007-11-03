@@ -7,7 +7,7 @@
 #       Lucas Wall <kthulhu@kadath.com.ar>, 2004
 #
 # - Last revision
-#		Manuel Porras Peralta «Venturi», 2007
+# 		Manuel Porras Peralta «Venturi», 2007
 #
 #  Traductores, si no conoce el formato PO, merece la pena leer la 
 #  documentación de gettext, especialmente las secciones dedicadas a este
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openssl 0.9.7d-3\n"
 "Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-04-11 08:25+0200\n"
+"POT-Creation-Date: 2007-11-03 12:37+0100\n"
 "PO-Revision-Date: 2007-05-01 17:20+0200\n"
 "Last-Translator: Manuel Porras Peralta «Venturi» <venturi.debian@gmail.com>\n"
 "Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -55,8 +55,8 @@ msgid ""
 "server (sshd) should not affect any existing connections."
 msgstr ""
 "Esta versión de OpenSSL arregla algunos problemas de seguridad. Los "
-"servicios no usarán los arreglos hasta que se reinicien. Tenga en cuenta "
-"que reiniciar el servicio SSH (sshd) no debería afectar a ninguna de las "
+"servicios no usarán los arreglos hasta que se reinicien. Tenga en cuenta que "
+"reiniciar el servicio SSH (sshd) no debería afectar a ninguna de las "
 "conexiones existentes."
 
 #. Type: string
@@ -70,9 +70,9 @@ msgid ""
 msgstr ""
 "Por favor, compruebe la lista de los servicios detectados que necesitan "
 "reiniciarse y corríjala si fuera necesario. Los nombres de los servicios "
-"deben ser idénticos a los nombres de los programas de inicio en "
-"«/etc/init.d» y deben estar separados por espacios. No se reiniciará "
-"ningún servicio si deja la lista en blanco."
+"deben ser idénticos a los nombres de los programas de inicio en «/etc/init."
+"d» y deben estar separados por espacios. No se reiniciará ningún servicio si "
+"deja la lista en blanco."
 
 #. Type: string
 #. Description
@@ -85,3 +85,31 @@ msgstr ""
 "Tras esta actualización, debería reiniciar cualquier servicio que falle "
 "inesperadamente más tarde. Se recomienda reiniciar el sistema para evitar "
 "cualquier problema relacionado con SSL."
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "Failure restarting some services for OpenSSL upgrade"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"The following services could not be restarted for the OpenSSL library "
+"upgrade:"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid "${services}"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../libssl0.9.8.templates:2001
+msgid ""
+"You will need to start these manually by running '/etc/init.d/<service> "
+"start'."
+msgstr ""
