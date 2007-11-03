@@ -16,6 +16,8 @@ openssl (0.9.8g-2) unstable; urgency=low
   * Use -Wa,--noexecstack for all arches in Debian.  (Closes: #430583)
   * Convert the failure message when services fail restart to a debconf
     message.
+  * To restart a service, just restart, instead of stop and start.
+    Hopefully fixes #444946
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Nov 2007 12:49:50 +0100
 

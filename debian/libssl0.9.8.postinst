@@ -141,14 +141,7 @@ then
 			    idl=$(ls /etc/rc${rl}.d/S??${service} 2> /dev/null | head -n 1)
 			fi
 
-			echo -n "  $service: stopping..."
-			$idl stop > /dev/null 2>&1 || true
-			sleep 1
-			echo -n "starting..."
-			if $idl start > /dev/null 2>&1; then
-			    echo "done."
-			else
-			    echo "FAILED! ($?)"
+			if ! $idl restart; then
 			    failed="$service $failed"
 			fi
 		    done
