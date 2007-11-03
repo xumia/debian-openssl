@@ -18,8 +18,10 @@ openssl (0.9.8g-2) unstable; urgency=low
     message.
   * To restart a service, just restart, instead of stop and start.
     Hopefully fixes #444946
+  * Also remove igetest from the test dir in the clean target.
+    (Closes: #424362)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Nov 2007 12:49:50 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 03 Nov 2007 13:25:45 +0100
 
 openssl (0.9.8g-1) unstable; urgency=low
 
