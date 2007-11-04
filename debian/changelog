@@ -1,3 +1,11 @@
+openssl (0.9.8g-3) unstable; urgency=low
+
+  * aes-586.pl: push %ebx on the stack before we put some things on the
+    stack and call a function, giving AES_decrypt() wrong values to work
+    with.  (Closes: #449200)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 04 Nov 2007 21:49:00 +0100
+
 openssl (0.9.8g-2) unstable; urgency=low
 
   * Avoid text relocations on i386 caused by the assembler versions:

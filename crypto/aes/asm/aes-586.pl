@@ -1460,12 +1460,12 @@ sub deckey()
 &public_label("AES_Td");
 &public_label("AES_Te");
 &function_begin_B("AES_set_decrypt_key");
+	&push	("ebx");
 	&mov	("eax",&wparam(0));
 	&mov	("ecx",&wparam(1));
 	&mov	("edx",&wparam(2));
 	&sub	("esp",12);
 
-	&push	("ebx");
 	&call	(&label("pic_point0")); 
 	&set_label("pic_point0");
 	&blindpop("ebx");
