@@ -16,6 +16,10 @@ _Description: Services to restart to make them use the new libraries:
 
 Template: libssl0.9.8/restart-failed
 Type: error
+#flag:translate!:3
+#flag:comment:2
+# This paragraph is followed by a (non translatable) paragraph containing
+# a list of services that could not be restarted
 _Description: Failure restarting some services for OpenSSL upgrade
  The following services could not be restarted for the OpenSSL library upgrade:
  .

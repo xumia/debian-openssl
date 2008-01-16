@@ -2,6 +2,8 @@ openssl (0.9.8g-4) unstable; urgency=low
 
   * Fix aes ige test speed not to overwrite it's buffer and
     cause segfauls.  Thanks to Tim Hudson (Closes: #459619)
+  * Mark some strings in the templates as non translatable.
+    Patch from Christian Perrier <bubulle@debian.org> (Closes: #450418)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Wed, 16 Jan 2008 21:17:02 +0100
 
