@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: openssl 0.9.8e-4\n"
-"Report-Msgid-Bugs-To: pkg-openssl-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-11-03 12:37+0100\n"
+"Report-Msgid-Bugs-To: openssl@packages.debian.org\n"
+"POT-Creation-Date: 2008-01-16 21:40+0100\n"
 "PO-Revision-Date: 2007-05-04 23:37+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -61,16 +61,12 @@ msgstr ""
 
 #. Type: error
 #. Description
+#. This paragraph is followed by a (non translatable) paragraph containing
+#. a list of services that could not be restarted
 #: ../libssl0.9.8.templates:2001
 msgid ""
 "The following services could not be restarted for the OpenSSL library "
 "upgrade:"
-msgstr ""
-
-#. Type: error
-#. Description
-#: ../libssl0.9.8.templates:2001
-msgid "${services}"
 msgstr ""
 
 #. Type: error

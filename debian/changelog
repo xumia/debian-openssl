@@ -4,8 +4,9 @@ openssl (0.9.8g-4) unstable; urgency=low
     cause segfauls.  Thanks to Tim Hudson (Closes: #459619)
   * Mark some strings in the templates as non translatable.
     Patch from Christian Perrier <bubulle@debian.org> (Closes: #450418)
+  * Update dutch debconf translation (Closes: #451290)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Wed, 16 Jan 2008 21:17:02 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 16 Jan 2008 21:42:35 +0100
 
 openssl (0.9.8g-3) unstable; urgency=low
 
