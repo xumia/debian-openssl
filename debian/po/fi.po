@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: openssl_0.9.8e-8\n"
 "Report-Msgid-Bugs-To: openssl@packages.debian.org\n"
 "POT-Creation-Date: 2008-01-16 21:40+0100\n"
-"PO-Revision-Date: 2007-09-27 11:59+0200\n"
+"PO-Revision-Date: 2007-12-30 00:00+0200\n"
 "Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
 "Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgid ""
 "services will be restarted if the list is empty."
 msgstr ""
 "Tarkista alla oleva lista löydetyistä palveluista, jotka pitää käynnistää "
-"uudelleen ja korjaa sitä tarvittaessa. Palveluiden nimien pitää täsmätä "
+"uudelleen, ja korjaa sitä tarvittaessa. Palveluiden nimien pitää täsmätä "
 "hakemistossa /etc/init.d olevien alustustiedostojen nimiin ja olla "
 "välilyönnein eroteltuja. Jos lista on tyhjä, mitään palveluita ei "
 "käynnistetä uudelleen."
@@ -57,13 +57,15 @@ msgid ""
 msgstr ""
 "Palvelut, joissa esiintyy odottamattomia häiriöitä päivityksen jälkeen "
 "tulisi käynnistää uudelleen. On suositeltavaa käynnistää kone uudelleen SSL:"
-"n liittyvien ongelmien välttämiseksi."
+"än liittyvien ongelmien välttämiseksi."
 
 #. Type: error
 #. Description
 #: ../libssl0.9.8.templates:2001
 msgid "Failure restarting some services for OpenSSL upgrade"
 msgstr ""
+"Joidenkin palveluiden käynnistäminen uudelleen OpenSSL:n päivityksen "
+"yhteydessä epäonnistui."
 
 #. Type: error
 #. Description
@@ -74,6 +76,8 @@ msgid ""
 "The following services could not be restarted for the OpenSSL library "
 "upgrade:"
 msgstr ""
+"Seuraavia palveluita ei voitu käynnistää uudelleen päivitettäessä OpenSSL-"
+"kirjasto:"
 
 #. Type: error
 #. Description
@@ -82,3 +86,7 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
+"Nämä tarvitsee käynnistää käsin ajamalla ”/etc/init.d/<palvelu> start”."
+
+#~ msgid "${services}"
+#~ msgstr "${services}"
