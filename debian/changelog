@@ -6,8 +6,9 @@ openssl (0.9.8g-4) unstable; urgency=low
     Patch from Christian Perrier <bubulle@debian.org> (Closes: #450418)
   * Update Dutch debconf translation (Closes: #451290)
   * Update French debconf translation (Closes: #451375)
+  * Update Catalan debconf translation (Closes: #452694) 
 
- -- Kurt Roeckx <kurt@roeckx.be>  Wed, 16 Jan 2008 21:44:45 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 16 Jan 2008 21:45:58 +0100
 
 openssl (0.9.8g-3) unstable; urgency=low
 
