@@ -1,3 +1,10 @@
+openssl (0.9.8g-5) experimental; urgency=low
+
+  * Enable tlsext.  This changes the ABI, but should hopefully
+    not cause any problems. (Closes: #462596)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 09 Feb 2008 13:32:49 +0100
+
 openssl (0.9.8g-4) unstable; urgency=low
 
   * Fix aes ige test speed not to overwrite it's buffer and
