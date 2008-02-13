@@ -1,3 +1,9 @@
+openssl (0.9.8g-7) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 13 Feb 2008 22:22:29 +0000
+
 openssl (0.9.8g-6) experimental; urgency=low
 
   * Bump shlibs.
