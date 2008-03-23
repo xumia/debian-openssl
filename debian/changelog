@@ -1,7 +1,7 @@
 openssl (0.9.8g-8) unstable; urgency=high
 
   * Don't add extentions to ssl v3 connections.  It breaks with some
-    other software.  (Closes: #471681, #471896)
+    other software.  (Closes: #471681)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 23 Mar 2008 17:50:04 +0000
 
