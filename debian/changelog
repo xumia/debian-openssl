@@ -1,9 +1,13 @@
-openssl (0.9.8g-9) unstable; urgency=low
+openssl (0.9.8g-9) unstable; urgency=high
 
+  [ Christoph Martin ]
   * Include updated debconf translations (closes: #473477, #461597,
     #461880, #462011, #465517, #475439)
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Wed,  7 May 2008 17:31:09 +0200
+  [ Kurt Roeckx ]
+  * ssleay_rand_add() really needs to call MD_Update() for buf.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 07 May 2008 20:32:12 +0200
 
 openssl (0.9.8g-8) unstable; urgency=high
 
