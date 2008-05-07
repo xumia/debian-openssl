@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: openssl 0.9.8e-4\n"
 "Report-Msgid-Bugs-To: openssl@packages.debian.org\n"
 "POT-Creation-Date: 2008-01-16 21:40+0100\n"
-"PO-Revision-Date: 2007-05-04 23:37+0900\n"
+"PO-Revision-Date: 2008-01-22 07:37+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr ""
 #. Description
 #: ../libssl0.9.8.templates:2001
 msgid "Failure restarting some services for OpenSSL upgrade"
-msgstr ""
+msgstr "OpenSSL のアップグレードによって再起動に失敗したサービス"
 
 #. Type: error
 #. Description
@@ -68,6 +68,8 @@ msgid ""
 "The following services could not be restarted for the OpenSSL library "
 "upgrade:"
 msgstr ""
+"以下のサービスは OpenSSL ライブラリのアップグレードに伴った再起動を行うことが"
+"できませんでした。"
 
 #. Type: error
 #. Description
@@ -76,3 +78,5 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
+"開始するには '/etc/init.d/<service> start' を手動で実行する必要があります。"
+
