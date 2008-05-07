@@ -79,4 +79,3 @@ msgid ""
 "start'."
 msgstr ""
 "開始するには '/etc/init.d/<service> start' を手動で実行する必要があります。"
-
