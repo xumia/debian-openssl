@@ -1,6 +1,7 @@
 openssl (0.9.8g-9) unstable; urgency=low
 
-  * Include updated debconf translations (closes: #473477, #461597, #461880, #462011, #465517, #475439)
+  * Include updated debconf translations (closes: #473477, #461597,
+    #461880, #462011, #465517, #475439)
 
  -- Christoph Martin <christoph.martin@uni-mainz.de>  Wed,  7 May 2008 17:31:09 +0200
 
