@@ -1,3 +1,10 @@
+openssl (0.9.8g-10) unstable; urgency=low
+
+  * undefine HZ so that the code falls back to sysconf(_SC_CLK_TCK)
+    to fix a build failure on alpha.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 08 May 2008 17:56:13 +0000
+
 openssl (0.9.8g-9) unstable; urgency=high
 
   [ Christoph Martin ]
