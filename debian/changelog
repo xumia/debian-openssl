@@ -1,3 +1,10 @@
+openssl (0.9.8g-11) unstable; urgency=low
+
+  [ Christoph Martin ]
+  * updated cs, gl debconf translation (closes: #480926, #480967)
+
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 13 May 2008 16:14:32 +0200
+
 openssl (0.9.8g-10) unstable; urgency=low
 
   * undefine HZ so that the code falls back to sysconf(_SC_CLK_TCK)

@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: openssl\n"
 "Report-Msgid-Bugs-To: openssl@packages.debian.org\n"
 "POT-Creation-Date: 2008-01-16 21:40+0100\n"
-"PO-Revision-Date: 2007-04-11 18:40+0200\n"
+"PO-Revision-Date: 2008-05-12 19:14+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr ""
 #. Description
 #: ../libssl0.9.8.templates:2001
 msgid "Failure restarting some services for OpenSSL upgrade"
-msgstr ""
+msgstr "Chyba při restartu některých služeb po aktualizaci OpenSSL"
 
 #. Type: error
 #. Description
@@ -82,6 +82,7 @@ msgid ""
 "The following services could not be restarted for the OpenSSL library "
 "upgrade:"
 msgstr ""
+"Následující služby se nepodařilo po aktualizaci knihovny OpenSSL restartovat:"
 
 #. Type: error
 #. Description
@@ -89,4 +90,4 @@ msgstr ""
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
-msgstr ""
+msgstr "Budete je muset spustit ručně příkazem „/etc/init.d/<služba> start“."
