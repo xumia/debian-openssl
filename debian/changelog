@@ -2,8 +2,9 @@ openssl (0.9.8g-11) unstable; urgency=low
 
   [ Christoph Martin ]
   * updated cs, gl debconf translation (closes: #480926, #480967)
+  * add Vcs-Svn header (closes: #481654)
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 13 May 2008 16:14:32 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 20 May 2008 14:19:31 +0200
 
 openssl (0.9.8g-10) unstable; urgency=low
 

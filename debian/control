@@ -5,6 +5,8 @@ Priority: optional
 Maintainer: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
 Uploaders: Christoph Martin <christoph.martin@uni-mainz.de>, Kurt Roeckx <kurt@roeckx.be>
 Standards-Version: 3.7.0
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-openssl/openssl
+Vcs-Svn: svn://svn.debian.org/pkg-openssl/openssl/
 
 Package: openssl
 Priority: optional
