@@ -4,8 +4,9 @@ openssl (0.9.8g-11) UNRELEASED; urgency=low
   * updated cs, gl, sv debconf translation (closes: #480926, #480967, #482465)
   * add Vcs-Svn header (closes: #481654)
   * fix debian-kfreebsd-i386 build flags (closes: #482275)
+  * add stunnel4 to restart list (closes: #482111)
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Mon, 26 May 2008 17:12:43 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue,  3 Jun 2008 15:11:12 +0200
 
 openssl (0.9.8g-10) unstable; urgency=low
 
