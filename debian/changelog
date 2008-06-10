@@ -9,8 +9,13 @@ openssl (0.9.8g-11) UNRELEASED; urgency=low
   * include fixes from 10.1 NMB by Security team
     - Fix double free in TLS server name extension which leads to a remote
       denial of service (CVE-2008-0891; Closes: #483379).
+    - Fix denial of service if the 'Server Key exchange message'
+      is omitted from a TLS handshake which could lead to a client
+      crash (CVE-2008-1672; Closes: #483379).
+      This only works if openssl is compiled with enable-tlsext which is
+      done in Debian.
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 10 Jun 2008 12:06:37 +0200
+ -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 10 Jun 2008 15:07:42 +0200
 
 openssl (0.9.8g-10) unstable; urgency=low
 
