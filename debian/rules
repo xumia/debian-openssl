@@ -9,7 +9,6 @@
 #
 # Modified to be a prototype for debmake by Christoph Lameter <clameter@debian.org>
 SHELL=/bin/bash
-export DH_COMPAT=3
 
 package=openssl
 
@@ -66,7 +65,7 @@ clean:
 	-rm -f build
 	-perl util/perlpath.pl /usr/bin
 	-./Configure $(CONFARGS) debian-$(DEB_HOST_ARCH)
-	-make -f Makefile  clean clean-shared
+	[ ! -f Makefile ] || make -f Makefile  clean clean-shared
 	#-make -f Makefile  dclean
 	-perl util/perlpath.pl /usr/local/bin/perl
 #	perl util/ssldir.pl /usr/local/ssl

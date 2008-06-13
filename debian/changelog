@@ -14,8 +14,10 @@ openssl (0.9.8g-11) UNRELEASED; urgency=low
       crash (CVE-2008-1672; Closes: #483379).
       This only works if openssl is compiled with enable-tlsext which is
       done in Debian.
+  * fix some lintian warnings
+  * update to newest standards version
 
- -- Christoph Martin <christoph.martin@uni-mainz.de>  Tue, 10 Jun 2008 15:07:42 +0200
+ -- Christoph Martin <Christoph.Martin@Uni-Mainz.DE>  Fri, 13 Jun 2008 14:19:40 +0200
 
 openssl (0.9.8g-10) unstable; urgency=low
 
