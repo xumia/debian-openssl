@@ -1,6 +1,6 @@
 openssl (0.9.8g-12) unstable; urgency=low
 
-  * add the changelog of the 10.1 NMU
+  * add the changelog of the 10.1 NMU to make bugtracking happy
 
  -- Christoph Martin <Christoph.Martin@Uni-Mainz.DE>  Tue, 22 Jul 2008 14:58:26 +0200
 
