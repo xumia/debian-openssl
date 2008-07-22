@@ -1,3 +1,9 @@
+openssl (0.9.8g-12) unstable; urgency=low
+
+  * add the changelog of the 10.1 NMU
+
+ -- Christoph Martin <Christoph.Martin@Uni-Mainz.DE>  Tue, 22 Jul 2008 14:58:26 +0200
+
 openssl (0.9.8g-11) unstable; urgency=low
 
   [ Christoph Martin ]
@@ -6,7 +12,7 @@ openssl (0.9.8g-11) unstable; urgency=low
   * add Vcs-Svn header (closes: #481654)
   * fix debian-kfreebsd-i386 build flags (closes: #482275)
   * add stunnel4 to restart list (closes: #482111)
-  * include fixes from 10.1 NMB by Security team
+  * include fixes from 10.1 NMU by Security team
     - Fix double free in TLS server name extension which leads to a remote
       denial of service (CVE-2008-0891; Closes: #483379).
     - Fix denial of service if the 'Server Key exchange message'
@@ -18,6 +24,19 @@ openssl (0.9.8g-11) unstable; urgency=low
   * update to newest standards version
 
  -- Christoph Martin <Christoph.Martin@Uni-Mainz.DE>  Thu, 17 Jul 2008 09:53:01 +0200
+
+openssl (0.9.8g-10.1) unstable; urgency=high
+ 
+  * Non-maintainer upload by the Security team.
+  * Fix denial of service if the 'Server Key exchange message'
+    is omitted from a TLS handshake which could lead to a client
+    crash (CVE-2008-1672; Closes: #483379).
+    This only works if openssl is compiled with enable-tlsext which is
+    done in Debian.
+  * Fix double free in TLS server name extension which leads to a remote
+    denial of service (CVE-2008-0891; Closes: #483379).
+ 
+ -- Nico Golde <nion@debian.org>  Tue, 27 May 2008 11:13:44 +0200
 
 openssl (0.9.8g-10) unstable; urgency=low
 
