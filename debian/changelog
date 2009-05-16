@@ -1,6 +1,7 @@
 openssl (0.9.8k-1) unstable; urgency=low
 
   * New upstream release
+  * Make aes-x86_64.pl use PIC.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 16 May 2009 17:33:55 +0200
 
