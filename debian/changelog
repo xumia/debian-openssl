@@ -1,3 +1,9 @@
+openssl (0.9.8k-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 16 May 2009 17:33:55 +0200
+
 openssl (0.9.8g-16) unstable; urgency=high
 
   * Properly validate the length of an encoded BMPString and UniversalString
