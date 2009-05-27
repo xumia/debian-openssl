@@ -5,6 +5,7 @@ openssl (0.9.8k-1) unstable; urgency=low
   * Fix security issues (Closes: #530400)
     - "DTLS record buffer limitation bug." (CVE-2009-1377)
     - "DTLS fragment handling" (CVE-2009-1378)
+    - "DTLS use after free" (CVE-2009-1379)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 16 May 2009 17:33:55 +0200
 

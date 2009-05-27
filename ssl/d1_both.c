@@ -530,13 +530,14 @@ dtls1_retrieve_buffered_fragment(SSL *s, long max, int *ok)
 				frag->fragment,frag->msg_header.frag_len);
 			}
 
+		unsigned long frag_len = frag->msg_header.frag_len;
 		dtls1_hm_fragment_free(frag);
 		pitem_free(item);
 
 		if (al==0)
 			{
 			*ok = 1;
-			return frag->msg_header.frag_len;
+			return frag_len;
 			}
 
 		ssl3_send_alert(s,SSL3_AL_FATAL,al);
