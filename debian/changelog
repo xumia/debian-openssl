@@ -11,8 +11,10 @@ openssl (0.9.8m-1) unstable; urgency=low
     - ca.diff partially applied upstream
     - engines-path.patch adjusted, upstream made some minor changes to the
       build system.
+  * Switch to 3.0 (quilt) source package.
+  * Make sure the package is properly cleaned.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 27 Feb 2010 00:27:44 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 27 Feb 2010 12:24:03 +0000
 
 openssl (0.9.8k-8) unstable; urgency=high
 
