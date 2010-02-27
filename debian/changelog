@@ -14,6 +14,7 @@ openssl (0.9.8m-1) unstable; urgency=low
     - some flags changed values, bump shlibs.
   * Switch to 3.0 (quilt) source package.
   * Make sure the package is properly cleaned.
+  * Add ${misc:Depends} to the Depends on all packages.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 27 Feb 2010 12:24:03 +0000
 
