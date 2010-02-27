@@ -1,7 +1,7 @@
 openssl (0.9.8m-1) unstable; urgency=low
 
   * New upstream version
-    - Implements RFC5746, reenables renegotiation but requires the extention.
+    - Implements RFC5746, reenables renegotiation but requires the extension.
     - Fixes CVE-2009-3245
     - Drop patches CVE-2009-4355.patch, CVE-2009-1378.patch,
       CVE-2009-1377.patch, CVE-2009-1379.patch, CVE-2009-3555.patch,
@@ -15,6 +15,7 @@ openssl (0.9.8m-1) unstable; urgency=low
   * Switch to 3.0 (quilt) source package.
   * Make sure the package is properly cleaned.
   * Add ${misc:Depends} to the Depends on all packages.
+  * Fix spelling of extension in the changelog file.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 27 Feb 2010 12:24:03 +0000
 
@@ -196,7 +197,7 @@ openssl (0.9.8g-9) unstable; urgency=high
 
 openssl (0.9.8g-8) unstable; urgency=high
 
-  * Don't add extentions to ssl v3 connections.  It breaks with some
+  * Don't add extensions to ssl v3 connections.  It breaks with some
     other software.  (Closes: #471681)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 23 Mar 2008 17:50:04 +0000
@@ -255,7 +256,7 @@ openssl (0.9.8g-2) unstable; urgency=low
       in case of a PIC object.
     - cbc.pl: Call functions via the PLT.
     - desboth.pl: Call DES_encrypt2 via the PLT.
-  * CA.sh should use the v3_ca extention when called with -newca
+  * CA.sh should use the v3_ca extension when called with -newca
     (Closes: #428051)
   * Use -Wa,--noexecstack for all arches in Debian.  (Closes: #430583)
   * Convert the failure message when services fail restart to a debconf
