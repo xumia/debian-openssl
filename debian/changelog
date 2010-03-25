@@ -1,7 +1,8 @@
-openssl (0.9.8n-1) unstable; urgency=low
+openssl (0.9.8n-1) unstable; urgency=high
 
   * New upstream version.
     - Fixes CVE-2010-0740.
+    - Drop cfb.patch, applied upstream.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 25 Mar 2010 20:30:52 +0100
 
