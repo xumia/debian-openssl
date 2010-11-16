@@ -1,6 +1,7 @@
-openssl (0.9.8o-3) unstable; urgency=low
+openssl (0.9.8o-3) unstable; urgency=high
 
   * Fix TLS extension parsing race condition (CVE-2010-3864) (Closes: #603709)
+  * Re-add the engines.  Patch by Joerg Schneider. (Closes: #603693)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Tue, 16 Nov 2010 19:01:06 +0100
 
