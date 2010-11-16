@@ -4,6 +4,7 @@ openssl (0.9.8o-3) unstable; urgency=high
   * Re-add the engines.  Patch by Joerg Schneider. (Closes: #603693)
   * Not all architectures were build using -g (Closes: #570702)
   * Add powerpcspe support (Closes: #579805)
+  * Add armhf support (Closes: #596881)
   * Update translations:
     - Brazilian Portuguese (Closes: #592154)
     - Danish (Closes: #599459)
