@@ -9,6 +9,7 @@ openssl (0.9.8o-3) unstable; urgency=high
     - Brazilian Portuguese (Closes: #592154)
     - Danish (Closes: #599459)
     - Vietnamese (Closes: #601536)
+    - Arabic (Closes: #596166)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Tue, 16 Nov 2010 19:20:55 +0100
 
