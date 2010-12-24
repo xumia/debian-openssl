@@ -1,3 +1,10 @@
+openssl (1.0.0c-3) experimental; urgency=low
+
+  * Make libssl-doc Replaces/Breaks with old libssl-dev packages
+    (Closes: #607609)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 24 Dec 2010 12:07:34 +0100
+
 openssl (1.0.0c-2) experimental; urgency=low
 
   * Set $ in front of {sparcv9_asm} so that the sparc v9 variant builds.
