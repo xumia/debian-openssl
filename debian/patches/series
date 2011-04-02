@@ -17,4 +17,3 @@ shared-lib-ext.patch
 stddef.patch
 version-script.patch
 gnu_source.patch
-no-sslv2.diff

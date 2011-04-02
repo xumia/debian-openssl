@@ -123,10 +123,6 @@ binary-arch:	build install
 	install debian/copyright debian/libssl-dev/usr/share/doc/libssl-dev/
 	install debian/changelog debian/libssl-dev/usr/share/doc/libssl-dev/changelog.Debian
 
-
-	# Remove ssl2.h, SSL2 is disabled.
-	rm debian/tmp/usr/include/openssl/ssl2.h
-
 	dh_installdocs -a CHANGES.SSLeay README NEWS debian/README.optimization
 	dh_installexamples -a
 	dh_installchangelogs -a CHANGES
