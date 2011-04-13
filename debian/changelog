@@ -1,4 +1,4 @@
-openssl (1.0.0d-2) unstable; urgency=low
+openssl (1.0.0d-2) unstable; urgency=high
 
   * Make c_rehash also generate the old subject hash.  Gnutls applications
     seem to require it.  (Closes: #611102)
