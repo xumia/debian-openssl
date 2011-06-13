@@ -18,3 +18,7 @@ stddef.patch
 version-script.patch
 gnu_source.patch
 c_rehash-compat.patch
+libdoc-manpgs-pod-spell.patch
+libssl-misspell.patch
+openssl-pod-misspell.patch
+
