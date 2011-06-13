@@ -27,3 +27,4 @@ pod_s_server.misspell.patch
 pod_x509setflags.misspell.patch
 pod_ec.misspell.patch
 pkcs12-doc.patch
+dgst_hmac.patch
