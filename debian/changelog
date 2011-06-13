@@ -2,7 +2,7 @@ openssl (1.0.0d-3) unstable; urgency=low
 
   * Make it build on sparc64.  Patch from Aurelien Jarno.  (Closes: #626060)
   * Apply patches from Scott Schaefer <saschaefer@neurodiverse.org> to
-    fix various pod and spelling errors. (Closes: #622820)
+    fix various pod and spelling errors. (Closes: #622820, #605561)
   * Add missing symbols for the engines (Closes: #623038)
   * More spelling fixes from Scott Schaefer (Closes: #395424)
   * Patch from Scott Schaefer to better document pkcs12 password options
