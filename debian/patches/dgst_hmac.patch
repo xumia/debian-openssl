@@ -2,18 +2,17 @@ From: Thorsten Glaser <tg@mirbsd.de>
 Date: Fri, 22 May 2009 16:28:05 +0000 (UTC)
 Subject: Document openssl dgst -hmac option
 
-I've committed the thing below in MirBSD=C2=B9; since the apps code
+I've committed the thing below in MirBSD; since the apps code
 changes very little between OpenSSL versions, it will probably
-apply to the Debian package as well. I=E2=80=99m open for better wor-
+apply to the Debian package as well. I'm open for better wor-
 ding though, especially considering the FIPS option, which I
 found as undocumented too.
 
-Index: src/lib/libssl/src/doc/apps/dgst.pod
-diff -up src/lib/libssl/src/doc/apps/dgst.pod:1.1.1.2 src/lib/libssl/src/do=
-c/apps/dgst.pod:1.2
---- src/lib/libssl/src/doc/apps/dgst.pod:1.1.1.2=09Fri Apr 29 13:39:55 2005
-+++ src/lib/libssl/src/doc/apps/dgst.pod=09Wed May 20 09:51:51 2009
-@@ -12,6 +12,8 @@ B<openssl> B<dgst>=20
+Index: openssl-1.0.0d/doc/apps/dgst.pod
+===================================================================
+--- openssl-1.0.0d.orig/doc/apps/dgst.pod	2009-04-10 16:42:27.000000000 +0000
++++ openssl-1.0.0d/doc/apps/dgst.pod	2011-06-13 11:00:04.000000000 +0000
+@@ -12,6 +12,8 @@
  [B<-d>]
  [B<-hex>]
  [B<-binary>]
@@ -21,39 +20,32 @@ c/apps/dgst.pod:1.2
 +[B<-non-fips-allow>]
  [B<-out filename>]
  [B<-sign filename>]
- [B<-passin arg>]
-@@ -52,6 +54,14 @@ digest as opposed to a digital signature
-=20
+ [B<-keyform arg>]
+@@ -54,6 +56,14 @@
+ 
  output the digest or signature in binary form.
-=20
-+=3Ditem B<-hmac arg>
+ 
++=item B<-hmac arg>
 +
 +set the HMAC key to "arg".
 +
-+=3Ditem B<-non-fips-allow>
++=item B<-non-fips-allow>
 +
 +allow use of non FIPS digest.
 +
- =3Ditem B<-out filename>
-=20
+ =item B<-out filename>
+ 
  filename to output to, or standard output by default.
-Index: src/lib/libssl/src/apps/dgst.c
-diff -up src/lib/libssl/src/apps/dgst.c:1.1.1.2 src/lib/libssl/src/apps/dgs=
-t.c:1.2
---- src/lib/libssl/src/apps/dgst.c:1.1.1.2=09Fri Apr 29 13:38:41 2005
-+++ src/lib/libssl/src/apps/dgst.c=09Wed May 20 09:51:52 2009
-@@ -226,6 +228,8 @@ int MAIN(int argc, char **argv)
- =09=09BIO_printf(bio_err,"-d              to output debug info\n");
- =09=09BIO_printf(bio_err,"-hex            output as hex dump\n");
- =09=09BIO_printf(bio_err,"-binary         output in binary form\n");
-+=09=09BIO_printf(bio_err,"-hmac arg       set the HMAC key to arg\n");
-+=09=09BIO_printf(bio_err,"-non-fips-allow allow use of non FIPS digest\n")=
-;
- =09=09BIO_printf(bio_err,"-sign   file    sign digest using private key in=
- file\n");
- =09=09BIO_printf(bio_err,"-verify file    verify a signature using public =
-key in file\n");
- =09=09BIO_printf(bio_err,"-prverify file  verify a signature using private=
- key in file\n");
-
-
+Index: openssl-1.0.0d/apps/dgst.c
+===================================================================
+--- openssl-1.0.0d.orig/apps/dgst.c	2010-02-12 17:07:24.000000000 +0000
++++ openssl-1.0.0d/apps/dgst.c	2011-06-13 11:00:04.000000000 +0000
+@@ -268,6 +268,8 @@
+ 		BIO_printf(bio_err,"-d              to output debug info\n");
+ 		BIO_printf(bio_err,"-hex            output as hex dump\n");
+ 		BIO_printf(bio_err,"-binary         output in binary form\n");
++		BIO_printf(bio_err,"-hmac arg       set the HMAC key to arg\n");
++		BIO_printf(bio_err,"-non-fips-allow allow use of non FIPS digest\n");
+ 		BIO_printf(bio_err,"-sign   file    sign digest using private key in file\n");
+ 		BIO_printf(bio_err,"-verify file    verify a signature using public key in file\n");
+ 		BIO_printf(bio_err,"-prverify file  verify a signature using private key in file\n");
