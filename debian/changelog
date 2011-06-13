@@ -3,8 +3,9 @@ openssl (1.0.0d-3) unstable; urgency=low
   * Make it build on sparc64.  Patch from Aurelien Jarno.  (Closes: #626060)
   * Apply patches from Scott Schaefer <saschaefer@neurodiverse.org> to
     fix various pod and spelling errors. (Closes: #622820)
+  * Add missing symbols for the engines (Closes: #623038)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 13 Jun 2011 10:01:04 +0000
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 13 Jun 2011 12:05:59 +0200
 
 openssl (1.0.0d-2) unstable; urgency=high
 
