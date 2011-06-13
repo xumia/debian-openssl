@@ -1,3 +1,9 @@
+openssl (1.0.0d-3) unstable; urgency=low
+
+  * Make it build on sparc64.  Patch from Aurelien Jarno.  (Closes: #626060)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 13 Jun 2011 09:51:28 +0000
+
 openssl (1.0.0d-2) unstable; urgency=high
 
   * Make c_rehash also generate the old subject hash.  Gnutls applications
