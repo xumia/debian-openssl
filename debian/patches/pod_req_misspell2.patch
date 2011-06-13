@@ -1,0 +1,29 @@
+--- a/debian/patches/rehash_pod.patch
++++ b/debian/patches/rehash_pod.patch
+@@ -47,12 +47,12 @@
+ +
+ +Colon separated list of directories to operate on. Ignored if directories are listed on the command line.
+ +
+++=back
+++
+ +=head1 SEE ALSO
+ +
+ +L<openssl(1)|openssl(1)>, L<x509(1)|x509(1)>
+ +
+-+=back
+-+
+ +=head1 BUGS
+ +
+ +No known bugs
+diff --git a/doc/apps/req.pod b/doc/apps/req.pod
+--- a/doc/apps/req.pod
++++ b/doc/apps/req.pod
+@@ -303,7 +303,7 @@
+ 
+ =item B<-newhdr>
+ 
+-Adds the word B<NEW> to the PEM file header and footer lines on the outputed
++Adds the word B<NEW> to the PEM file header and footer lines on the outputted
+ request. Some software (Netscape certificate server) and some CAs need this.
+ 
+ =item B<-batch>

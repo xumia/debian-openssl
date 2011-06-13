@@ -4,8 +4,9 @@ openssl (1.0.0d-3) unstable; urgency=low
   * Apply patches from Scott Schaefer <saschaefer@neurodiverse.org> to
     fix various pod and spelling errors. (Closes: #622820)
   * Add missing symbols for the engines (Closes: #623038)
+  * More spelling fixes from Scott Schaefer (Closes: #395424)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 13 Jun 2011 12:05:59 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 13 Jun 2011 12:12:50 +0200
 
 openssl (1.0.0d-2) unstable; urgency=high
 
