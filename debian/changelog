@@ -12,6 +12,9 @@ openssl (1.0.0e-1) unstable; urgency=low
     Patch from Klaus Ethgen <Klaus@Ethgen.de>
   * Add multiarch support (Closs: #638137)
     Patch from Steve Langasek / Ubuntu
+  * Symbols from the gost engine were removed because it didn't have
+    a linker file.  Thanks to Roman I Khimov <khimov@altell.ru>
+    (Closes: #631503)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
 
