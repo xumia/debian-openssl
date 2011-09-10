@@ -1,3 +1,14 @@
+openssl (1.0.0e-1) unstable; urgency=low
+
+  * New upstream version
+    - Fix bug where CRLs with nextUpdate in the past are sometimes accepted
+      by initialising X509_STORE_CTX properly. (CVE-2011-3207)
+    - Fix SSL memory handling for (EC)DH ciphersuites, in particular
+      for multi-threaded use of ECDH. (CVE-2011-3210)
+    - Add protection against ECDSA timing attacks (CVE-2011-1945)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
+
 openssl (1.0.0d-3) unstable; urgency=low
 
   * Make it build on sparc64.  Patch from Aurelien Jarno.  (Closes: #626060)
