@@ -27,7 +27,9 @@ ARCHOPTS  = OPT_$(DEB_HOST_ARCH)
 OPTS      = $($(ARCHOPTS))
 WANTED_LIBC_VERSION = 2.3.1-10
 
-build: build-stamp
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
 build-stamp:
 	dh_testdir
 #	perl util/ssldir.pl /usr/lib/ssl

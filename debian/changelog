@@ -17,6 +17,7 @@ openssl (1.0.0e-1) unstable; urgency=low
     (Closes: #631503)
   * Add support for s390x.  Patch from Aurelien Jarno <aurel32@debian.org>
     (Closes: #641100)
+  * Add build-arch and build-indep targets to the rules file.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
 
