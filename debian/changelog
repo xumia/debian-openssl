@@ -10,6 +10,8 @@ openssl (1.0.0e-1) unstable; urgency=low
     Raphael Geissert <geissert@debian.org>
   * Generate hashes for all certs in a file (Closes: #628780)
     Patch from Klaus Ethgen <Klaus@Ethgen.de>
+  * Add multiarch support (Closs: #638137)
+    Patch from Steve Langasek / Ubuntu
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
 
