@@ -8,6 +8,8 @@ openssl (1.0.0e-1) unstable; urgency=low
     - Add protection against ECDSA timing attacks (CVE-2011-1945)
   * Block DigiNotar certifiates.  Patch from
     Raphael Geissert <geissert@debian.org>
+  * Generate hashes for all certs in a file (Closes: #628780)
+    Patch from Klaus Ethgen <Klaus@Ethgen.de>
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
 
