@@ -6,6 +6,8 @@ openssl (1.0.0e-1) unstable; urgency=low
     - Fix SSL memory handling for (EC)DH ciphersuites, in particular
       for multi-threaded use of ECDH. (CVE-2011-3210)
     - Add protection against ECDSA timing attacks (CVE-2011-1945)
+  * Block DigiNotar certifiates.  Patch from
+    Raphael Geissert <geissert@debian.org>
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 10 Sep 2011 12:03:13 +0200
 
