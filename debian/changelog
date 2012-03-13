@@ -3,6 +3,7 @@ openssl (1.0.0h-1) unstable; urgency=high
   * New upstream version
     - Fixes CVE-2012-0884
     - Properly fix CVE-2011-4619
+    - pkg-config.patch applied upstream, remove it.
   * Enable assembler for all i386 arches.  The assembler does proper
     detection of CPU support, including cpuid support.
     This should fix a problem with AES 192 and 256 with the padlock
