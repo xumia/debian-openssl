@@ -2,7 +2,6 @@ ca.patch
 config-hurd.patch
 debian-targets.patch
 engines-path.patch
-kfreebsd-pipe.patch
 make-targets.patch
 man-dir.patch
 man-section.patch
