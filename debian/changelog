@@ -10,8 +10,9 @@ openssl (1.0.1-1) unstable; urgency=low
   * pic.patch: upstream made OPENSSL_ia32cap_P hidden on amd64, no need to
     access it PIC anymore.
   * pic.patch: Make OPENSSL_ia32cap_P hidden on i386 too (Closes: #663977)
+  * Enable hardening using dpkg-buildflags (Closes: #653495)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 12:19:07 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 17:19:17 +0100
 
 openssl (1.0.0h-1) unstable; urgency=high
 
