@@ -7,8 +7,8 @@ openssl (1.0.1-1) unstable; urgency=low
       the new functions.
   * Disable modexp512-x86_64 and the new RSAX internal engine for now, the
     perl script to generate modexp512-x86_64 has some problems.
-  * pic.patch: upstream made OPENSSL_ia32cap_P hidden on amd64, no need to
-    access it PIC anymore.
+  * pic.patch: upstream made OPENSSL_ia32cap_P and OPENSSL_cpuid_setup
+    hidden on amd64, no need to access it PIC anymore.
   * pic.patch: Make OPENSSL_ia32cap_P hidden on i386 too (Closes: #663977)
   * Enable hardening using dpkg-buildflags (Closes: #653495)
 
