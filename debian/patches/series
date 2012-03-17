@@ -29,4 +29,3 @@ dgst_hmac.patch
 block_diginotar.patch
 block_digicert_malaysia.patch
 c_rehash-multi.patch
-disable-modexp512-x86_64.patch
