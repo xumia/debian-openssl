@@ -5,8 +5,11 @@ openssl (1.0.1-1) unstable; urgency=low
     - Update pic.patch, openssl-pod-misspell.patch and make-targets.patch
     - Add OPENSSL_1.0.1 to version-script.patch and libssl1.0.0.symbols for
       the new functions.
+  * Disable modexp512-x86_64 and the new RSAX internal engine for now, the
+    perl script to generate modexp512-x86_64 has some problems.
+    
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 10:09:17 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 12:19:07 +0100
 
 openssl (1.0.0h-1) unstable; urgency=high
 
