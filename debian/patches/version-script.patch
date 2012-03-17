@@ -1,8 +1,8 @@
-Index: openssl-1.0.0c/Configure
+Index: openssl-1.0.1/Configure
 ===================================================================
---- openssl-1.0.0c.orig/Configure	2011-04-02 11:27:38.000000000 +0000
-+++ openssl-1.0.0c/Configure	2011-04-02 11:27:43.000000000 +0000
-@@ -1511,6 +1511,8 @@
+--- openssl-1.0.1.orig/Configure	2012-03-17 09:41:49.000000000 +0000
++++ openssl-1.0.1/Configure	2012-03-17 09:41:49.000000000 +0000
+@@ -1616,6 +1616,8 @@
  		}
  	}
  
@@ -11,11 +11,11 @@ Index: openssl-1.0.0c/Configure
  open(IN,'<Makefile.org') || die "unable to read Makefile.org:$!\n";
  unlink("$Makefile.new") || die "unable to remove old $Makefile.new:$!\n" if -e "$Makefile.new";
  open(OUT,">$Makefile.new") || die "unable to create $Makefile.new:$!\n";
-Index: openssl-1.0.0c/openssl.ld
+Index: openssl-1.0.1/openssl.ld
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.0.0c/openssl.ld	2011-04-02 11:57:04.000000000 +0000
-@@ -0,0 +1,4461 @@
++++ openssl-1.0.1/openssl.ld	2012-03-17 09:51:38.000000000 +0000
+@@ -0,0 +1,4527 @@
 +OPENSSL_1.0.0 {
 +	global:
 +		BIO_f_ssl;
@@ -4477,10 +4477,76 @@ Index: openssl-1.0.0c/openssl.ld
 +		*;
 +};
 +
-Index: openssl-1.0.0c/engines/openssl.ld
++
++OPENSSL_1.0.1 {
++	global:
++		SSL_tls1_key_exporter;
++		SSL_renegotiate_abbreviated;
++		TLSv1_1_method;
++		TLSv1_1_client_method;
++		TLSv1_1_server_method;
++		SSL_CTX_set_srp_client_pwd_callback;
++		SSL_CTX_set_srp_client_pwd_cb;
++		SSL_get_srp_g;
++		SSL_CTX_set_srp_username_callback;
++		SSL_CTX_set_srp_un_cb;
++		SSL_get_srp_userinfo;
++		SSL_set_srp_server_param;
++		SSL_set_srp_server_param_pw;
++		SSL_get_srp_N;
++		SSL_get_srp_username;
++		SSL_CTX_set_srp_password;
++		SSL_CTX_set_srp_strength;
++		SSL_CTX_set_srp_verify_param_callback;
++		SSL_CTX_set_srp_vfy_param_cb;
++		SSL_CTX_set_srp_miss_srp_un_cb;
++		SSL_CTX_set_srp_missing_srp_username_callback;
++		SSL_CTX_set_srp_cb_arg;
++		SSL_CTX_set_srp_username;
++		SSL_CTX_SRP_CTX_init;
++		SSL_SRP_CTX_init;
++		SRP_Calc_A_param;
++		SRP_generate_server_master_secret;
++		SRP_gen_server_master_secret;
++		SSL_CTX_SRP_CTX_free;
++		SRP_generate_client_master_secret;
++		SRP_gen_client_master_secret;
++		SSL_srp_server_param_with_username;
++		SSL_srp_server_param_with_un;
++		SRP_have_to_put_srp_username;
++		SSL_SRP_CTX_free;
++		SSL_set_debug;
++		SSL_SESSION_get0_peer;
++		TLSv1_2_client_method;
++		SSL_SESSION_set1_id_context;
++		TLSv1_2_server_method;
++		SSL_cache_hit;
++		SSL_get0_kssl_ctx;
++		SSL_set0_kssl_ctx;
++		SSL_SESSION_get0_id;
++		SSL_set_state;
++		SSL_CIPHER_get_id;
++		TLSv1_2_method;
++		SSL_SESSION_get_id_len;
++		kssl_ctx_get0_client_princ;
++		SSL_export_keying_material;
++		SSL_set_tlsext_use_srtp;
++		SSL_CTX_set_next_protos_advertised_cb;
++		SSL_CTX_set_next_protos_adv_cb;
++		SSL_get0_next_proto_negotiated;
++		SSL_get_selected_srtp_profile;
++		SSL_CTX_set_tlsext_use_srtp;
++		SSL_select_next_proto;
++		SSL_get_srtp_profiles;
++		SSL_CTX_set_next_proto_select_cb;
++		SSL_CTX_set_next_proto_sel_cb;
++		SSL_SESSION_get_compress_id;
++} OPENSSL_1.0.0;
++
+Index: openssl-1.0.1/engines/openssl.ld
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.0.0c/engines/openssl.ld	2011-04-02 11:56:49.000000000 +0000
++++ openssl-1.0.1/engines/openssl.ld	2012-03-17 09:41:49.000000000 +0000
 @@ -0,0 +1,10 @@
 +OPENSSL_1.0.0 {
 +	global:
@@ -4492,10 +4558,10 @@ Index: openssl-1.0.0c/engines/openssl.ld
 +		*;
 +};
 +
-Index: openssl-1.0.0c/engines/ccgost/openssl.ld
+Index: openssl-1.0.1/engines/ccgost/openssl.ld
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ openssl-1.0.0c/engines/ccgost/openssl.ld	2011-04-02 11:56:49.000000000 +0000
++++ openssl-1.0.1/engines/ccgost/openssl.ld	2012-03-17 09:41:49.000000000 +0000
 @@ -0,0 +1,10 @@
 +OPENSSL_1.0.0 {
 +	global:
