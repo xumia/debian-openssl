@@ -2,6 +2,7 @@ openssl (1.0.1-1) unstable; urgency=low
 
   * New upstream version
     - Remove kfreebsd-pipe.patch, fixed upstream
+    - Update pic.patch, openssl-pod-misspell.patch and make-targets.patch
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 10:09:17 +0100
 
