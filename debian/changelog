@@ -5,6 +5,7 @@ openssl (1.0.1-1) unstable; urgency=low
     - Update pic.patch, openssl-pod-misspell.patch and make-targets.patch
     - Add OPENSSL_1.0.1 to version-script.patch and libssl1.0.0.symbols for
       the new functions.
+    - AES-NI support (Closes: #644743)
   * pic.patch: upstream made OPENSSL_ia32cap_P and OPENSSL_cpuid_setup
     hidden on amd64, no need to access it PIC anymore.
   * pic.patch: Make OPENSSL_ia32cap_P hidden on i386 too (Closes: #663977)
