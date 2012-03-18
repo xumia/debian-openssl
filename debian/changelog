@@ -9,8 +9,10 @@ openssl (1.0.1-1) unstable; urgency=low
     hidden on amd64, no need to access it PIC anymore.
   * pic.patch: Make OPENSSL_ia32cap_P hidden on i386 too (Closes: #663977)
   * Enable hardening using dpkg-buildflags (Closes: #653495)
+  * s_client and s_server were forcing SSLv3 only connection when SSLv2 was
+    disabled instead of the SSLv2 with upgrade method.  (Closes: #664454)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 17 Mar 2012 17:19:17 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 18 Mar 2012 16:10:40 +0100
 
 openssl (1.0.0h-1) unstable; urgency=high
 
