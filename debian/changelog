@@ -12,8 +12,9 @@ openssl (1.0.1-1) unstable; urgency=low
   * Enable hardening using dpkg-buildflags (Closes: #653495)
   * s_client and s_server were forcing SSLv3 only connection when SSLv2 was
     disabled instead of the SSLv2 with upgrade method.  (Closes: #664454)
+  * Add Beaks on openssh < 1:5.9p1-4, it has a too strict version check.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 18 Mar 2012 16:10:40 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 19 Mar 2012 18:23:32 +0100
 
 openssl (1.0.0h-1) unstable; urgency=high
 
