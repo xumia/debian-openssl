@@ -2,8 +2,9 @@ openssl (1.0.1c-2) unstable; urgency=high
 
   * Fix renegiotation when using TLS > 1.0.  This breaks tor.  Patch from
     upstream.  (Closes: #675990)
+  * Enable the padlock engine by default.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Wed, 06 Jun 2012 00:37:39 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Wed, 06 Jun 2012 00:47:56 +0200
 
 openssl (1.0.1c-1) unstable; urgency=high
 
