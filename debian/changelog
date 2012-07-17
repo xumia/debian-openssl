@@ -1,8 +1,10 @@
 openssl (1.0.1c-4) unstable; urgency=low
 
   * Fix the configure rules for alpha (Closes: #672710)
+  * Switch the postinst to sh again, there never was a reason to
+    switch it to bash (Closes: #676398)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Tue, 17 Jul 2012 11:43:47 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 17 Jul 2012 11:49:19 +0200
 
 openssl (1.0.1c-3) unstable; urgency=low
 
