@@ -3,6 +3,9 @@ openssl (1.0.1c-4) unstable; urgency=low
   * Fix the configure rules for alpha (Closes: #672710)
   * Switch the postinst to sh again, there never was a reason to
     switch it to bash (Closes: #676398)
+  * Fix pic.patch to not use #ifdef in x86cpuid.s, only .S files are
+    preprocessed.  We generate the file again for pic anyway.
+    (Closes: #677468)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Tue, 17 Jul 2012 11:49:19 +0200
 
