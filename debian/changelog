@@ -1,3 +1,10 @@
+openssl (1.0.1c-5) unstable; urgency=low
+
+  * Re-enable assembler versions on sparc.  They shouldn't have
+    been disabled for sparc v9.  (Closes: #649841)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 09 Sep 2012 08:43:40 +0200
+
 openssl (1.0.1c-4) unstable; urgency=low
 
   * Fix the configure rules for alpha (Closes: #672710)
