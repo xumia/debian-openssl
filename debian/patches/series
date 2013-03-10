@@ -32,3 +32,4 @@ c_rehash-multi.patch
 #padlock_conf.patch
 default_bits.patch
 ssltest_no_sslv2.patch
+cpuid.patch
