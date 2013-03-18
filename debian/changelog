@@ -1,9 +1,10 @@
-openssl (1.0.1e-2) unstable; urgency=low
+openssl (1.0.1e-2) unstable; urgency=high
 
   * Bump shlibs.  It's needed for the udeb.
   * Make cpuid work on cpu's that don't set ecx (Closes: #699692)
+  * Fix problem with AES-NI causing bad record mac (Closes: #701868, #702635, #678353)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 10 Mar 2013 21:55:08 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Mon, 18 Mar 2013 20:19:58 +0100
 
 openssl (1.0.1e-1) unstable; urgency=high
 
