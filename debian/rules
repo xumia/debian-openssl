@@ -120,6 +120,8 @@ binary-arch:	build install
 	cp -pf debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libcrypto.so.* debian/libcrypto1.0.0-udeb/usr/lib/
 	cp -auv lib*.so* debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/
 	for opt in $(OPTS); do set -xe; mkdir -p debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$$opt; cp -auv $$opt/lib*.so* debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/$$opt/; done
+	mkdir -p debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/openssl
+	mv debian/tmp/usr/include/openssl/opensslconf.h debian/tmp/usr/include/$(DEB_HOST_MULTIARCH)/openssl/
 	install debian/copyright debian/libssl1.0.0/usr/share/doc/libssl1.0.0/
 	install debian/changelog debian/libssl1.0.0/usr/share/doc/libssl1.0.0/changelog.Debian
 	install debian/copyright debian/libssl-dev/usr/share/doc/libssl-dev/
