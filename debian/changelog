@@ -7,8 +7,9 @@ openssl (1.0.1e-4) unstable; urgency=low
   [ Kurt Roeckx ]
   * Add mipsn32 and mips64 targets.  Patch from Eleanor Chen
     <chenyueg@gmail.com>  (Closes: #720654)
+  * Add support for nocheck in DEB_BUILD_OPTIONS
 
- -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 15:13:35 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 16:17:19 +0100
 
 openssl (1.0.1e-3) unstable; urgency=low
 

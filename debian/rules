@@ -31,6 +31,11 @@ ifeq ($(DEB_HOST_ARCH_CPU), amd64)
 	CONFARGS += enable-ec_nistp_64_gcc_128
 endif
 
+MAKE_TEST = make test
+ifneq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	MAKE_TEST = :
+endif
+
 build: build-arch build-indep
 build-arch: build-stamp
 build-indep: build-stamp
@@ -40,7 +45,7 @@ build-stamp:
 #	chmod +x debian/libtool
 	./Configure no-shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
 	make -f Makefile all
-	make test
+	$(MAKE_TEST)
 	mv libcrypto.a libcrypto.static
 	mv libssl.a libssl.static
 	make -f Makefile clean
@@ -49,7 +54,7 @@ build-stamp:
 		set -xe; \
 		./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)-$$opt; \
 		make -f Makefile all; \
-		make test; \
+		$(MAKE_TEST); \
 		mkdir -p $$opt; \
 		mv libcrypto.so* libssl.so* $$opt/; \
 		make -f Makefile clean; \
@@ -59,7 +64,7 @@ build-stamp:
 	ln -sf apps/openssl.pod crypto/crypto.pod ssl/ssl.pod doc/
 #	make -f Makefile linux-shared
 	make -f Makefile all
-	make test
+	$(MAKE_TEST)
 #	strip apps/openssl
 #	make -f Makefile clean
 #	./Configure --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 debian-$(DEB_HOST_ARCH)
