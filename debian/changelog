@@ -16,6 +16,7 @@ openssl (1.0.1e-4) unstable; urgency=low
       symbols.
     - change dh_makeshlibs call so the engines don't get added to the
       shlibs
+  * Update Standards-Version from 3.8.0 to 3.9.5.  No changes required.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 17:11:53 +0100
 
