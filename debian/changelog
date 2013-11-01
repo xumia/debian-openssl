@@ -1,3 +1,10 @@
+openssl (1.0.1e-4) unstable; urgency=low
+
+  * Fix pod errors (Closes: #723954)
+  * Fix clean target
+
+ -- Peter Michael Green <plugwash@raspbian.org>  Thu, 26 Sep 2013 19:29:35 +0000
+
 openssl (1.0.1e-3) unstable; urgency=low
 
   * Move <openssl/opensslconf.h> to /usr/include/$(DEB_HOST_MULTIARCH), and
