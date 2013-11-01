@@ -30,7 +30,7 @@ block_diginotar.patch
 block_digicert_malaysia.patch
 c_rehash-multi.patch
 #padlock_conf.patch
-default_bits.patch
+defaults.patch
 ssltest_no_sslv2.patch
 cpuid.patch
 aesni-mac.patch

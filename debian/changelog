@@ -1,3 +1,9 @@
+openssl (1.0.1e-5) unstable; urgency=low
+
+  * Change default digest to SHA256 instead of SHA1.  (Closes: #694738)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 20:49:48 +0100
+
 openssl (1.0.1e-4) unstable; urgency=low
 
   [ Peter Michael Green ]
