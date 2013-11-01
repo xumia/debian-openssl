@@ -11,8 +11,13 @@ openssl (1.0.1e-4) unstable; urgency=low
   * Update Norwegian translation (Closes: #653574)
   * Update description of the packages.  Patch by Justin B Rye
     (Closes: #719262)
+  * change to debhelper compat level 9:
+    - change dh_strip call so only the files from libssl1.0.0 get debug
+      symbols.
+    - change dh_makeshlibs call so the engines don't get added to the
+      shlibs
 
- -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 16:44:18 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 17:11:53 +0100
 
 openssl (1.0.1e-3) unstable; urgency=low
 
