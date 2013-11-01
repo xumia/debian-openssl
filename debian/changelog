@@ -1,9 +1,14 @@
 openssl (1.0.1e-4) unstable; urgency=low
 
+  [ Peter Michael Green ]
   * Fix pod errors (Closes: #723954)
   * Fix clean target
 
- -- Peter Michael Green <plugwash@raspbian.org>  Thu, 26 Sep 2013 19:29:35 +0000
+  [ Kurt Roeckx ]
+  * Add mipsn32 and mips64 targets.  Patch from Eleanor Chen
+    <chenyueg@gmail.com>  (Closes: #720654)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 01 Nov 2013 15:13:35 +0100
 
 openssl (1.0.1e-3) unstable; urgency=low
 
