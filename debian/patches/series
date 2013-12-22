@@ -28,11 +28,7 @@ dgst_hmac.patch
 block_diginotar.patch
 block_digicert_malaysia.patch
 #padlock_conf.patch
+2013-12-21.patch
 defaults.patch
-ssltest_no_sslv2.patch
-cpuid.patch
-aesni-mac.patch
-dtls_version.patch
-get_certificate.patch
 openssl_fix_for_x32.patch
 fix-pod-errors.patch
