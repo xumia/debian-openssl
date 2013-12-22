@@ -14,7 +14,7 @@ openssl (1.0.1e-5) unstable; urgency=low
       already commited upstream.
     - adjust fix-pod-errors.patch for the reordering of items in the
       documentation they've done trying to fix those pod errors.
-  * disable rdrand engine by default (Closes: #732710)
+    - disable rdrand engine by default (Closes: #732710)
   * disable zlib support.  Fixes CVE-2012-4929 (Closes: #728055)
   * Add arm64 support (Closes: #732348)
 
