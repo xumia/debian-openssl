@@ -32,3 +32,4 @@ block_digicert_malaysia.patch
 defaults.patch
 openssl_fix_for_x32.patch
 fix-pod-errors.patch
+req_bits.patch

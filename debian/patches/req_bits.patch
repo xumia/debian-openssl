@@ -1,0 +1,21 @@
+From: Kurt Roeckx <kurt@roeckx.be>
+Date: Sun, 22 Dec 2013 19:10:21 +0100
+Subject: Use defaults bits in req when not given
+Bug: http://rt.openssl.org/Ticket/Display.html?id=2592&user=guest&pass=guest
+
+Index: openssl-1.0.1e/apps/req.c
+===================================================================
+--- openssl-1.0.1e.orig/apps/req.c	2013-02-11 16:26:04.000000000 +0100
++++ openssl-1.0.1e/apps/req.c	2013-12-22 19:09:34.840366384 +0100
+@@ -655,7 +655,11 @@
+ 		if (newkey <= 0)
+ 			{
+ 			if (!NCONF_get_number(req_conf,SECTION,BITS, &newkey))
++				{
++				EVP_PKEY_CTX_free(genctx);
++				genctx = NULL;
+ 				newkey=DEFAULT_KEY_LENGTH;
++				}
+ 			}
+ 
+ 		if (newkey < MIN_KEY_LENGTH && (pkey_type == EVP_PKEY_RSA || pkey_type == EVP_PKEY_DSA))
