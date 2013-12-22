@@ -28,7 +28,6 @@ pkcs12-doc.patch
 dgst_hmac.patch
 block_diginotar.patch
 block_digicert_malaysia.patch
-c_rehash-multi.patch
 #padlock_conf.patch
 defaults.patch
 ssltest_no_sslv2.patch
