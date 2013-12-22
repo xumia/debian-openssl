@@ -5,8 +5,9 @@ openssl (1.0.1e-5) unstable; urgency=low
     properly in the first place, and the only one shipping in
     ca-certificates has been split.
   * Fix libdoc-manpgs-pod-spell.patch to only fix spalling errors
+  * Remove make-targets.patch.  It prevented the test dir from being cleaned.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 22 Dec 2013 17:05:30 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 22 Dec 2013 17:11:19 +0100
 
 openssl (1.0.1e-4) unstable; urgency=low
 
