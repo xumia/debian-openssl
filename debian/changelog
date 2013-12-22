@@ -8,6 +8,7 @@ openssl (1.0.1e-5) unstable; urgency=low
   * Remove make-targets.patch.  It prevented the test dir from being cleaned.
   * Update to a git snapshot of the OpenSSL_1_0_1-stable branch. 
     - Fixes CVE-2013-6449 (Closes: #732754)
+    - Fixes CVE-2013-6450
     - Drop patches ssltest_no_sslv2.patch cpuid.patch aesni-mac.patch
       dtls_version.patch get_certificate.patch, since they where all
       already commited upstream.
@@ -17,7 +18,7 @@ openssl (1.0.1e-5) unstable; urgency=low
   * disable zlib support.  Fixes CVE-2012-4929 (Closes: #728055)
   * Add arm64 support (Closes: #732348)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 22 Dec 2013 17:55:58 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 22 Dec 2013 19:17:03 +0100
 
 openssl (1.0.1e-4) unstable; urgency=low
 

@@ -1,17 +1,22 @@
 From: Kurt Roeckx <kurt@roeckx.be>
 Subject: git snapshot from 2013-12-21
 Date: Sun, 22 Dec 2013 15:58:39 +0100
-Origin: upstream: http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff_plain;h=ca989269a2876bae79393bd54c3e72d49975fc75
+Origin: upstream: http://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff_plain;h=1c2c5e402a757a63d690bd2390bd6b8b491ef184
 
 Index: openssl-1.0.1e/CHANGES
 ===================================================================
---- openssl-1.0.1e.orig/CHANGES	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/CHANGES	2013-12-22 16:43:23.077703192 +0100
-@@ -2,9 +2,21 @@
+--- openssl-1.0.1e.orig/CHANGES	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/CHANGES	2013-12-22 19:18:14.485274802 +0100
+@@ -2,9 +2,26 @@
   OpenSSL CHANGES
   _______________
  
 + Changes between 1.0.1e and 1.0.1f [xx XXX xxxx]
++
++  *) Keep original DTLS digest and encryption contexts in retransmission
++     structures so we can use the previous session parameters if they need
++     to be resent. (CVE-2013-6450)
++     [Steve Henson]
 +
 +  *) Add option SSL_OP_SAFARI_ECDHE_ECDSA_BUG (part of SSL_OP_ALL) which
 +     avoids preferring ECDHE-ECDSA ciphers when the client appears to be
@@ -30,7 +35,7 @@ Index: openssl-1.0.1e/CHANGES
  
   Changes between 1.0.1c and 1.0.1d [5 Feb 2013]
  
-@@ -404,6 +416,63 @@
+@@ -404,6 +421,63 @@
         Add command line options to s_client/s_server.
       [Steve Henson]
  
@@ -94,7 +99,7 @@ Index: openssl-1.0.1e/CHANGES
   Changes between 1.0.0g and 1.0.0h [12 Mar 2012]
  
    *) Fix MMA (Bleichenbacher's attack on PKCS #1 v1.5 RSA padding) weakness
-@@ -1394,6 +1463,86 @@
+@@ -1394,6 +1468,86 @@
    *) Change 'Configure' script to enable Camellia by default.
       [NTT]
  
@@ -181,7 +186,7 @@ Index: openssl-1.0.1e/CHANGES
   Changes between 0.9.8s and 0.9.8t [18 Jan 2012]
  
    *) Fix for DTLS DoS issue introduced by fix for CVE-2011-4109.
-@@ -1401,7 +1550,7 @@
+@@ -1401,7 +1555,7 @@
       Development, Cisco Systems, Inc. for discovering this bug and
       preparing a fix. (CVE-2012-0050)
       [Antonio Martin]
@@ -192,8 +197,8 @@ Index: openssl-1.0.1e/CHANGES
    *) Nadhem Alfardan and Kenny Paterson have discovered an extension
 Index: openssl-1.0.1e/Configure
 ===================================================================
---- openssl-1.0.1e.orig/Configure	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/Configure	2013-12-22 16:43:23.077703192 +0100
+--- openssl-1.0.1e.orig/Configure	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/Configure	2013-12-22 19:18:14.485274802 +0100
 @@ -182,7 +182,7 @@
  "debug-ben-no-opt",	"gcc: -Wall -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations -DDEBUG_SAFESTACK -DCRYPTO_MDEBUG -Werror -DL_ENDIAN -DTERMIOS -Wall -g3::(unknown)::::::",
  "debug-ben-strict",	"gcc:-DBN_DEBUG -DREF_CHECK -DCONF_DEBUG -DBN_CTX_DEBUG -DCRYPTO_MDEBUG -DCONST_STRICT -O2 -Wall -Wshadow -Werror -Wpointer-arith -Wcast-qual -Wwrite-strings -pipe::(unknown)::::::",
@@ -205,8 +210,8 @@ Index: openssl-1.0.1e/Configure
  "debug-steve32", "gcc:$gcc_devteam_warn -m32 -DL_ENDIAN -DCONF_DEBUG -DDEBUG_SAFESTACK -g -pipe::-D_REENTRANT::-rdynamic -ldl:BN_LLONG ${x86_gcc_des} ${x86_gcc_opts}:${x86_elf_asm}:dlfcn:linux-shared:-fPIC:-m32:.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
 Index: openssl-1.0.1e/Makefile.org
 ===================================================================
---- openssl-1.0.1e.orig/Makefile.org	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/Makefile.org	2013-12-22 16:43:23.077703192 +0100
+--- openssl-1.0.1e.orig/Makefile.org	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/Makefile.org	2013-12-22 19:18:14.485274802 +0100
 @@ -303,7 +303,8 @@
  			FIPSLD_CC="$(CC)"; CC=$(FIPSDIR)/bin/fipsld; \
  			export CC FIPSLD_CC FIPSLD_LIBCRYPTO; \
@@ -219,8 +224,8 @@ Index: openssl-1.0.1e/Makefile.org
  		exit 1; \
 Index: openssl-1.0.1e/NEWS
 ===================================================================
---- openssl-1.0.1e.orig/NEWS	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/NEWS	2013-12-22 16:43:23.077703192 +0100
+--- openssl-1.0.1e.orig/NEWS	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/NEWS	2013-12-22 19:18:14.485274802 +0100
 @@ -5,11 +5,11 @@
    This file gives a brief overview of the major changes between each OpenSSL
    release. For more details please read the CHANGES file.
@@ -746,8 +751,8 @@ Index: openssl-1.0.1e/NEWS
        o Added BIO proxy and filtering functionality
 Index: openssl-1.0.1e/README
 ===================================================================
---- openssl-1.0.1e.orig/README	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/README	2013-12-22 16:43:23.077703192 +0100
+--- openssl-1.0.1e.orig/README	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/README	2013-12-22 19:18:14.485274802 +0100
 @@ -1,5 +1,5 @@
  
 - OpenSSL 1.0.1e 11 Feb 2013
@@ -757,8 +762,8 @@ Index: openssl-1.0.1e/README
   Copyright (c) 1995-1998 Eric A. Young, Tim J. Hudson
 Index: openssl-1.0.1e/apps/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/apps/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/apps/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/apps/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/apps/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -170,886 +170,554 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -1972,8 +1977,8 @@ Index: openssl-1.0.1e/apps/Makefile
 +x509.o: ../include/openssl/x509_vfy.h ../include/openssl/x509v3.h apps.h x509.c
 Index: openssl-1.0.1e/apps/apps.h
 ===================================================================
---- openssl-1.0.1e.orig/apps/apps.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/apps/apps.h	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/apps/apps.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/apps/apps.h	2013-12-22 19:18:14.489274717 +0100
 @@ -188,6 +188,7 @@
  			do { CONF_modules_unload(1); destroy_ui_method(); \
  			OBJ_cleanup(); EVP_cleanup(); ENGINE_cleanup(); \
@@ -1992,8 +1997,8 @@ Index: openssl-1.0.1e/apps/apps.h
  #endif
 Index: openssl-1.0.1e/apps/openssl.c
 ===================================================================
---- openssl-1.0.1e.orig/apps/openssl.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/apps/openssl.c	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/apps/openssl.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/apps/openssl.c	2013-12-22 19:18:14.489274717 +0100
 @@ -117,6 +117,7 @@
  #include "apps.h"
  #include <openssl/bio.h>
@@ -2004,8 +2009,8 @@ Index: openssl-1.0.1e/apps/openssl.c
  #include <openssl/x509.h>
 Index: openssl-1.0.1e/apps/pkcs12.c
 ===================================================================
---- openssl-1.0.1e.orig/apps/pkcs12.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/apps/pkcs12.c	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/apps/pkcs12.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/apps/pkcs12.c	2013-12-22 19:18:14.489274717 +0100
 @@ -112,7 +112,7 @@
      int maciter = PKCS12_DEFAULT_ITER;
      int twopass = 0;
@@ -2031,8 +2036,8 @@ Index: openssl-1.0.1e/apps/pkcs12.c
  
 Index: openssl-1.0.1e/config
 ===================================================================
---- openssl-1.0.1e.orig/config	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/config	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/config	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/config	2013-12-22 19:18:14.489274717 +0100
 @@ -739,7 +739,7 @@
  			    libc=/usr/lib/libc.so
  			else					# OpenBSD
@@ -2044,8 +2049,8 @@ Index: openssl-1.0.1e/config
  			*ELF*)	OUT="BSD-x86-elf" ;;
 Index: openssl-1.0.1e/crypto/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -77,7 +77,9 @@
  ppccpuid.s:	ppccpuid.pl;	$(PERL) ppccpuid.pl $(PERLASM_SCHEME) $@
  pariscid.s:	pariscid.pl;	$(PERL) pariscid.pl $(PERLASM_SCHEME) $@
@@ -2167,8 +2172,8 @@ Index: openssl-1.0.1e/crypto/Makefile
 +uid.o: ../include/openssl/safestack.h ../include/openssl/stack.h uid.c
 Index: openssl-1.0.1e/crypto/aes/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/aes/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/aes/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/aes/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/aes/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -119,35 +119,18 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -2219,8 +2224,8 @@ Index: openssl-1.0.1e/crypto/aes/Makefile
 +aes_wrap.o: ../cryptlib.h aes_wrap.c
 Index: openssl-1.0.1e/crypto/aes/asm/aes-parisc.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/aes/asm/aes-parisc.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/aes/asm/aes-parisc.pl	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/aes/asm/aes-parisc.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/aes/asm/aes-parisc.pl	2013-12-22 19:18:14.489274717 +0100
 @@ -1015,7 +1015,8 @@
  		$SIZE_T==4 ? sprintf("extru%s,%d,8,",$1,31-$2)
  		:            sprintf("extrd,u%s,%d,8,",$1,63-$2)/e;
@@ -2233,8 +2238,8 @@ Index: openssl-1.0.1e/crypto/aes/asm/aes-parisc.pl
  close STDOUT;
 Index: openssl-1.0.1e/crypto/aes/asm/bsaes-x86_64.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/aes/asm/bsaes-x86_64.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/aes/asm/bsaes-x86_64.pl	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/aes/asm/bsaes-x86_64.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/aes/asm/bsaes-x86_64.pl	2013-12-22 19:18:14.489274717 +0100
 @@ -83,9 +83,9 @@
  # Add decryption procedure. Performance in CPU cycles spent to decrypt
  # one byte out of 4096-byte buffer with 128-bit key is:
@@ -2354,8 +2359,8 @@ Index: openssl-1.0.1e/crypto/aes/asm/bsaes-x86_64.pl
  .type	bsaes_xts_encrypt,\@abi-omnipotent
 Index: openssl-1.0.1e/crypto/armcap.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/armcap.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/armcap.c	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/armcap.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/armcap.c	2013-12-22 19:18:14.489274717 +0100
 @@ -23,7 +23,7 @@
  
  unsigned int OPENSSL_rdtsc(void)
@@ -2367,8 +2372,8 @@ Index: openssl-1.0.1e/crypto/armcap.c
  		return 0;
 Index: openssl-1.0.1e/crypto/asn1/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/asn1/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/asn1/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/asn1/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/asn1/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -108,823 +108,444 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -3442,8 +3447,8 @@ Index: openssl-1.0.1e/crypto/asn1/Makefile
  x_x509a.o: ../../include/openssl/x509_vfy.h ../cryptlib.h x_x509a.c
 Index: openssl-1.0.1e/crypto/asn1/a_int.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/asn1/a_int.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/asn1/a_int.c	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/asn1/a_int.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/asn1/a_int.c	2013-12-22 19:18:14.489274717 +0100
 @@ -116,7 +116,7 @@
  	int pad=0,ret,i,neg;
  	unsigned char *p,*n,pb=0;
@@ -3455,8 +3460,8 @@ Index: openssl-1.0.1e/crypto/asn1/a_int.c
  		ret=1;
 Index: openssl-1.0.1e/crypto/bf/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bf/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bf/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/bf/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bf/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -85,17 +85,9 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -3483,8 +3488,8 @@ Index: openssl-1.0.1e/crypto/bf/Makefile
 +bf_skey.o: ../../include/openssl/stack.h bf_locl.h bf_pi.h bf_skey.c
 Index: openssl-1.0.1e/crypto/bio/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bio/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bio/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/bio/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bio/Makefile	2013-12-22 19:18:14.489274717 +0100
 @@ -86,137 +86,68 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -3675,8 +3680,8 @@ Index: openssl-1.0.1e/crypto/bio/Makefile
 +bss_sock.o: ../cryptlib.h bss_sock.c
 Index: openssl-1.0.1e/crypto/bio/bss_dgram.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bio/bss_dgram.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bio/bss_dgram.c	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/bio/bss_dgram.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bio/bss_dgram.c	2013-12-22 19:18:14.489274717 +0100
 @@ -906,8 +906,8 @@
  	memset(authchunks, 0, sizeof(sockopt_len));
  	ret = getsockopt(fd, IPPROTO_SCTP, SCTP_LOCAL_AUTH_CHUNKS, authchunks, &sockopt_len);
@@ -3699,8 +3704,8 @@ Index: openssl-1.0.1e/crypto/bio/bss_dgram.c
  				{
 Index: openssl-1.0.1e/crypto/bn/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/Makefile	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/bn/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -125,7 +125,9 @@
  ppc64-mont.s:	asm/ppc64-mont.pl;$(PERL) asm/ppc64-mont.pl $(PERLASM_SCHEME) $@
  
@@ -3994,8 +3999,8 @@ Index: openssl-1.0.1e/crypto/bn/Makefile
 +bn_x931p.o: bn_x931p.c
 Index: openssl-1.0.1e/crypto/bn/asm/mips-mont.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/asm/mips-mont.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/asm/mips-mont.pl	2013-12-22 16:43:23.081703108 +0100
+--- openssl-1.0.1e.orig/crypto/bn/asm/mips-mont.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/asm/mips-mont.pl	2013-12-22 19:18:14.493274631 +0100
 @@ -133,7 +133,7 @@
  	bnez	$at,1f
  	li	$t0,0
@@ -4007,8 +4012,8 @@ Index: openssl-1.0.1e/crypto/bn/asm/mips-mont.pl
  	li	$a0,0
 Index: openssl-1.0.1e/crypto/bn/asm/mips.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/asm/mips.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/asm/mips.pl	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/bn/asm/mips.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/asm/mips.pl	2013-12-22 19:18:14.493274631 +0100
 @@ -140,10 +140,10 @@
  	.set	reorder
  	li	$minus4,-4
@@ -4170,8 +4175,8 @@ Index: openssl-1.0.1e/crypto/bn/asm/mips.pl
  
 Index: openssl-1.0.1e/crypto/bn/asm/parisc-mont.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/asm/parisc-mont.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/asm/parisc-mont.pl	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/bn/asm/parisc-mont.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/asm/parisc-mont.pl	2013-12-22 19:18:14.493274631 +0100
 @@ -40,7 +40,7 @@
  # of arithmetic operations, most notably multiplications. It requires
  # more memory references, most notably to tp[num], but this doesn't
@@ -4192,8 +4197,8 @@ Index: openssl-1.0.1e/crypto/bn/asm/parisc-mont.pl
  close STDOUT;
 Index: openssl-1.0.1e/crypto/bn/asm/x86_64-gf2m.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/asm/x86_64-gf2m.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/asm/x86_64-gf2m.pl	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/bn/asm/x86_64-gf2m.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/asm/x86_64-gf2m.pl	2013-12-22 19:18:14.493274631 +0100
 @@ -31,7 +31,8 @@
  ( $xlate="${dir}../../perlasm/x86_64-xlate.pl" and -f $xlate) or
  die "can't locate x86_64-xlate.pl";
@@ -4206,8 +4211,8 @@ Index: openssl-1.0.1e/crypto/bn/asm/x86_64-gf2m.pl
  ($i0,$i1)=("%rsi","%rdi");
 Index: openssl-1.0.1e/crypto/bn/asm/x86_64-mont5.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/asm/x86_64-mont5.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/asm/x86_64-mont5.pl	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/bn/asm/x86_64-mont5.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/asm/x86_64-mont5.pl	2013-12-22 19:18:14.493274631 +0100
 @@ -901,8 +901,8 @@
  	jnz	.Lgather
  ___
@@ -4221,8 +4226,8 @@ Index: openssl-1.0.1e/crypto/bn/asm/x86_64-mont5.pl
  $code.=<<___;
 Index: openssl-1.0.1e/crypto/bn/bn_nist.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/bn/bn_nist.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/bn/bn_nist.c	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/bn/bn_nist.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/bn/bn_nist.c	2013-12-22 19:18:14.493274631 +0100
 @@ -286,26 +286,25 @@
  	}
  
@@ -4366,8 +4371,8 @@ Index: openssl-1.0.1e/crypto/bn/bn_nist.c
  	r->top = BN_NIST_521_TOP;
 Index: openssl-1.0.1e/crypto/buffer/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/buffer/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/buffer/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/buffer/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/buffer/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -74,24 +74,12 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -4404,8 +4409,8 @@ Index: openssl-1.0.1e/crypto/buffer/Makefile
 +buffer.o: ../../include/openssl/stack.h ../cryptlib.h buffer.c
 Index: openssl-1.0.1e/crypto/buffer/buffer.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/buffer/buffer.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/buffer/buffer.c	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/buffer/buffer.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/buffer/buffer.c	2013-12-22 19:18:14.493274631 +0100
 @@ -179,14 +179,14 @@
  	return(len);
  	}
@@ -4425,8 +4430,8 @@ Index: openssl-1.0.1e/crypto/buffer/buffer.c
  		{
 Index: openssl-1.0.1e/crypto/buffer/buffer.h
 ===================================================================
---- openssl-1.0.1e.orig/crypto/buffer/buffer.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/buffer/buffer.h	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/buffer/buffer.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/buffer/buffer.h	2013-12-22 19:18:14.493274631 +0100
 @@ -88,7 +88,7 @@
  char *	BUF_strdup(const char *str);
  char *	BUF_strndup(const char *str, size_t siz);
@@ -4438,8 +4443,8 @@ Index: openssl-1.0.1e/crypto/buffer/buffer.h
  size_t BUF_strlcpy(char *dst,const char *src,size_t siz);
 Index: openssl-1.0.1e/crypto/camellia/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/camellia/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/camellia/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/camellia/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/camellia/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -86,25 +86,13 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -4478,8 +4483,8 @@ Index: openssl-1.0.1e/crypto/camellia/Makefile
 +cmll_utl.o: ../../include/openssl/stack.h cmll_locl.h cmll_utl.c
 Index: openssl-1.0.1e/crypto/cast/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/cast/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/cast/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/cast/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/cast/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -82,21 +82,10 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -4509,8 +4514,8 @@ Index: openssl-1.0.1e/crypto/cast/Makefile
  c_skey.o: c_skey.c cast_lcl.h cast_s.h
 Index: openssl-1.0.1e/crypto/cmac/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/cmac/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/cmac/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/cmac/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/cmac/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -75,37 +75,21 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -4561,8 +4566,8 @@ Index: openssl-1.0.1e/crypto/cmac/Makefile
 +cmac.o: ../cryptlib.h cmac.c
 Index: openssl-1.0.1e/crypto/cms/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/cms/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/cms/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/cms/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/cms/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -81,204 +81,123 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -4831,8 +4836,8 @@ Index: openssl-1.0.1e/crypto/cms/Makefile
  cms_smime.o: ../cryptlib.h cms_lcl.h cms_smime.c
 Index: openssl-1.0.1e/crypto/comp/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/comp/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/comp/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/comp/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/comp/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -78,31 +78,19 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -4877,8 +4882,8 @@ Index: openssl-1.0.1e/crypto/comp/Makefile
 +comp_lib.o: ../../include/openssl/stack.h comp_lib.c
 Index: openssl-1.0.1e/crypto/conf/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/conf/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/conf/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/conf/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/conf/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -79,74 +79,42 @@
  
  conf_api.o: ../../e_os.h ../../include/openssl/bio.h
@@ -4982,8 +4987,8 @@ Index: openssl-1.0.1e/crypto/conf/Makefile
  conf_sap.o: ../../include/openssl/x509_vfy.h ../cryptlib.h conf_sap.c
 Index: openssl-1.0.1e/crypto/des/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/des/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/des/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/des/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/des/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -107,173 +107,86 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -5200,8 +5205,8 @@ Index: openssl-1.0.1e/crypto/des/Makefile
  xcbc_enc.o: des_locl.h xcbc_enc.c
 Index: openssl-1.0.1e/crypto/dh/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/dh/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/dh/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/dh/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/dh/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -77,104 +77,52 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -5341,8 +5346,8 @@ Index: openssl-1.0.1e/crypto/dh/Makefile
 +dh_prn.o: ../cryptlib.h dh_prn.c
 Index: openssl-1.0.1e/crypto/dsa/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/dsa/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/dsa/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/dsa/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/dsa/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -77,133 +77,66 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -5519,8 +5524,8 @@ Index: openssl-1.0.1e/crypto/dsa/Makefile
 +dsa_vrf.o: ../../include/openssl/stack.h ../cryptlib.h dsa_vrf.c
 Index: openssl-1.0.1e/crypto/dso/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/dso/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/dso/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/dso/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/dso/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -77,74 +77,38 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -5621,8 +5626,8 @@ Index: openssl-1.0.1e/crypto/dso/Makefile
 +dso_win32.o: ../../include/openssl/stack.h ../cryptlib.h dso_win32.c
 Index: openssl-1.0.1e/crypto/ec/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ec/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ec/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ec/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ec/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -84,180 +84,95 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -5854,8 +5859,8 @@ Index: openssl-1.0.1e/crypto/ec/Makefile
 +ecp_smpl.o: ../../include/openssl/stack.h ec_lcl.h ecp_smpl.c
 Index: openssl-1.0.1e/crypto/ec/ec_ameth.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ec/ec_ameth.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ec/ec_ameth.c	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ec/ec_ameth.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ec/ec_ameth.c	2013-12-22 19:18:14.493274631 +0100
 @@ -88,7 +88,7 @@
  		if (!pstr)
  			return 0;
@@ -5867,8 +5872,8 @@ Index: openssl-1.0.1e/crypto/ec/ec_ameth.c
  			ECerr(EC_F_ECKEY_PARAM2TYPE, ERR_R_EC_LIB);
 Index: openssl-1.0.1e/crypto/ec/ec_asn1.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ec/ec_asn1.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ec/ec_asn1.c	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ec/ec_asn1.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ec/ec_asn1.c	2013-12-22 19:18:14.493274631 +0100
 @@ -89,7 +89,8 @@
  	if (group == NULL)
  		return 0;
@@ -5891,8 +5896,8 @@ Index: openssl-1.0.1e/crypto/ec/ec_asn1.c
  		ECerr(EC_F_EC_GROUP_GET_PENTANOMIAL_BASIS, ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
 Index: openssl-1.0.1e/crypto/ec/ec_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ec/ec_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ec/ec_lib.c	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ec/ec_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ec/ec_lib.c	2013-12-22 19:18:14.493274631 +0100
 @@ -480,10 +480,10 @@
  	if (EC_METHOD_get_field_type(EC_GROUP_method_of(a)) !=
  	    EC_METHOD_get_field_type(EC_GROUP_method_of(b)))
@@ -5924,8 +5929,8 @@ Index: openssl-1.0.1e/crypto/ec/ec_lib.c
  	}
 Index: openssl-1.0.1e/crypto/ecdh/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ecdh/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ecdh/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ecdh/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ecdh/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -76,41 +76,21 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -5977,8 +5982,8 @@ Index: openssl-1.0.1e/crypto/ecdh/Makefile
  ech_ossl.o: ../cryptlib.h ech_locl.h ech_ossl.c
 Index: openssl-1.0.1e/crypto/ecdsa/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ecdsa/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ecdsa/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/ecdsa/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ecdsa/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -76,65 +76,34 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -6065,8 +6070,8 @@ Index: openssl-1.0.1e/crypto/ecdsa/Makefile
  ecs_vrf.o: ../../include/openssl/x509_vfy.h ecs_locl.h ecs_vrf.c
 Index: openssl-1.0.1e/crypto/engine/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/engine/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/engine/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/engine/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/engine/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -85,363 +85,196 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -6534,10 +6539,22 @@ Index: openssl-1.0.1e/crypto/engine/Makefile
 -tb_store.o: ../../include/openssl/symhacks.h ../../include/openssl/x509.h
 +tb_store.o: ../../include/openssl/stack.h ../../include/openssl/x509.h
  tb_store.o: ../../include/openssl/x509_vfy.h ../cryptlib.h eng_int.h tb_store.c
+Index: openssl-1.0.1e/crypto/engine/eng_rdrand.c
+===================================================================
+--- openssl-1.0.1e.orig/crypto/engine/eng_rdrand.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/engine/eng_rdrand.c	2013-12-22 19:18:14.493274631 +0100
+@@ -104,6 +104,7 @@
+ 	{
+ 	if (!ENGINE_set_id(e, engine_e_rdrand_id) ||
+ 	    !ENGINE_set_name(e, engine_e_rdrand_name) ||
++            !ENGINE_set_flags(e, ENGINE_FLAGS_NO_REGISTER_ALL) ||
+ 	    !ENGINE_set_init_function(e, rdrand_init) ||
+ 	    !ENGINE_set_RAND(e, &rdrand_meth) )
+ 		return 0;
 Index: openssl-1.0.1e/crypto/err/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/err/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/err/Makefile	2013-12-22 16:43:23.085703024 +0100
+--- openssl-1.0.1e.orig/crypto/err/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/err/Makefile	2013-12-22 19:18:14.493274631 +0100
 @@ -74,37 +74,21 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -6589,8 +6606,8 @@ Index: openssl-1.0.1e/crypto/err/Makefile
 +err_prn.o: ../../include/openssl/stack.h ../cryptlib.h err_prn.c
 Index: openssl-1.0.1e/crypto/evp/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/evp/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/evp/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/evp/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -67,7 +67,7 @@
  links:
  	@$(PERL) $(TOP)/util/mklink.pl ../../include/openssl $(EXHEADER)
@@ -7496,10 +7513,28 @@ Index: openssl-1.0.1e/crypto/evp/Makefile
 +pmeth_lib.o: ../../include/openssl/stack.h ../../include/openssl/x509.h
  pmeth_lib.o: ../../include/openssl/x509_vfy.h ../asn1/asn1_locl.h ../cryptlib.h
  pmeth_lib.o: evp_locl.h pmeth_lib.c
+Index: openssl-1.0.1e/crypto/evp/digest.c
+===================================================================
+--- openssl-1.0.1e.orig/crypto/evp/digest.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/digest.c	2013-12-22 19:18:14.497274546 +0100
+@@ -366,8 +366,11 @@
+ 
+ void EVP_MD_CTX_destroy(EVP_MD_CTX *ctx)
+ 	{
+-	EVP_MD_CTX_cleanup(ctx);
+-	OPENSSL_free(ctx);
++	if (ctx)
++		{
++		EVP_MD_CTX_cleanup(ctx);
++		OPENSSL_free(ctx);
++		}
+ 	}
+ 
+ /* This call frees resources associated with the context */
 Index: openssl-1.0.1e/crypto/evp/e_aes.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/evp/e_aes.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/evp/e_aes.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/evp/e_aes.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/e_aes.c	2013-12-22 19:18:14.497274546 +0100
 @@ -842,7 +842,10 @@
  			gctx->ctr = NULL;
  			break;
@@ -7536,8 +7571,8 @@ Index: openssl-1.0.1e/crypto/evp/e_aes.c
  			AES_set_encrypt_key(key, ctx->key_len * 4, &xctx->ks1);
 Index: openssl-1.0.1e/crypto/evp/e_aes_cbc_hmac_sha1.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/evp/e_aes_cbc_hmac_sha1.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/evp/e_aes_cbc_hmac_sha1.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/evp/e_aes_cbc_hmac_sha1.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/e_aes_cbc_hmac_sha1.c	2013-12-22 19:18:14.497274546 +0100
 @@ -328,10 +328,11 @@
  
  				if (res!=SHA_CBLOCK) continue;
@@ -7554,8 +7589,8 @@ Index: openssl-1.0.1e/crypto/evp/e_aes_cbc_hmac_sha1.c
  				pmac->u[2] |= key->md.h2 & mask;
 Index: openssl-1.0.1e/crypto/evp/e_des3.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/evp/e_des3.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/evp/e_des3.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/evp/e_des3.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/e_des3.c	2013-12-22 19:18:14.497274546 +0100
 @@ -101,7 +101,7 @@
  static int des_ede_ofb_cipher(EVP_CIPHER_CTX *ctx, unsigned char *out,
  			      const unsigned char *in, size_t inl)
@@ -7585,8 +7620,8 @@ Index: openssl-1.0.1e/crypto/evp/e_des3.c
  			       &data(ctx)->ks1, &data(ctx)->ks2, &data(ctx)->ks3,
 Index: openssl-1.0.1e/crypto/evp/p5_crpt2.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/evp/p5_crpt2.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/evp/p5_crpt2.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/evp/p5_crpt2.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/evp/p5_crpt2.c	2013-12-22 19:18:14.497274546 +0100
 @@ -85,19 +85,24 @@
  	unsigned char digtmp[EVP_MAX_MD_SIZE], *p, itmp[4];
  	int cplen, j, k, tkeylen, mdlen;
@@ -7668,8 +7703,8 @@ Index: openssl-1.0.1e/crypto/evp/p5_crpt2.c
  	h__dump (pass, passlen);
 Index: openssl-1.0.1e/crypto/hmac/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/hmac/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/hmac/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/hmac/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/hmac/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -75,36 +75,21 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -7718,8 +7753,8 @@ Index: openssl-1.0.1e/crypto/hmac/Makefile
 +hmac.o: ../cryptlib.h hmac.c
 Index: openssl-1.0.1e/crypto/idea/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/idea/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/idea/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/idea/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/idea/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -74,16 +74,9 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -7745,8 +7780,8 @@ Index: openssl-1.0.1e/crypto/idea/Makefile
 +i_skey.o: ../../include/openssl/stack.h i_skey.c idea_lcl.h
 Index: openssl-1.0.1e/crypto/krb5/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/krb5/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/krb5/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/krb5/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/krb5/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -76,9 +76,6 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -7761,8 +7796,8 @@ Index: openssl-1.0.1e/crypto/krb5/Makefile
 +krb5_asn.o: krb5_asn.c
 Index: openssl-1.0.1e/crypto/lhash/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/lhash/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/lhash/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/lhash/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/lhash/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -75,14 +75,9 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -7785,8 +7820,8 @@ Index: openssl-1.0.1e/crypto/lhash/Makefile
 +lhash.o: lhash.c
 Index: openssl-1.0.1e/crypto/md4/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/md4/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/md4/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/md4/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/md4/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -76,14 +76,8 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -7808,8 +7843,8 @@ Index: openssl-1.0.1e/crypto/md4/Makefile
 +md4_one.o: ../../include/openssl/stack.h md4_one.c
 Index: openssl-1.0.1e/crypto/md5/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/md5/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/md5/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/md5/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/md5/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -89,14 +89,8 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -7831,8 +7866,8 @@ Index: openssl-1.0.1e/crypto/md5/Makefile
 +md5_one.o: ../../include/openssl/stack.h md5_one.c
 Index: openssl-1.0.1e/crypto/mdc2/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/mdc2/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/mdc2/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/mdc2/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/mdc2/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -75,19 +75,10 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -7860,8 +7895,8 @@ Index: openssl-1.0.1e/crypto/mdc2/Makefile
  mdc2dgst.o: ../../include/openssl/ui_compat.h mdc2dgst.c
 Index: openssl-1.0.1e/crypto/modes/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -53,7 +53,10 @@
  ghash-sparcv9.s:	asm/ghash-sparcv9.pl
  	$(PERL) asm/ghash-sparcv9.pl $@ $(CFLAGS)
@@ -7928,8 +7963,8 @@ Index: openssl-1.0.1e/crypto/modes/Makefile
 +xts128.o: modes_lcl.h xts128.c
 Index: openssl-1.0.1e/crypto/modes/asm/ghash-alpha.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/asm/ghash-alpha.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/asm/ghash-alpha.pl	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/asm/ghash-alpha.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/asm/ghash-alpha.pl	2013-12-22 19:18:14.497274546 +0100
 @@ -266,8 +266,8 @@
  	ldq	$Xlo,8($Xi)
  	ldq	$Xhi,0($Xi)
@@ -7979,8 +8014,8 @@ Index: openssl-1.0.1e/crypto/modes/asm/ghash-alpha.pl
  
 Index: openssl-1.0.1e/crypto/modes/asm/ghash-parisc.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/asm/ghash-parisc.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/asm/ghash-parisc.pl	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/asm/ghash-parisc.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/asm/ghash-parisc.pl	2013-12-22 19:18:14.497274546 +0100
 @@ -724,6 +724,7 @@
  		s/cmpb,\*/comb,/;
  		s/,\*/,/;
@@ -7991,8 +8026,8 @@ Index: openssl-1.0.1e/crypto/modes/asm/ghash-parisc.pl
  
 Index: openssl-1.0.1e/crypto/modes/cbc128.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/cbc128.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/cbc128.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/cbc128.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/cbc128.c	2013-12-22 19:18:14.497274546 +0100
 @@ -117,7 +117,7 @@
  			unsigned char ivec[16], block128_f block)
  {
@@ -8045,8 +8080,8 @@ Index: openssl-1.0.1e/crypto/modes/cbc128.c
  				in  += 16;
 Index: openssl-1.0.1e/crypto/modes/ccm128.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/ccm128.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/ccm128.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/ccm128.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/ccm128.c	2013-12-22 19:18:14.497274546 +0100
 @@ -87,7 +87,7 @@
  		ctx->nonce.c[11] = (u8)(mlen>>(32%(sizeof(mlen)*8)));
  	}
@@ -8058,8 +8093,8 @@ Index: openssl-1.0.1e/crypto/modes/ccm128.c
  	ctx->nonce.c[13] = (u8)(mlen>>16);
 Index: openssl-1.0.1e/crypto/modes/cts128.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/cts128.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/cts128.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/cts128.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/cts128.c	2013-12-22 19:18:14.497274546 +0100
 @@ -108,12 +108,8 @@
  	(*cbc)(in,out-16,residue,key,ivec,1);
  	memcpy(out,tmp.c,residue);
@@ -8148,8 +8183,8 @@ Index: openssl-1.0.1e/crypto/modes/cts128.c
  
 Index: openssl-1.0.1e/crypto/modes/gcm128.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/gcm128.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/gcm128.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/gcm128.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/gcm128.c	2013-12-22 19:18:14.497274546 +0100
 @@ -941,15 +941,17 @@
  		    size_t j=GHASH_CHUNK;
  
@@ -8358,8 +8393,8 @@ Index: openssl-1.0.1e/crypto/modes/gcm128.c
  #endif
 Index: openssl-1.0.1e/crypto/modes/modes_lcl.h
 ===================================================================
---- openssl-1.0.1e.orig/crypto/modes/modes_lcl.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/modes/modes_lcl.h	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/modes/modes_lcl.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/modes/modes_lcl.h	2013-12-22 19:18:14.497274546 +0100
 @@ -29,10 +29,7 @@
  #if defined(__i386)	|| defined(__i386__)	|| \
      defined(__x86_64)	|| defined(__x86_64__)	|| \
@@ -8385,8 +8420,8 @@ Index: openssl-1.0.1e/crypto/modes/modes_lcl.h
  #if TABLE_BITS==8
 Index: openssl-1.0.1e/crypto/objects/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/objects/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/objects/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/objects/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/objects/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -88,43 +88,26 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -8443,8 +8478,8 @@ Index: openssl-1.0.1e/crypto/objects/Makefile
 +obj_xref.o: obj_xref.c obj_xref.h
 Index: openssl-1.0.1e/crypto/ocsp/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ocsp/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ocsp/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/ocsp/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ocsp/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -78,136 +78,82 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -8631,8 +8666,8 @@ Index: openssl-1.0.1e/crypto/ocsp/Makefile
  ocsp_vfy.o: ocsp_vfy.c
 Index: openssl-1.0.1e/crypto/opensslv.h
 ===================================================================
---- openssl-1.0.1e.orig/crypto/opensslv.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/opensslv.h	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/opensslv.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/opensslv.h	2013-12-22 19:18:14.497274546 +0100
 @@ -25,11 +25,11 @@
   * (Prior to 0.9.5a beta1, a different scheme was used: MMNNFFRBB for
   *  major minor fix final patch/beta)
@@ -8650,8 +8685,8 @@ Index: openssl-1.0.1e/crypto/opensslv.h
  
 Index: openssl-1.0.1e/crypto/pariscid.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pariscid.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pariscid.pl	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pariscid.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pariscid.pl	2013-12-22 19:18:14.497274546 +0100
 @@ -97,33 +97,33 @@
  	.PROC
  	.CALLINFO	NO_CALLS
@@ -8758,8 +8793,8 @@ Index: openssl-1.0.1e/crypto/pariscid.pl
  
 Index: openssl-1.0.1e/crypto/pem/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pem/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pem/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pem/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pem/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -78,181 +78,103 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -9005,8 +9040,8 @@ Index: openssl-1.0.1e/crypto/pem/Makefile
 +pvkfmt.o: ../cryptlib.h pvkfmt.c
 Index: openssl-1.0.1e/crypto/pem/pem_info.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pem/pem_info.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pem/pem_info.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pem/pem_info.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pem/pem_info.c	2013-12-22 19:18:14.497274546 +0100
 @@ -167,6 +167,7 @@
  #ifndef OPENSSL_NO_RSA
  			if (strcmp(name,PEM_STRING_RSA) == 0)
@@ -9017,8 +9052,8 @@ Index: openssl-1.0.1e/crypto/pem/pem_info.c
  				if (!sk_X509_INFO_push(ret,xi)) goto err;
 Index: openssl-1.0.1e/crypto/pkcs12/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pkcs12/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pkcs12/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pkcs12/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pkcs12/Makefile	2013-12-22 19:18:14.497274546 +0100
 @@ -81,206 +81,110 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -9298,8 +9333,8 @@ Index: openssl-1.0.1e/crypto/pkcs12/Makefile
  pk12err.o: pk12err.c
 Index: openssl-1.0.1e/crypto/pkcs12/p12_crt.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pkcs12/p12_crt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pkcs12/p12_crt.c	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pkcs12/p12_crt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pkcs12/p12_crt.c	2013-12-22 19:18:14.497274546 +0100
 @@ -90,7 +90,14 @@
  
  	/* Set defaults */
@@ -9317,8 +9352,8 @@ Index: openssl-1.0.1e/crypto/pkcs12/p12_crt.c
  	if (!iter)
 Index: openssl-1.0.1e/crypto/pkcs7/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pkcs7/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pkcs7/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pkcs7/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pkcs7/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -96,99 +96,54 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -9452,8 +9487,8 @@ Index: openssl-1.0.1e/crypto/pkcs7/Makefile
 +pkcs7err.o: ../../include/openssl/stack.h pkcs7err.c
 Index: openssl-1.0.1e/crypto/pqueue/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/pqueue/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/pqueue/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/pqueue/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/pqueue/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -74,10 +74,6 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -9470,8 +9505,8 @@ Index: openssl-1.0.1e/crypto/pqueue/Makefile
 +pqueue.o: ../../include/openssl/stack.h ../cryptlib.h pqueue.c pqueue.h
 Index: openssl-1.0.1e/crypto/rand/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rand/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rand/Makefile	2013-12-22 16:43:23.089702940 +0100
+--- openssl-1.0.1e.orig/crypto/rand/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rand/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -77,88 +77,48 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -9593,8 +9628,8 @@ Index: openssl-1.0.1e/crypto/rand/Makefile
  randfile.o: randfile.c
 Index: openssl-1.0.1e/crypto/rand/md_rand.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rand/md_rand.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rand/md_rand.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rand/md_rand.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rand/md_rand.c	2013-12-22 19:18:14.501274461 +0100
 @@ -380,8 +380,11 @@
  	 * are fed into the hash function and the results are kept in the
  	 * global 'md'.
@@ -9642,8 +9677,8 @@ Index: openssl-1.0.1e/crypto/rand/md_rand.c
  	if (ok)
 Index: openssl-1.0.1e/crypto/rand/rand.h
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rand/rand.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rand/rand.h	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rand/rand.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rand/rand.h	2013-12-22 19:18:14.501274461 +0100
 @@ -138,6 +138,7 @@
  #define RAND_F_SSLEAY_RAND_BYTES			 100
  
@@ -9654,8 +9689,8 @@ Index: openssl-1.0.1e/crypto/rand/rand.h
  #define RAND_R_NO_FIPS_RANDOM_METHOD_SET		 101
 Index: openssl-1.0.1e/crypto/rand/rand_err.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rand/rand_err.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rand/rand_err.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rand/rand_err.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rand/rand_err.c	2013-12-22 19:18:14.501274461 +0100
 @@ -78,6 +78,7 @@
  
  static ERR_STRING_DATA RAND_str_reasons[]=
@@ -9666,8 +9701,8 @@ Index: openssl-1.0.1e/crypto/rand/rand_err.c
  {ERR_REASON(RAND_R_NO_FIPS_RANDOM_METHOD_SET),"no fips random method set"},
 Index: openssl-1.0.1e/crypto/rand/rand_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rand/rand_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rand/rand_lib.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rand/rand_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rand/rand_lib.c	2013-12-22 19:18:14.501274461 +0100
 @@ -269,6 +269,14 @@
  	DRBG_CTX *dctx;
  	size_t plen;
@@ -9685,8 +9720,8 @@ Index: openssl-1.0.1e/crypto/rand/rand_lib.c
  		{
 Index: openssl-1.0.1e/crypto/rc2/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rc2/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rc2/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rc2/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rc2/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -74,17 +74,9 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -9711,8 +9746,8 @@ Index: openssl-1.0.1e/crypto/rc2/Makefile
 +rc2ofb64.o: ../../include/openssl/rc2.h rc2_locl.h rc2ofb64.c
 Index: openssl-1.0.1e/crypto/rc4/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rc4/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rc4/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rc4/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rc4/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -102,24 +102,13 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -9747,8 +9782,8 @@ Index: openssl-1.0.1e/crypto/rc4/Makefile
 +rc4_utl.o: ../../include/openssl/stack.h rc4_utl.c
 Index: openssl-1.0.1e/crypto/rc4/asm/rc4-parisc.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rc4/asm/rc4-parisc.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rc4/asm/rc4-parisc.pl	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rc4/asm/rc4-parisc.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rc4/asm/rc4-parisc.pl	2013-12-22 19:18:14.501274461 +0100
 @@ -307,7 +307,8 @@
  	.STRINGZ "RC4 for PA-RISC, CRYPTOGAMS by <appro\@openssl.org>"
  ___
@@ -9761,8 +9796,8 @@ Index: openssl-1.0.1e/crypto/rc4/asm/rc4-parisc.pl
  close STDOUT;
 Index: openssl-1.0.1e/crypto/ripemd/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ripemd/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ripemd/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/ripemd/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ripemd/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -82,14 +82,8 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -9784,8 +9819,8 @@ Index: openssl-1.0.1e/crypto/ripemd/Makefile
 +rmd_one.o: ../../include/openssl/stack.h rmd_one.c
 Index: openssl-1.0.1e/crypto/rsa/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rsa/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rsa/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rsa/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rsa/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -82,227 +82,118 @@
  
  rsa_ameth.o: ../../e_os.h ../../include/openssl/asn1.h
@@ -10080,8 +10115,8 @@ Index: openssl-1.0.1e/crypto/rsa/Makefile
 +rsa_x931.o: ../cryptlib.h rsa_x931.c
 Index: openssl-1.0.1e/crypto/rsa/rsa_ameth.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rsa/rsa_ameth.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rsa/rsa_ameth.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rsa/rsa_ameth.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rsa/rsa_ameth.c	2013-12-22 19:18:14.501274461 +0100
 @@ -351,27 +351,27 @@
  
  	if (!BIO_indent(bp, indent, 128))
@@ -10116,8 +10151,8 @@ Index: openssl-1.0.1e/crypto/rsa/rsa_ameth.c
  	
 Index: openssl-1.0.1e/crypto/rsa/rsa_chk.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rsa/rsa_chk.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rsa/rsa_chk.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rsa/rsa_chk.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rsa/rsa_chk.c	2013-12-22 19:18:14.501274461 +0100
 @@ -59,6 +59,12 @@
  	BN_CTX *ctx;
  	int r;
@@ -10133,8 +10168,8 @@ Index: openssl-1.0.1e/crypto/rsa/rsa_chk.c
  	j = BN_new();
 Index: openssl-1.0.1e/crypto/rsa/rsa_pmeth.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/rsa/rsa_pmeth.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/rsa/rsa_pmeth.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/rsa/rsa_pmeth.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/rsa/rsa_pmeth.c	2013-12-22 19:18:14.501274461 +0100
 @@ -611,6 +611,8 @@
  			pm = RSA_NO_PADDING;
  		else if (!strcmp(value, "oeap"))
@@ -10146,8 +10181,8 @@ Index: openssl-1.0.1e/crypto/rsa/rsa_pmeth.c
  		else if (!strcmp(value, "pss"))
 Index: openssl-1.0.1e/crypto/seed/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/seed/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/seed/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/seed/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/seed/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -75,32 +75,13 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -10189,8 +10224,8 @@ Index: openssl-1.0.1e/crypto/seed/Makefile
 +seed_ofb.o: ../../include/openssl/stack.h seed_ofb.c
 Index: openssl-1.0.1e/crypto/sha/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -60,7 +60,9 @@
  	$(PERL) $< $(PERLASM_SCHEME) $@
  
@@ -10254,8 +10289,8 @@ Index: openssl-1.0.1e/crypto/sha/Makefile
 +sha_one.o: sha_one.c
 Index: openssl-1.0.1e/crypto/sha/asm/sha1-parisc.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/asm/sha1-parisc.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/asm/sha1-parisc.pl	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/asm/sha1-parisc.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/asm/sha1-parisc.pl	2013-12-22 19:18:14.501274461 +0100
 @@ -254,6 +254,7 @@
  ___
  
@@ -10267,8 +10302,8 @@ Index: openssl-1.0.1e/crypto/sha/asm/sha1-parisc.pl
  close STDOUT;
 Index: openssl-1.0.1e/crypto/sha/asm/sha1-x86_64.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/asm/sha1-x86_64.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/asm/sha1-x86_64.pl	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/asm/sha1-x86_64.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/asm/sha1-x86_64.pl	2013-12-22 19:18:14.501274461 +0100
 @@ -745,7 +745,7 @@
  	mov	%rdi,$ctx	# reassigned argument
  	mov	%rsi,$inp	# reassigned argument
@@ -10289,8 +10324,8 @@ Index: openssl-1.0.1e/crypto/sha/asm/sha1-x86_64.pl
  	add	4($ctx),@T[0]
 Index: openssl-1.0.1e/crypto/sha/asm/sha512-mips.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/asm/sha512-mips.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/asm/sha512-mips.pl	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/asm/sha512-mips.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/asm/sha512-mips.pl	2013-12-22 19:18:14.501274461 +0100
 @@ -351,7 +351,7 @@
  	$ST	$G,6*$SZ($ctx)
  	$ST	$H,7*$SZ($ctx)
@@ -10302,8 +10337,8 @@ Index: openssl-1.0.1e/crypto/sha/asm/sha512-mips.pl
  	$REG_L	$ra,$FRAMESIZE-1*$SZREG($sp)
 Index: openssl-1.0.1e/crypto/sha/asm/sha512-parisc.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/asm/sha512-parisc.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/asm/sha512-parisc.pl	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/asm/sha512-parisc.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/asm/sha512-parisc.pl	2013-12-22 19:18:14.501274461 +0100
 @@ -785,6 +785,8 @@
  
  	s/cmpb,\*/comb,/ if ($SIZE_T==4);
@@ -10315,8 +10350,8 @@ Index: openssl-1.0.1e/crypto/sha/asm/sha512-parisc.pl
  
 Index: openssl-1.0.1e/crypto/sha/sha512.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/sha/sha512.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/sha/sha512.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/sha/sha512.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/sha/sha512.c	2013-12-22 19:18:14.501274461 +0100
 @@ -232,7 +232,14 @@
  {   return SHA512_Update (c,data,len);   }
  
@@ -10335,8 +10370,8 @@ Index: openssl-1.0.1e/crypto/sha/sha512.c
  	{
 Index: openssl-1.0.1e/crypto/srp/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/srp/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/srp/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/srp/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/srp/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -74,25 +74,15 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -10374,8 +10409,8 @@ Index: openssl-1.0.1e/crypto/srp/Makefile
  srp_vfy.o: ../cryptlib.h srp_lcl.h srp_vfy.c
 Index: openssl-1.0.1e/crypto/srp/srp_grps.h
 ===================================================================
---- openssl-1.0.1e.orig/crypto/srp/srp_grps.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/srp/srp_grps.h	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/srp/srp_grps.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/srp/srp_grps.h	2013-12-22 19:18:14.501274461 +0100
 @@ -1,22 +1,22 @@
  /* start of generated data */
  
@@ -11243,8 +11278,8 @@ Index: openssl-1.0.1e/crypto/srp/srp_grps.h
  	bn_group_8192_value,
 Index: openssl-1.0.1e/crypto/srp/srp_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/srp/srp_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/srp/srp_lib.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/srp/srp_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/srp/srp_lib.c	2013-12-22 19:18:14.501274461 +0100
 @@ -63,13 +63,17 @@
  #include <openssl/evp.h>
  
@@ -11272,8 +11307,8 @@ Index: openssl-1.0.1e/crypto/srp/srp_lib.c
  
 Index: openssl-1.0.1e/crypto/stack/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/stack/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/stack/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/stack/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/stack/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -75,10 +75,7 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -11290,8 +11325,8 @@ Index: openssl-1.0.1e/crypto/stack/Makefile
 +stack.o: ../cryptlib.h stack.c
 Index: openssl-1.0.1e/crypto/ts/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ts/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ts/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/ts/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ts/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -86,184 +86,93 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -11538,8 +11573,8 @@ Index: openssl-1.0.1e/crypto/ts/Makefile
  ts_verify_ctx.o: ../../include/openssl/x509v3.h ../cryptlib.h ts_verify_ctx.c
 Index: openssl-1.0.1e/crypto/txt_db/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/txt_db/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/txt_db/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/txt_db/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/txt_db/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -74,11 +74,7 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -11557,8 +11592,8 @@ Index: openssl-1.0.1e/crypto/txt_db/Makefile
  txt_db.o: ../cryptlib.h txt_db.c
 Index: openssl-1.0.1e/crypto/ui/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/ui/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/ui/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/ui/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/ui/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -78,34 +78,19 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -11608,8 +11643,8 @@ Index: openssl-1.0.1e/crypto/ui/Makefile
  ui_util.o: ../../include/openssl/ui.h ui_locl.h ui_util.c
 Index: openssl-1.0.1e/crypto/whrlpool/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/whrlpool/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/whrlpool/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/whrlpool/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/whrlpool/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -87,10 +87,6 @@
  
  # DO NOT DELETE THIS LINE -- make depend depends on it.
@@ -11624,8 +11659,8 @@ Index: openssl-1.0.1e/crypto/whrlpool/Makefile
  wp_dgst.o: ../../include/openssl/whrlpool.h wp_dgst.c wp_locl.h
 Index: openssl-1.0.1e/crypto/x509/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/x509/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/x509/Makefile	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/x509/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/x509/Makefile	2013-12-22 19:18:14.501274461 +0100
 @@ -85,323 +85,177 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -12062,8 +12097,8 @@ Index: openssl-1.0.1e/crypto/x509/Makefile
  x_all.o: ../../include/openssl/x509_vfy.h ../cryptlib.h x_all.c
 Index: openssl-1.0.1e/crypto/x509/x509_vfy.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/x509/x509_vfy.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/x509/x509_vfy.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/x509/x509_vfy.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/x509/x509_vfy.c	2013-12-22 19:18:14.501274461 +0100
 @@ -698,6 +698,7 @@
  	X509_CRL *crl = NULL, *dcrl = NULL;
  	X509 *x;
@@ -12098,8 +12133,8 @@ Index: openssl-1.0.1e/crypto/x509/x509_vfy.c
  	X509_CRL_free(crl);
 Index: openssl-1.0.1e/crypto/x509/x_all.c
 ===================================================================
---- openssl-1.0.1e.orig/crypto/x509/x_all.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/x509/x_all.c	2013-12-22 16:43:23.093702857 +0100
+--- openssl-1.0.1e.orig/crypto/x509/x_all.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/x509/x_all.c	2013-12-22 19:18:14.501274461 +0100
 @@ -97,6 +97,7 @@
  
  int X509_sign_ctx(X509 *x, EVP_MD_CTX *ctx)
@@ -12118,8 +12153,8 @@ Index: openssl-1.0.1e/crypto/x509/x_all.c
  	}
 Index: openssl-1.0.1e/crypto/x509v3/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/crypto/x509v3/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/x509v3/Makefile	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/crypto/x509v3/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/x509v3/Makefile	2013-12-22 19:18:14.505274375 +0100
 @@ -85,507 +85,280 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -12792,8 +12827,8 @@ Index: openssl-1.0.1e/crypto/x509v3/Makefile
  v3err.o: ../../include/openssl/x509v3.h v3err.c
 Index: openssl-1.0.1e/crypto/x86cpuid.pl
 ===================================================================
---- openssl-1.0.1e.orig/crypto/x86cpuid.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/crypto/x86cpuid.pl	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/crypto/x86cpuid.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/crypto/x86cpuid.pl	2013-12-22 19:18:14.505274375 +0100
 @@ -69,6 +69,7 @@
  	&inc	("esi");		# number of cores
  
@@ -12812,8 +12847,8 @@ Index: openssl-1.0.1e/crypto/x86cpuid.pl
  	&cmp	("ebp",0);
 Index: openssl-1.0.1e/demos/x509/mkreq.c
 ===================================================================
---- openssl-1.0.1e.orig/demos/x509/mkreq.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/demos/x509/mkreq.c	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/demos/x509/mkreq.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/demos/x509/mkreq.c	2013-12-22 19:18:14.505274375 +0100
 @@ -7,13 +7,14 @@
  
  #include <openssl/pem.h>
@@ -12841,8 +12876,8 @@ Index: openssl-1.0.1e/demos/x509/mkreq.c
  	ex = X509V3_EXT_conf_nid(NULL, NULL, nid, value);
 Index: openssl-1.0.1e/doc/apps/rsa.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/apps/rsa.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/apps/rsa.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/apps/rsa.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/apps/rsa.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -24,6 +24,8 @@
  [B<-check>]
  [B<-pubin>]
@@ -12888,8 +12923,8 @@ Index: openssl-1.0.1e/doc/apps/rsa.pod
  The command line password arguments don't currently work with
 Index: openssl-1.0.1e/doc/crypto/X509_STORE_CTX_get_error.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/crypto/X509_STORE_CTX_get_error.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/crypto/X509_STORE_CTX_get_error.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/crypto/X509_STORE_CTX_get_error.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/crypto/X509_STORE_CTX_get_error.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -278,6 +278,8 @@
  an application specific error. This will never be returned unless explicitly
  set by an application.
@@ -12901,8 +12936,8 @@ Index: openssl-1.0.1e/doc/crypto/X509_STORE_CTX_get_error.pod
  The above functions should be used instead of directly referencing the fields
 Index: openssl-1.0.1e/doc/crypto/ecdsa.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/crypto/ecdsa.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/crypto/ecdsa.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/crypto/ecdsa.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/crypto/ecdsa.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -95,7 +95,7 @@
  
  ECDSA_verify() verifies that the signature in B<sig> of size
@@ -12933,8 +12968,8 @@ Index: openssl-1.0.1e/doc/crypto/ecdsa.pod
  	/* error */
 Index: openssl-1.0.1e/doc/ssl/SSL_CTX_set_client_CA_list.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_set_client_CA_list.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_CTX_set_client_CA_list.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_set_client_CA_list.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_CTX_set_client_CA_list.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -66,16 +66,16 @@
  
  =over 4
@@ -12958,8 +12993,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_CTX_set_client_CA_list.pod
  =head1 EXAMPLES
 Index: openssl-1.0.1e/doc/ssl/SSL_CTX_set_options.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_set_options.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_CTX_set_options.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_set_options.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_CTX_set_options.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -88,9 +88,10 @@
  
  ...
@@ -12975,8 +13010,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_CTX_set_options.pod
  
 Index: openssl-1.0.1e/doc/ssl/SSL_CTX_use_psk_identity_hint.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_use_psk_identity_hint.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_CTX_use_psk_identity_hint.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_CTX_use_psk_identity_hint.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_CTX_use_psk_identity_hint.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -81,6 +81,8 @@
  
  Return values from the server callback are interpreted as follows:
@@ -12995,8 +13030,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_CTX_use_psk_identity_hint.pod
  =cut
 Index: openssl-1.0.1e/doc/ssl/SSL_accept.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_accept.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_accept.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_accept.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_accept.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -44,17 +44,17 @@
  
  =over 4
@@ -13022,8 +13057,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_accept.pod
  The TLS/SSL handshake was not successful because a fatal error occurred either
 Index: openssl-1.0.1e/doc/ssl/SSL_connect.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_connect.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_connect.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_connect.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_connect.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -41,17 +41,17 @@
  
  =over 4
@@ -13049,8 +13084,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_connect.pod
  The TLS/SSL handshake was not successful, because a fatal error occurred either
 Index: openssl-1.0.1e/doc/ssl/SSL_do_handshake.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_do_handshake.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_do_handshake.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_do_handshake.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_do_handshake.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -45,17 +45,17 @@
  
  =over 4
@@ -13076,8 +13111,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_do_handshake.pod
  The TLS/SSL handshake was not successful because a fatal error occurred either
 Index: openssl-1.0.1e/doc/ssl/SSL_shutdown.pod
 ===================================================================
---- openssl-1.0.1e.orig/doc/ssl/SSL_shutdown.pod	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/doc/ssl/SSL_shutdown.pod	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/doc/ssl/SSL_shutdown.pod	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/doc/ssl/SSL_shutdown.pod	2013-12-22 19:18:14.505274375 +0100
 @@ -92,11 +92,6 @@
  
  =over 4
@@ -13104,8 +13139,8 @@ Index: openssl-1.0.1e/doc/ssl/SSL_shutdown.pod
  The shutdown was not successful because a fatal error occurred either
 Index: openssl-1.0.1e/engines/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/engines/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/engines/Makefile	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/engines/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/engines/Makefile	2013-12-22 19:18:14.505274375 +0100
 @@ -165,171 +165,90 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -13330,8 +13365,8 @@ Index: openssl-1.0.1e/engines/Makefile
  e_ubsec.o: vendor_defns/hw_ubsec.h
 Index: openssl-1.0.1e/engines/ccgost/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/engines/ccgost/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/engines/ccgost/Makefile	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/engines/ccgost/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/engines/ccgost/Makefile	2013-12-22 19:18:14.505274375 +0100
 @@ -90,186 +90,98 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -13576,8 +13611,8 @@ Index: openssl-1.0.1e/engines/ccgost/Makefile
  gosthash.o: gost89.h gosthash.c gosthash.h
 Index: openssl-1.0.1e/engines/ccgost/gost89.h
 ===================================================================
---- openssl-1.0.1e.orig/engines/ccgost/gost89.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/engines/ccgost/gost89.h	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/engines/ccgost/gost89.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/engines/ccgost/gost89.h	2013-12-22 19:18:14.505274375 +0100
 @@ -87,10 +87,6 @@
  extern gost_subst_block Gost28147_CryptoProParamSetC;
  extern gost_subst_block Gost28147_CryptoProParamSetD;
@@ -13591,8 +13626,8 @@ Index: openssl-1.0.1e/engines/ccgost/gost89.h
  #endif
 Index: openssl-1.0.1e/openssl.spec
 ===================================================================
---- openssl-1.0.1e.orig/openssl.spec	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/openssl.spec	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/openssl.spec	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/openssl.spec	2013-12-22 19:18:14.505274375 +0100
 @@ -1,8 +1,5 @@
  %define _unpackaged_files_terminate_build 0
 -%define libmaj 1
@@ -13617,8 +13652,8 @@ Index: openssl-1.0.1e/openssl.spec
  URL: http://www.openssl.org/
 Index: openssl-1.0.1e/ssl/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/ssl/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/Makefile	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/ssl/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/Makefile	2013-12-22 19:18:14.505274375 +0100
 @@ -106,956 +106,599 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -14934,9 +14969,22 @@ Index: openssl-1.0.1e/ssl/Makefile
  tls_srp.o: ../include/openssl/x509_vfy.h ssl_locl.h tls_srp.c
 Index: openssl-1.0.1e/ssl/d1_both.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/d1_both.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/d1_both.c	2013-12-22 16:43:23.097702773 +0100
-@@ -313,9 +313,10 @@
+--- openssl-1.0.1e.orig/ssl/d1_both.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/d1_both.c	2013-12-22 19:18:14.505274375 +0100
+@@ -214,6 +214,12 @@
+ static void
+ dtls1_hm_fragment_free(hm_fragment *frag)
+ 	{
++
++	if (frag->msg_header.is_ccs)
++		{
++		EVP_CIPHER_CTX_free(frag->msg_header.saved_retransmit_state.enc_write_ctx);
++		EVP_MD_CTX_destroy(frag->msg_header.saved_retransmit_state.write_hash);
++		}
+ 	if (frag->fragment) OPENSSL_free(frag->fragment);
+ 	if (frag->reassembly) OPENSSL_free(frag->reassembly);
+ 	OPENSSL_free(frag);
+@@ -313,9 +319,10 @@
  				s->init_off -= DTLS1_HM_HEADER_LENGTH;
  				s->init_num += DTLS1_HM_HEADER_LENGTH;
  
@@ -14952,8 +15000,8 @@ Index: openssl-1.0.1e/ssl/d1_both.c
  			dtls1_fix_message_header(s, frag_off, 
 Index: openssl-1.0.1e/ssl/d1_clnt.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/d1_clnt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/d1_clnt.c	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/ssl/d1_clnt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/d1_clnt.c	2013-12-22 19:18:14.505274375 +0100
 @@ -538,13 +538,6 @@
  				SSL3_ST_CW_CHANGE_A,SSL3_ST_CW_CHANGE_B);
  			if (ret <= 0) goto end;
@@ -15028,8 +15076,8 @@ Index: openssl-1.0.1e/ssl/d1_clnt.c
  		d=p= &(buf[DTLS1_HM_HEADER_LENGTH]);
 Index: openssl-1.0.1e/ssl/d1_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/d1_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/d1_lib.c	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/ssl/d1_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/d1_lib.c	2013-12-22 19:18:14.505274375 +0100
 @@ -196,6 +196,7 @@
  	pqueue_free(s->d1->buffered_app_data.q);
  
@@ -15040,8 +15088,8 @@ Index: openssl-1.0.1e/ssl/d1_lib.c
  void dtls1_clear(SSL *s)
 Index: openssl-1.0.1e/ssl/d1_pkt.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/d1_pkt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/d1_pkt.c	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/ssl/d1_pkt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/d1_pkt.c	2013-12-22 19:18:14.505274375 +0100
 @@ -847,6 +847,12 @@
  			}
  		}
@@ -15065,8 +15113,8 @@ Index: openssl-1.0.1e/ssl/d1_pkt.c
  			if (ssl3_renegotiate_check(s))
 Index: openssl-1.0.1e/ssl/d1_srvr.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/d1_srvr.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/d1_srvr.c	2013-12-22 16:43:23.097702773 +0100
+--- openssl-1.0.1e.orig/ssl/d1_srvr.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/d1_srvr.c	2013-12-22 19:18:14.509274290 +0100
 @@ -276,10 +276,11 @@
  		case SSL3_ST_SW_HELLO_REQ_B:
  
@@ -15135,8 +15183,8 @@ Index: openssl-1.0.1e/ssl/d1_srvr.c
  
 Index: openssl-1.0.1e/ssl/s23_clnt.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s23_clnt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s23_clnt.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s23_clnt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s23_clnt.c	2013-12-22 19:18:14.509274290 +0100
 @@ -269,12 +269,35 @@
  	return 1;
  	}
@@ -15187,8 +15235,8 @@ Index: openssl-1.0.1e/ssl/s23_clnt.c
  		if (version == TLS1_2_VERSION)
 Index: openssl-1.0.1e/ssl/s3_both.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_both.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_both.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_both.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_both.c	2013-12-22 19:18:14.509274290 +0100
 @@ -161,6 +161,8 @@
  
  		i=s->method->ssl3_enc->final_finish_mac(s,
@@ -15200,8 +15248,8 @@ Index: openssl-1.0.1e/ssl/s3_both.c
  		p+=i;
 Index: openssl-1.0.1e/ssl/s3_cbc.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_cbc.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_cbc.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_cbc.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_cbc.c	2013-12-22 19:18:14.509274290 +0100
 @@ -148,7 +148,7 @@
  	unsigned padding_length, good, to_check, i;
  	const unsigned overhead = 1 /* padding length byte */ + mac_size;
@@ -15213,8 +15261,8 @@ Index: openssl-1.0.1e/ssl/s3_cbc.c
  		 * non-constant time.
 Index: openssl-1.0.1e/ssl/s3_clnt.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_clnt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_clnt.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_clnt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_clnt.c	2013-12-22 19:18:14.509274290 +0100
 @@ -655,7 +655,7 @@
  	unsigned char *buf;
  	unsigned char *p,*d;
@@ -15238,8 +15286,8 @@ Index: openssl-1.0.1e/ssl/s3_clnt.c
  		/* Do the message type and length last */
 Index: openssl-1.0.1e/ssl/s3_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_lib.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_lib.c	2013-12-22 19:18:14.509274290 +0100
 @@ -1683,7 +1683,7 @@
  	SSL_3DES,
  	SSL_SHA1,
@@ -15304,8 +15352,8 @@ Index: openssl-1.0.1e/ssl/s3_lib.c
  	return alg2;
 Index: openssl-1.0.1e/ssl/s3_pkt.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_pkt.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_pkt.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_pkt.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_pkt.c	2013-12-22 19:18:14.509274290 +0100
 @@ -1459,8 +1459,14 @@
  		slen=s->method->ssl3_enc->client_finished_label_len;
  		}
@@ -15324,8 +15372,8 @@ Index: openssl-1.0.1e/ssl/s3_pkt.c
  	}
 Index: openssl-1.0.1e/ssl/s3_srvr.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/s3_srvr.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/s3_srvr.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/s3_srvr.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/s3_srvr.c	2013-12-22 19:18:14.509274290 +0100
 @@ -1193,12 +1193,9 @@
  	 * server_random before calling tls_session_secret_cb in order to allow
  	 * SessionTicket processing to use it in key derivation. */
@@ -15363,8 +15411,8 @@ Index: openssl-1.0.1e/ssl/s3_srvr.c
  		/* Do the message type and length last */
 Index: openssl-1.0.1e/ssl/ssl.h
 ===================================================================
---- openssl-1.0.1e.orig/ssl/ssl.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/ssl.h	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/ssl.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/ssl.h	2013-12-22 19:18:14.509274290 +0100
 @@ -555,7 +555,7 @@
  #define SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG		0x00000008L
  #define SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG		0x00000010L
@@ -15389,8 +15437,8 @@ Index: openssl-1.0.1e/ssl/ssl.h
   * they cannot be used to clear bits. */
 Index: openssl-1.0.1e/ssl/ssl3.h
 ===================================================================
---- openssl-1.0.1e.orig/ssl/ssl3.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/ssl3.h	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/ssl3.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/ssl3.h	2013-12-22 19:18:14.509274290 +0100
 @@ -539,6 +539,15 @@
  	/* Set if we saw the Next Protocol Negotiation extension from our peer. */
  	int next_proto_neg_seen;
@@ -15409,8 +15457,8 @@ Index: openssl-1.0.1e/ssl/ssl3.h
  #endif
 Index: openssl-1.0.1e/ssl/ssl_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/ssl_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/ssl_lib.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/ssl_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/ssl_lib.c	2013-12-22 19:18:14.509274290 +0100
 @@ -1797,7 +1797,9 @@
  	CRYPTO_new_ex_data(CRYPTO_EX_INDEX_SSL_CTX, ret, &ret->ex_data);
  
@@ -15435,9 +15483,18 @@ Index: openssl-1.0.1e/ssl/ssl_lib.c
  		return(NULL);
 Index: openssl-1.0.1e/ssl/ssl_locl.h
 ===================================================================
---- openssl-1.0.1e.orig/ssl/ssl_locl.h	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/ssl_locl.h	2013-12-22 16:43:23.101702689 +0100
-@@ -847,6 +847,7 @@
+--- openssl-1.0.1e.orig/ssl/ssl_locl.h	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/ssl_locl.h	2013-12-22 19:18:14.509274290 +0100
+@@ -621,6 +621,8 @@
+ extern SSL3_ENC_METHOD SSLv3_enc_data;
+ extern SSL3_ENC_METHOD DTLSv1_enc_data;
+ 
++#define SSL_IS_DTLS(s) (s->method->version == DTLS1_VERSION)
++
+ #define IMPLEMENT_tls_meth_func(version, func_name, s_accept, s_connect, \
+ 				s_get_meth) \
+ const SSL_METHOD *func_name(void)  \
+@@ -847,6 +849,7 @@
  STACK_OF(SSL_CIPHER) *ssl_get_ciphers_by_id(SSL *s);
  int ssl_verify_alarm_type(long type);
  void ssl_load_ciphers(void);
@@ -15447,8 +15504,8 @@ Index: openssl-1.0.1e/ssl/ssl_locl.h
  int ssl2_generate_key_material(SSL *s);
 Index: openssl-1.0.1e/ssl/ssltest.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/ssltest.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/ssltest.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/ssltest.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/ssltest.c	2013-12-22 19:18:14.509274290 +0100
 @@ -881,7 +881,13 @@
  		meth=SSLv23_method();
  #else
@@ -15466,9 +15523,36 @@ Index: openssl-1.0.1e/ssl/ssltest.c
  #endif
 Index: openssl-1.0.1e/ssl/t1_enc.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/t1_enc.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/t1_enc.c	2013-12-22 16:43:23.101702689 +0100
-@@ -915,18 +915,19 @@
+--- openssl-1.0.1e.orig/ssl/t1_enc.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/t1_enc.c	2013-12-22 19:18:14.509274290 +0100
+@@ -414,15 +414,20 @@
+ 			s->mac_flags |= SSL_MAC_FLAG_WRITE_MAC_STREAM;
+ 			else
+ 			s->mac_flags &= ~SSL_MAC_FLAG_WRITE_MAC_STREAM;
+-		if (s->enc_write_ctx != NULL)
++		if (s->enc_write_ctx != NULL && !SSL_IS_DTLS(s))
+ 			reuse_dd = 1;
+-		else if ((s->enc_write_ctx=OPENSSL_malloc(sizeof(EVP_CIPHER_CTX))) == NULL)
++		else if ((s->enc_write_ctx=EVP_CIPHER_CTX_new()) == NULL)
+ 			goto err;
+-		else
+-			/* make sure it's intialized in case we exit later with an error */
+-			EVP_CIPHER_CTX_init(s->enc_write_ctx);
+ 		dd= s->enc_write_ctx;
+-		mac_ctx = ssl_replace_hash(&s->write_hash,NULL);
++		if (SSL_IS_DTLS(s))
++			{
++			mac_ctx = EVP_MD_CTX_create();
++			if (!mac_ctx)
++				goto err;
++			s->write_hash = mac_ctx;
++			}
++		else
++			mac_ctx = ssl_replace_hash(&s->write_hash,NULL);
+ #ifndef OPENSSL_NO_COMP
+ 		if (s->compress != NULL)
+ 			{
+@@ -915,18 +920,19 @@
  		if (mask & ssl_get_algorithm2(s))
  			{
  			int hashsize = EVP_MD_size(md);
@@ -15495,8 +15579,8 @@ Index: openssl-1.0.1e/ssl/t1_enc.c
  		}
 Index: openssl-1.0.1e/ssl/t1_lib.c
 ===================================================================
---- openssl-1.0.1e.orig/ssl/t1_lib.c	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/ssl/t1_lib.c	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/ssl/t1_lib.c	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/ssl/t1_lib.c	2013-12-22 19:18:14.509274290 +0100
 @@ -342,19 +342,11 @@
  #ifndef OPENSSL_NO_SHA
  	tlsext_sigalg(TLSEXT_hash_sha1)
@@ -15636,8 +15720,8 @@ Index: openssl-1.0.1e/ssl/t1_lib.c
  		return EVP_sha1();
 Index: openssl-1.0.1e/test/Makefile
 ===================================================================
---- openssl-1.0.1e.orig/test/Makefile	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/test/Makefile	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/test/Makefile	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/test/Makefile	2013-12-22 19:18:14.513274205 +0100
 @@ -485,245 +485,121 @@
  # DO NOT DELETE THIS LINE -- make depend depends on it.
  
@@ -15964,8 +16048,8 @@ Index: openssl-1.0.1e/test/Makefile
  wp_test.o: ../include/openssl/whrlpool.h wp_test.c
 Index: openssl-1.0.1e/test/cms-test.pl
 ===================================================================
---- openssl-1.0.1e.orig/test/cms-test.pl	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/test/cms-test.pl	2013-12-22 16:43:23.101702689 +0100
+--- openssl-1.0.1e.orig/test/cms-test.pl	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/test/cms-test.pl	2013-12-22 19:18:14.513274205 +0100
 @@ -415,8 +415,10 @@
  }
  
@@ -15980,8 +16064,8 @@ Index: openssl-1.0.1e/test/cms-test.pl
  
 Index: openssl-1.0.1e/util/shlib_wrap.sh
 ===================================================================
---- openssl-1.0.1e.orig/util/shlib_wrap.sh	2013-12-22 16:43:23.109702522 +0100
-+++ openssl-1.0.1e/util/shlib_wrap.sh	2013-12-22 16:43:23.105702605 +0100
+--- openssl-1.0.1e.orig/util/shlib_wrap.sh	2013-12-22 19:18:14.517274119 +0100
++++ openssl-1.0.1e/util/shlib_wrap.sh	2013-12-22 19:18:14.513274205 +0100
 @@ -90,4 +90,8 @@
  
  cmd="$1${EXE_EXT}"
