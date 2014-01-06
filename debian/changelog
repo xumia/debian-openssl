@@ -1,4 +1,4 @@
-openssl (1.0.1f-1) unstable; urgency=medium
+openssl (1.0.1f-1) unstable; urgency=high
 
   * New upstream version
     - Fix for TLS record tampering bug CVE-2013-4353
