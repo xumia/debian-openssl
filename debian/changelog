@@ -4,6 +4,7 @@ openssl (1.0.1f-1) unstable; urgency=medium
     - Fix for TLS record tampering bug CVE-2013-4353
     - Drop the snapshot patch
   * update watch file to check for upstream signature and add upstream pgp key.
+  * Drop conflicts against openssh since we now on a released version again.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Mon, 06 Jan 2014 18:50:54 +0100
 
