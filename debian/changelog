@@ -13,8 +13,9 @@ openssl (1.0.2~beta1-1) experimental; urgency=medium
     - Following patches have been partially applied upstream:
       libdoc-manpgs-pod-spell.patch, openssl-pod-misspell.patch
     - Remove openssl_fix_for_x32.patch, different patch applied upstream.
+  * Add support for cross compiling (Closes: #465248)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Mon, 24 Feb 2014 21:00:20 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 25 Feb 2014 00:36:51 +0100
 
 openssl (1.0.1f-1) unstable; urgency=high
 
