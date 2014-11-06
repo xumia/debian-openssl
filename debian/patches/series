@@ -21,3 +21,4 @@ block_digicert_malaysia.patch
 #padlock_conf.patch
 git_snapshot.patch
 no_ssl3_method.patch
+disable_freelist.patch

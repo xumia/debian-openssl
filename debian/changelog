@@ -20,6 +20,7 @@ openssl (1.0.2~beta3-1) experimental; urgency=low
     disable SSLv3 and pass the option.  This drops the following functions
     from the library: SSLv3_method, SSLv3_server_method and
     SSLv3_client_method
+  * Build using OPENSSL_NO_BUF_FREELISTS
 
  -- Kurt Roeckx <kurt@roeckx.be>  Fri, 07 Nov 2014 00:20:10 +0100
 
