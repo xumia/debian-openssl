@@ -1,6 +1,7 @@
 openssl (1.0.2~beta3-1) experimental; urgency=low
 
   * New usptream beta version
+  * Add git snapshot
   * Merge changes between 1.0.1h-3 and 1.0.1j-1:
     - Disables SSLv3 because of CVE-2014-3566
   * Drop patch rehash-crt.patch: partially applied upstream.
@@ -16,7 +17,7 @@ openssl (1.0.2~beta3-1) experimental; urgency=low
   * Update symbols files to require beta3
   * Enable unit tests
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 01 Nov 2014 18:34:42 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 07 Nov 2014 00:20:10 +0100
 
 openssl (1.0.2~beta2-1) experimental; urgency=medium
 
