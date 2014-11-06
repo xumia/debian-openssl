@@ -14,6 +14,7 @@ openssl (1.0.2~beta3-1) experimental; urgency=low
   * engines-path.patch updated to apply to upstream version.
   * Update list of exported symbols
   * Update symbols files to require beta3
+  * Enable unit tests
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sat, 01 Nov 2014 18:34:42 +0100
 
