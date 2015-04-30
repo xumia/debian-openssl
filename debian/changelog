@@ -14,8 +14,9 @@ openssl (1.0.2a-1) unstable; urgency=medium
     - Fix CVE-2015-1787
     - Fix CVE-2015-0285
   * Temporary enable SSLv3 methods again, but they will go away.
+  * Don't set TERMIO anymore, use the default TERMIOS instead.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 30 Apr 2015 23:19:02 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 30 Apr 2015 23:37:27 +0200
 
 openssl (1.0.2-1) experimental; urgency=medium
 
