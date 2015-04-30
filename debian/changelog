@@ -13,6 +13,7 @@ openssl (1.0.2a-1) unstable; urgency=medium
     - Fix CVE-2015-0208
     - Fix CVE-2015-1787
     - Fix CVE-2015-0285
+  * Temporary enable SSLv3 methods again, but they will go away.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 30 Apr 2015 23:19:02 +0200
 
