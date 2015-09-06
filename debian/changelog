@@ -6,6 +6,7 @@ openssl (1.0.2d-2) experimental; urgency=medium
     result of that and also changes name of the binary package.
     (Closes: #768476)
   * Enable rfc3779 and cms support (Closes: #630790)
+  * Fix cross compilation for mips architectures. (Closes: #782492)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 06 Sep 2015 14:21:27 +0200
 
