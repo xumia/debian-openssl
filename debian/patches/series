@@ -17,4 +17,3 @@ block_digicert_malaysia.patch
 disable_freelist.patch
 soname.patch
 disable_sslv3_test.patch
-gold.patch
