@@ -100,7 +100,7 @@ clean:
 	rm -f test/asn1test test/wp_test test/srptest test/jpaketest
 	rm -f certs/demo/*.0
 	rm -rf crypto/aes/aes-armv4.S crypto/bn/armv4-gf2m.S crypto/modes/ghash-armv4.S crypto/sha/*.S
-	rm -f include/openssl/*
+	find . -type l -exec rm '{}' \;
 	dh_clean
 
 install: build
