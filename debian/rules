@@ -50,6 +50,7 @@ build-stamp:
 #	perl util/ssldir.pl /usr/lib/ssl
 #	chmod +x debian/libtool
 	./Configure no-shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
+	make depend
 	make -f Makefile all
 	$(MAKE_TEST)
 	mv libcrypto.a libcrypto.static

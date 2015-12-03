@@ -6,8 +6,9 @@ openssl (1.0.2e-1) unstable; urgency=high
     - Fix CVE-2015-3195
     - Fix CVE-2015-3196
   * Remove all symlinks during clean
+  * Run make depend after configure
 
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 03 Dec 2015 18:28:16 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 03 Dec 2015 18:29:52 +0100
 
 openssl (1.0.2d-3) unstable; urgency=medium
 
