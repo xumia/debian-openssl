@@ -1,3 +1,13 @@
+openssl (1.0.2g-2) unstable; urgency=medium
+
+  * Use assembler of arm64 (Closes: #794326)
+    Patch from Riku Voipio <riku.voipio@iki.fi>
+  * Add a udeb for libssl, based on similar changes done in Ubuntu
+    starting in version 0.9.8o-4ubuntu1 (Closes: #802591)
+    Patch from Margarita Manterola <marga@google.com>
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 21 Apr 2016 23:13:13 +0200
+
 openssl (1.0.2g-1) unstable; urgency=high
 
   * New upstream version
