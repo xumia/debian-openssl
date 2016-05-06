@@ -1,3 +1,9 @@
+openssl (1.0.2h-2) unstable; urgency=medium
+
+  * Re-add libdoc-manpgs-pod-spell.patch to series files (Closes: #813191)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Fri, 06 May 2016 14:58:54 +0200
+
 openssl (1.0.2h-1) unstable; urgency=high
 
   * New upstream version
