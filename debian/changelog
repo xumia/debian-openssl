@@ -2,6 +2,7 @@ openssl (1.0.2h-2) unstable; urgency=medium
 
   * Re-add libdoc-manpgs-pod-spell.patch to series files (Closes: #813191)
   * Don't build i686 optimized version anymore on i386, it's now the default.
+    (Closes: #823774)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 08 May 2016 13:16:29 +0200
 
