@@ -10,8 +10,8 @@ Index: openssl-1.1.0~pre5/Configurations/20-debian.conf
 +
 +%targets = (
 +	"debian" => {
-+		cflags => combine($debian_cflags, threads("-pthread")),
-+		lflags => add($debian_ldflags),
++		cflags => $debian_cflags,
++		lflags => add($debian_ldflags, "-pthread"),
 +	},
 +	"debian-alpha" => {
 +		inherit_from => [ "linux-alpha-gcc", "debian" ],
