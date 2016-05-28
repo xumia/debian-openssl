@@ -62,27 +62,27 @@ Index: openssl-1.1.0~pre5/Configurations/20-debian.conf
 +	},
 +	"debian-mips" => {
 +		inherit_from => [ "linux-mips32", "debian" ],
-+		cflags => add("-DB_ENDIAN");
++		cflags => add("-DB_ENDIAN"),
 +	},
 +	"debian-mipsel" => {
 +		inherit_from => [ "linux-mips32", "debian" ],
-+		cflags => add("-DL_ENDIAN");
++		cflags => add("-DL_ENDIAN"),
 +	},
 +	"debian-mipsn32" => {
 +		inherit_from => [ "linux-mips64", "debian" ],
-+		cflags => add("-DB_ENDIAN");
++		cflags => add("-DB_ENDIAN"),
 +	},
 +	"debian-mipsn32el" => {
 +		inherit_from => [ "linux-mips64", "debian" ],
-+		cflags => add("-DL_ENDIAN");
++		cflags => add("-DL_ENDIAN"),
 +	},
 +	"debian-mips64" => {
 +		inherit_from => [ "linux64-mips64", "debian" ],
-+		cflags => add("-DB_ENDIAN");
++		cflags => add("-DB_ENDIAN"),
 +	},
 +	"debian-mips64el" => {
 +		inherit_from => [ "linux64-mips64", "debian" ],
-+		cflags => add("-DL_ENDIAN");
++		cflags => add("-DL_ENDIAN"),
 +	},
 +	"debian-nios2" => {
 +		inherit_from => [ "linux-generic32", "debian" ],
