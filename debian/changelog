@@ -3,6 +3,8 @@ openssl (1.1.0~pre5-2) UNRELEASED; urgency=medium
   * Run the testsuite with verbose output.
   * Use $(MAKE) so the whole make environment is passed to its child and we
     can build in parallel with -jX
+  * Update snapshot to commit 5000a6d1215e ("Fix an error path leak in int
+    X509_ATTRIBUTE_set1_data()")
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 05 Jun 2016 22:49:30 +0200
 
