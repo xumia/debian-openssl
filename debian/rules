@@ -50,32 +50,32 @@ build-stamp:
 #	chmod +x debian/libtool
 	tar xf debian/d2i-tests.tar
 	./Configure no-shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
-	make depend
-	make -f Makefile all
+	$(MAKE) depend
+	$(MAKE) -f Makefile all
 	$(MAKE_TEST)
 	mv libcrypto.a libcrypto.static
 	mv libssl.a libssl.static
-	make -f Makefile clean
+	$(MAKE) -f Makefile clean
 	test -z "$(OPTS)" || for opt in $(OPTS); \
 	do \
 		set -xe; \
 		./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)-$$opt; \
-		make -f Makefile all; \
+		$(MAKE) -f Makefile all; \
 		$(MAKE_TEST); \
 		mkdir -p $$opt; \
 		mv libcrypto.so* libssl.so* $$opt/; \
-		make -f Makefile clean; \
+		$(MAKE) -f Makefile clean; \
 	done
 	./Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
-	#make -f Makefile depend
+	#$(MAKE) -f Makefile depend
 	ln -sf apps/openssl.pod crypto/crypto.pod ssl/ssl.pod doc/
-#	make -f Makefile linux-shared
-	make -f Makefile all
+#	$(MAKE) -f Makefile linux-shared
+	$(MAKE) -f Makefile all
 	$(MAKE_TEST)
 #	strip apps/openssl
-#	make -f Makefile clean
+#	$(MAKE) -f Makefile clean
 #	./Configure --prefix=/usr --openssldir=/usr/lib/ssl no-idea no-mdc2 no-rc5 debian-$(DEB_HOST_ARCH)
-#	make -f Makefile all
+#	$(MAKE) -f Makefile all
 	touch build-stamp
 
 clean:
@@ -83,8 +83,8 @@ clean:
 	dh_testroot
 	-rm -f build-stamp
 	-./Configure $(CONFARGS) debian-$(DEB_HOST_ARCH)
-	[ ! -f Makefile ] || make -f Makefile clean
-	#-make -f Makefile  dclean
+	[ ! -f Makefile ] || $(MAKE) -f Makefile clean
+	#-$(MAKE) -f Makefile  dclean
 #	perl util/ssldir.pl /usr/local/ssl
 	-rm -f test/.rnd test/testkey.pem test/testreq.pem test/certCA.srl
 	-rm -f util/mk1mf.bak Makefile.bak `find . -name Makefile.save` 
@@ -112,7 +112,7 @@ install: build
 	dh_testroot
 	dh_clean
 	dh_installdirs
-	make -f Makefile install DESTDIR=`pwd`/debian/tmp
+	$(MAKE) -f Makefile install DESTDIR=`pwd`/debian/tmp
 
 binary-indep:	build install
 	dh_testdir

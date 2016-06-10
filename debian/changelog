@@ -1,6 +1,8 @@
 openssl (1.1.0~pre5-2) UNRELEASED; urgency=medium
 
   * Run the testsuite with verbose output.
+  * Use $(MAKE) so the whole make environment is passed to its child and we
+    can build in parallel with -jX
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 05 Jun 2016 22:49:30 +0200
 
