@@ -1,8 +1,7 @@
 openssl (1.1.0~pre5-5) UNRELEASED; urgency=medium
 
-  * Update snapshot to commit 976ef6adcc157233fb641ca99e2424630ef1814f
+  * Update snapshot to commit f37c159aed4bca0b7d3ea4657c450826850c8e75
     - drop engines-path.patch. Upstream uses a 1.1 suffixes now.
-  * use -j1 during install
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Fri, 29 Jul 2016 21:35:42 +0200
 

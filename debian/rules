@@ -118,7 +118,7 @@ install: build
 	dh_testroot
 	dh_clean
 	dh_installdirs
-	$(MAKE) -f Makefile install DESTDIR=`pwd`/debian/tmp -j1
+	$(MAKE) -f Makefile install DESTDIR=`pwd`/debian/tmp
 
 binary-indep:	build install
 	dh_testdir
