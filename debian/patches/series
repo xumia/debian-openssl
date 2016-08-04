@@ -1,4 +1,3 @@
-openssl_snapshot.patch
 config-hurd.patch
 debian-targets.patch
 man-section.patch
