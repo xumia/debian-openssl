@@ -9,7 +9,6 @@ Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-openssl/openssl
 Vcs-Svn: svn://anonscm.debian.org/pkg-openssl/openssl/
 
 Package: openssl
-Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${perl:Depends}, ${misc:Depends}
 Suggests: ca-certificates
@@ -44,7 +43,6 @@ Description: Secure Sockets Layer toolkit - shared libraries
 Package: libcrypto1.1-udeb
 Package-Type: udeb
 Section: debian-installer
-Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Secure Sockets Layer toolkit - libcrypto udeb
@@ -58,7 +56,6 @@ Description: Secure Sockets Layer toolkit - libcrypto udeb
 Package: libssl1.1-udeb
 Package-Type: udeb
 Section: debian-installer
-Priority: optional
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: ssl shared library - udeb
@@ -68,7 +65,6 @@ Description: ssl shared library - udeb
 
 Package: libssl-dev
 Section: libdevel
-Priority: optional
 Architecture: any
 Multi-Arch: same
 Recommends: libssl-doc
@@ -83,7 +79,6 @@ Description: Secure Sockets Layer toolkit - development files
 
 Package: libssl-doc
 Section: doc
-Priority: optional
 Architecture: all
 Replaces: libssl-dev (<< 1.0.0)
 Breaks: libssl-dev (<< 1.0.0)
