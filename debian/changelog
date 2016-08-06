@@ -2,8 +2,9 @@ openssl (1.1.0~pre6-2) experimental; urgency=medium
 
   * Use Package-Type instead of XC-Package-Type
   * Remove "Priority: optional" in the binary packages.
+  * Add Homepage
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sat, 06 Aug 2016 16:27:09 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 06 Aug 2016 18:17:20 +0200
 
 openssl (1.1.0~pre6-1) experimental; urgency=medium
 
