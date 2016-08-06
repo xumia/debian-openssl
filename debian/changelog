@@ -1,3 +1,9 @@
+openssl (1.1.0~pre6-2) experimental; urgency=medium
+
+  * Use Package-Type instead of XC-Package-Type
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sat, 06 Aug 2016 16:25:18 +0200
+
 openssl (1.1.0~pre6-1) experimental; urgency=medium
 
   [ Sebastian Andrzej Siewior ]

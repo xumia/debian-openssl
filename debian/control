@@ -42,7 +42,7 @@ Description: Secure Sockets Layer toolkit - shared libraries
  It provides the libssl and libcrypto shared libraries.
 
 Package: libcrypto1.1-udeb
-XC-Package-Type: udeb
+Package-Type: udeb
 Section: debian-installer
 Priority: optional
 Architecture: any
@@ -56,7 +56,7 @@ Description: Secure Sockets Layer toolkit - libcrypto udeb
  Debian Installer. Do not install it on a normal system.
 
 Package: libssl1.1-udeb
-XC-Package-Type: udeb
+Package-Type: udeb
 Section: debian-installer
 Priority: optional
 Architecture: any
