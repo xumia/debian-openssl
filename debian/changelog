@@ -1,9 +1,14 @@
 openssl (1.1.0~pre6-2) experimental; urgency=medium
 
+  [ Kurt Roeckx ]
   * Use Package-Type instead of XC-Package-Type
   * Remove "Priority: optional" in the binary packages.
   * Add Homepage
   * Use dpkg-buildflags's LDFLAGS also for building the shared libraries.
+
+  [ Sebastian Andrzej Siewior ]
+  * drop config-hurd.patch, we don't use `config' and it works without the
+    patch.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 07 Aug 2016 13:19:19 +0200
 
