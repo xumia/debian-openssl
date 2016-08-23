@@ -10,6 +10,7 @@ openssl (1.1.0~pre6-2) experimental; urgency=medium
   * drop config-hurd.patch, we don't use `config' and it works without the
     patch.
   * Drop depend on zlib1g-dev since we don't use it anymore (Closes: #767207)
+  * Make the openssl package Multi-Arch: foregin (Closes: #827028)
 
  -- Kurt Roeckx <kurt@roeckx.be>  Sun, 07 Aug 2016 13:19:19 +0200
 

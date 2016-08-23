@@ -11,6 +11,7 @@ Homepage: https://www.openssl.org/
 
 Package: openssl
 Architecture: any
+Multi-Arch: foreign
 Depends: ${shlibs:Depends}, ${perl:Depends}, ${misc:Depends}
 Suggests: ca-certificates
 Description: Secure Sockets Layer toolkit - cryptographic utility
