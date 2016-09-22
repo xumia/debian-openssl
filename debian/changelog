@@ -6,8 +6,9 @@ openssl (1.1.0a-1) experimental; urgency=medium
     - Fix CVE-2016-6307
     - Fix CVE-2016-6308
   * Update c_rehash-compat.patch to apply to new version.
+  * Update symbol file.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 22 Sep 2016 20:07:50 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 22 Sep 2016 20:13:59 +0200
 
 openssl (1.1.0-1) experimental; urgency=medium
 
