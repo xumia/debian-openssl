@@ -6,8 +6,9 @@ openssl (1.1.0c-1) unstable; urgency=medium
     - Fix CVE-2016-7055
   * remove no-rpath.patch, applied upstream.
   * Remove old d2i test cases, use the one from the upstream tarball.
+  * Update libssl1.1.symbols for new sysmbols.
 
- -- Kurt Roeckx <kurt@roeckx.be>  Thu, 10 Nov 2016 18:54:31 +0100
+ -- Kurt Roeckx <kurt@roeckx.be>  Thu, 10 Nov 2016 19:05:44 +0100
 
 openssl (1.1.0b-2) unstable; urgency=low
 
