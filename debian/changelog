@@ -4,7 +4,7 @@ openssl (1.1.0c-1) unstable; urgency=medium
     - Fix CVE-2016-7053
     - Fix CVE-2016-7054
     - Fix CVE-2016-7055
-  * Update no-rpath.patch to apply
+  * remove no-rpath.patch, applied upstream.
 
  -- Kurt Roeckx <kurt@roeckx.be>  Thu, 10 Nov 2016 18:11:07 +0100
 
