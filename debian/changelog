@@ -10,6 +10,7 @@ openssl (1.1.0c-3) UNRELEASED; urgency=medium
     - dh compat 10
     - pkg.install instead of pkg.files is used for install
   * Mark libssl-doc as MA foreign
+  * Update Standards-Version from 3.9.5 to 3.9.8. No changes required.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 22 Dec 2016 23:24:14 +0100
 
