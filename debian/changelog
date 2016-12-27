@@ -2,6 +2,13 @@ openssl (1.1.0c-3) UNRELEASED; urgency=medium
 
   * Add myself as Uploader.
   * Add support for tilegx, patch by Helmut Grohne (Closes: #848957).
+  * redo the rules file to some newer debhelper:
+    - everyfile should remain, nothing should get lost
+    - the scripts in the doc package gained an exec bit
+    - openssl gained a dep on perl (the package contains perl scripts)
+    - libssl1.0.2-dbg is gone, we have dbgsym now
+    - dh compat 10
+    - pkg.install instead of pkg.files is used for install
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 22 Dec 2016 23:24:14 +0100
 
