@@ -13,6 +13,7 @@ openssl (1.1.0c-3) UNRELEASED; urgency=medium
   * Update Standards-Version from 3.9.5 to 3.9.8. No changes required.
   * Document the change for openssl's enc command between 1.1.0 and pre 1.1.0
     in the NEWS file (Closes: #843064).
+  * Add an override for lintian for the non-standard private directory
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 22 Dec 2016 23:24:14 +0100
 
