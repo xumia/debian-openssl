@@ -1,4 +1,4 @@
-openssl (1.1.0c-3) UNRELEASED; urgency=medium
+openssl (1.1.0c-3) unstable; urgency=medium
 
   * Add myself as Uploader.
   * Add support for tilegx, patch by Helmut Grohne (Closes: #848957).
@@ -15,7 +15,7 @@ openssl (1.1.0c-3) UNRELEASED; urgency=medium
     in the NEWS file (Closes: #843064).
   * Add an override for lintian for the non-standard private directory
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 22 Dec 2016 23:24:14 +0100
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 19 Jan 2017 23:00:01 +0100
 
 openssl (1.1.0c-2) unstable; urgency=medium
 
