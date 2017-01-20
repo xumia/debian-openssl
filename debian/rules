@@ -125,7 +125,9 @@ override_dh_installchangelogs:
 	dh_installchangelogs -a CHANGES
 
 override_dh_fixperms:
-	test -d debian/openssl/etc/ssl/private && chmod 700 debian/openssl/etc/ssl/private
+	if [ -d debian/openssl/etc/ssl/private ] ; then \
+		chmod 700 debian/openssl/etc/ssl/private ; \
+	fi
 	dh_fixperms -a -X etc/ssl/private
 
 override_dh_makeshlibs:
