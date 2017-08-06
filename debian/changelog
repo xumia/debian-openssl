@@ -1,8 +1,15 @@
 openssl (1.1.0f-4) UNRELEASED; urgency=medium
 
+  [ Sebastian Andrzej Siewior ]
   * Add support for arm64ilp32, patch by Wookey (Closes: #867240)
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 12 Jul 2017 00:24:40 +0200
+  [ Kurt Roeckx ]
+  * Disable TLS 1.0 and 1.1, leaving 1.2 as the only supported SSL/TLS
+    version. This will likely break things, but the hope is that by
+    the release of Buster everything will speak at least TLS 1.2. This will be
+    reconsidered before the Buster release.
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 06 Aug 2017 23:40:02 +0200
 
 openssl (1.1.0f-3) unstable; urgency=medium
 
