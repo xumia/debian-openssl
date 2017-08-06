@@ -8,8 +8,9 @@ openssl (1.1.0f-4) UNRELEASED; urgency=medium
     version. This will likely break things, but the hope is that by
     the release of Buster everything will speak at least TLS 1.2. This will be
     reconsidered before the Buster release.
+  * Fix a race condition in the test suite (Closes: #869856)
 
- -- Kurt Roeckx <kurt@roeckx.be>  Sun, 06 Aug 2017 23:40:02 +0200
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 06 Aug 2017 23:53:29 +0200
 
 openssl (1.1.0f-3) unstable; urgency=medium
 
