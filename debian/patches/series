@@ -3,6 +3,4 @@ man-section.patch
 no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
-0001-Only-release-thread-local-key-if-we-created-it.patch
-Fix-a-Proxy-race-condition.patch
 tls1_2_default.patch

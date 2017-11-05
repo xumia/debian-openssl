@@ -8,10 +8,10 @@ Subject: man-section
  2 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/Configurations/unix-Makefile.tmpl b/Configurations/unix-Makefile.tmpl
-index 2cc37cd25eb9..c70879b9c1b4 100644
+index 3dd09c24662d..154dca3ceebf 100644
 --- a/Configurations/unix-Makefile.tmpl
 +++ b/Configurations/unix-Makefile.tmpl
-@@ -164,7 +164,8 @@ HTMLDIR=$(DOCDIR)/html
+@@ -167,7 +167,8 @@ HTMLDIR=$(DOCDIR)/html
  # MANSUFFIX is for the benefit of anyone who may want to have a suffix
  # appended after the manpage file section number.  "ssl" is popular,
  # resulting in files such as config.5ssl rather than config.5.
@@ -21,7 +21,7 @@ index 2cc37cd25eb9..c70879b9c1b4 100644
  HTMLSUFFIX=html
  
  
-@@ -554,7 +555,8 @@ uninstall_docs: uninstall_man_docs uninstall_html_docs
+@@ -559,7 +560,8 @@ uninstall_docs: uninstall_man_docs uninstall_html_docs
  	@[ -n "$(INSTALLTOP)" ] || (echo INSTALLTOP should not be empty; exit 1)
  	@echo "*** Installing manpages"
  	$(PERL) $(SRCDIR)/util/process_docs.pl \
@@ -32,7 +32,7 @@ index 2cc37cd25eb9..c70879b9c1b4 100644
  uninstall_man_docs:
  	@echo "*** Uninstalling manpages"
 diff --git a/util/process_docs.pl b/util/process_docs.pl
-index 073a3b703153..50ca01d7a819 100644
+index 073a3b703153..50ca01d7a819 100755
 --- a/util/process_docs.pl
 +++ b/util/process_docs.pl
 @@ -36,6 +36,7 @@ GetOptions(\%options,

@@ -12,10 +12,10 @@ Subject: [PATCH] Only enable TLS 1.2 by default
  6 files changed, 353 insertions(+), 2 deletions(-)
 
 diff --git a/ssl/ssl_lib.c b/ssl/ssl_lib.c
-index 9f9dce6c1e1d..ba84efa5dc51 100644
+index 6908f1677b75..11d30838cd44 100644
 --- a/ssl/ssl_lib.c
 +++ b/ssl/ssl_lib.c
-@@ -2372,7 +2372,10 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
+@@ -2483,7 +2483,10 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
          goto err;
  
      ret->method = meth;
