@@ -3,4 +3,3 @@ man-section.patch
 no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
-tls1_2_default.patch
