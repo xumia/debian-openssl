@@ -3,3 +3,4 @@ man-section.patch
 no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
+aes-asm-aes-armv4-bsaes-armv7-.pl-make-it-work-with-binut.patch
