@@ -1,7 +1,13 @@
+From: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
+Date: Sun, 5 Nov 2017 15:09:09 +0100
+Subject: no-symbolic
+
 ---
- Makefile.shared |    2 +-
+ Makefile.shared | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/Makefile.shared b/Makefile.shared
+index 098e1ec6f2e6..ad0ae5c6069d 100644
 --- a/Makefile.shared
 +++ b/Makefile.shared
 @@ -164,7 +164,7 @@ LINK_SO_SHLIB_UNPACKED=	\

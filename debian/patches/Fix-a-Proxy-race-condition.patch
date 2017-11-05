@@ -1,4 +1,3 @@
-From 523ea2721581cf9eaa20036327b53b36ba2135ba Mon Sep 17 00:00:00 2001
 From: Matt Caswell <matt@openssl.org>
 Date: Fri, 26 May 2017 13:06:08 +0100
 Subject: [PATCH] Fix a Proxy race condition
@@ -23,7 +22,7 @@ Reviewed-by: Richard Levitte <levitte@openssl.org>
  1 file changed, 15 insertions(+)
 
 diff --git a/util/TLSProxy/Proxy.pm b/util/TLSProxy/Proxy.pm
-index bdb2cd8b5c..141cf53982 100644
+index bdb2cd8b5c17..141cf5398210 100644
 --- a/util/TLSProxy/Proxy.pm
 +++ b/util/TLSProxy/Proxy.pm
 @@ -42,6 +42,7 @@ sub new
@@ -76,6 +75,3 @@ index bdb2cd8b5c..141cf53982 100644
  
  sub fill_known_data
  {
--- 
-2.13.2
-
