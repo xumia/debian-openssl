@@ -1,3 +1,10 @@
+openssl (1.1.0g-3) UNRELEASED; urgency=medium
+
+  * Abort the build if symbols are discovered which are not part of the
+    symbols file.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 28 Nov 2017 21:23:57 +0100
+
 openssl (1.1.0g-2) unstable; urgency=high
 
   * Avoid problems with aes assembler on armhf using binutils 2.29
