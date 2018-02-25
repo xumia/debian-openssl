@@ -9,7 +9,7 @@ Subject: debian-targets
 
 diff --git a/Configurations/20-debian.conf b/Configurations/20-debian.conf
 new file mode 100644
-index 000000000000..6c21b0b63c77
+index 000000000000..9206c0724215
 --- /dev/null
 +++ b/Configurations/20-debian.conf
 @@ -0,0 +1,194 @@
@@ -18,7 +18,7 @@ index 000000000000..6c21b0b63c77
 +my $debian_ldflags = `dpkg-buildflags --get LDFLAGS`;
 +$debian_ldflags =~ s/\n/ /g;
 +
-+%targets = (
++my %targets = (
 +	"debian" => {
 +		cflags => $debian_cflags,
 +		lflags => add($debian_ldflags, "-pthread"),
