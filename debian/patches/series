@@ -4,3 +4,4 @@ no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
 aes-asm-aes-armv4-bsaes-armv7-.pl-make-it-work-with-binut.patch
+Configure-allow-to-enable-afalgeng-if-target-does-not-sta.patch
