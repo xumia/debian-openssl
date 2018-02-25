@@ -26,22 +26,22 @@ Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/Configurations/10-main.conf b/Configurations/10-main.conf
-index 39b89e7e98a0..d4f1866229d5 100644
+index b17a7803b324..7e63a6227c1c 100644
 --- a/Configurations/10-main.conf
 +++ b/Configurations/10-main.conf
-@@ -640,6 +640,7 @@ sub vms_info {
-         shared_cflag     => "-fPIC -DOPENSSL_USE_NODELETE",
+@@ -645,6 +645,7 @@ my %targets = (
+         shared_cflag     => "-fPIC",
          shared_ldflag    => "-Wl,-znodelete",
-         shared_extension => ".so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+         shared_extension => ".so.\$(SHLIB_VERSION_NUMBER)",
 +        enable           => [ "afalgeng" ],
      },
      "linux-generic64" => {
          inherit_from     => [ "linux-generic32" ],
 diff --git a/Configure b/Configure
-index d6449636f33a..967fbad90cc7 100755
+index e3d8d70c0082..bd2a1c98239d 100755
 --- a/Configure
 +++ b/Configure
-@@ -1326,7 +1326,7 @@ else               { $no_user_defines=1;    }
+@@ -1462,7 +1462,7 @@ unless ($disabled{"crypto-mdebug-backtrace"})
  
  unless ($disabled{afalgeng}) {
      $config{afalgeng}="";
