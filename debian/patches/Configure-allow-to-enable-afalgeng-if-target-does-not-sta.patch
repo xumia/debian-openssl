@@ -26,10 +26,10 @@ Signed-off-by: Sebastian Andrzej Siewior <sebastian@breakpoint.cc>
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/Configurations/10-main.conf b/Configurations/10-main.conf
-index b17a7803b324..7e63a6227c1c 100644
+index 3ee071765db8..c4743355a6a8 100644
 --- a/Configurations/10-main.conf
 +++ b/Configurations/10-main.conf
-@@ -645,6 +645,7 @@ my %targets = (
+@@ -661,6 +661,7 @@ my %targets = (
          shared_cflag     => "-fPIC",
          shared_ldflag    => "-Wl,-znodelete",
          shared_extension => ".so.\$(SHLIB_VERSION_NUMBER)",
@@ -38,10 +38,10 @@ index b17a7803b324..7e63a6227c1c 100644
      "linux-generic64" => {
          inherit_from     => [ "linux-generic32" ],
 diff --git a/Configure b/Configure
-index e3d8d70c0082..bd2a1c98239d 100755
+index 3c40a0e25e16..accf8d43ec1e 100755
 --- a/Configure
 +++ b/Configure
-@@ -1462,7 +1462,7 @@ unless ($disabled{"crypto-mdebug-backtrace"})
+@@ -1470,7 +1470,7 @@ unless ($disabled{"crypto-mdebug-backtrace"})
  
  unless ($disabled{afalgeng}) {
      $config{afalgeng}="";
