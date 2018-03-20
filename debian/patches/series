@@ -3,3 +3,4 @@ man-section.patch
 no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
+Set-systemwide-default-settings-for-libssl-users.patch
