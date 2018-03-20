@@ -1,6 +1,7 @@
 openssl (1.1.1~~pre1-1) UNRELEASED; urgency=medium
 
   * Update to 1.1.1-pre3
+  * Don't suggest 1024 bit RSA key to be typical (Closes: #878303).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 20 Mar 2018 21:16:06 +0100
 
