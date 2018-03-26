@@ -4,7 +4,7 @@ openssl (1.1.0g-3) UNRELEASED; urgency=medium
     symbols file.
   * Add config support for MIPS R6, patch by YunQiang Su (Closes: #882007).
   * Enable afalgeng on Linux targets (Closes: #888305)
-  * Add riscv64 target (Closes: #891797)
+  * Add riscv64 target (Closes: #891797).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 25 Feb 2018 12:46:30 +0100
 
