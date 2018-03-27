@@ -12,6 +12,7 @@ openssl (1.1.0h-1) UNRELEASED; urgency=medium
     - Fix CVE-2018-0733 (Incorrect CRYPTO_memcmp on HP-UX PA-RISC)
     - Fix CVE-2018-0739 (Constructed ASN.1 types with a recursive definition
           could exceed the stack)
+  * Correct lhash typo in header file (Closes: #892276).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 25 Feb 2018 12:46:30 +0100
 
