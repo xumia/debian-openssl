@@ -1,3 +1,10 @@
+openssl (1.1.0h-2) UNRELEASED; urgency=medium
+
+  * Revert "only quote stuff that actually needs quoting" so c_rehash has the
+    quotes again (Closes: #894282).
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 28 Mar 2018 14:06:46 +0200
+
 openssl (1.1.0h-1) unstable; urgency=medium
 
   * Abort the build if symbols are discovered which are not part of the
