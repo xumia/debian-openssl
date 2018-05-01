@@ -1,3 +1,9 @@
+openssl (1.1.1~~pre6-2) experimental; urgency=medium
+
+  * Update libssl1.1.symbols
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Tue, 01 May 2018 16:34:27 +0200
+
 openssl (1.1.1~~pre6-1) experimental; urgency=medium
 
   * New upstream version
