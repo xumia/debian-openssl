@@ -6,3 +6,4 @@ c_rehash-compat.patch
 Configure-allow-to-enable-afalgeng-if-target-does-not-sta.patch
 Fix-typo-in-OPENSSL_LH_new-compat-API.patch
 Revert-util-dofile.pl-only-quote-stuff-that-actually-need.patch
+Fix-regression-with-session-cache-use-by-clients.patch

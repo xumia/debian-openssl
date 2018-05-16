@@ -2,6 +2,7 @@ openssl (1.1.0h-3) UNRELEASED; urgency=medium
 
   * Drop afalgeng on kfreebsd-* which go enabled because they inherit from
     the linux target.
+  * Fix regression with session cache use by clients (See: #895035).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 16 May 2018 23:57:12 +0200
 
