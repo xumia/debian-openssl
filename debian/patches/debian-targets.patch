@@ -3,16 +3,16 @@ Date: Sun, 5 Nov 2017 15:09:09 +0100
 Subject: debian-targets
 
 ---
- Configurations/20-debian.conf | 197 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 197 insertions(+)
+ Configurations/20-debian.conf | 199 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 199 insertions(+)
  create mode 100644 Configurations/20-debian.conf
 
 diff --git a/Configurations/20-debian.conf b/Configurations/20-debian.conf
 new file mode 100644
-index 000000000000..55facf8ac066
+index 000000000000..5c5d28c74d2f
 --- /dev/null
 +++ b/Configurations/20-debian.conf
-@@ -0,0 +1,197 @@
+@@ -0,0 +1,199 @@
 +my $debian_cflags = `dpkg-buildflags --get CFLAGS` . `dpkg-buildflags --get CPPFLAGS` . "-Wa,--noexecstack -Wall";
 +$debian_cflags =~ s/\n/ /g;
 +my $debian_ldflags = `dpkg-buildflags --get LDFLAGS`;
@@ -58,9 +58,11 @@ index 000000000000..55facf8ac066
 +	},
 +	"debian-kfreebsd-amd64" => {
 +		inherit_from => [ "debian-amd64" ],
++		enable           => [ ],
 +	},
 +	"debian-kfreebsd-i386" => {
 +		inherit_from => [ "debian-i386" ],
++		enable           => [ ],
 +	},
 +	"debian-hppa" => {
 +		inherit_from => [ "linux-generic32", "debian" ],

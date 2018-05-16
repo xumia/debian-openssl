@@ -1,3 +1,10 @@
+openssl (1.1.0h-3) UNRELEASED; urgency=medium
+
+  * Drop afalgeng on kfreebsd-* which go enabled because they inherit from
+    the linux target.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 16 May 2018 23:57:12 +0200
+
 openssl (1.1.0h-2) unstable; urgency=high
 
   * Revert "only quote stuff that actually needs quoting" so c_rehash has the
