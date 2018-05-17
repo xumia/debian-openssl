@@ -9,12 +9,13 @@
 #
 # Modified to be a prototype for debmake by Christoph Lameter <clameter@debian.org>
 include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/pkg-info.mk
 SHELL=/bin/bash
 
 package=openssl
 
 # For generating the manpages
-export VERSION=$(shell dpkg-parsechangelog | grep '^Version:' | sed -e 's/^.*://' -e 's/-.*//')
+export VERSION=$(DEB_VERSION_UPSTREAM)
 
 ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
 	export CROSS_COMPILE ?= $(DEB_HOST_GNU_TYPE)-
