@@ -18,7 +18,7 @@ openssl (1.1.0h-3) unstable; urgency=medium
       seems to make sense.
   * Fix CVE-2018-0737 (Closes: #895844).
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 17 May 2018 20:54:10 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 17 May 2018 23:35:43 +0200
 
 openssl (1.1.0h-2) unstable; urgency=high
 
