@@ -8,6 +8,11 @@ openssl (1.1.0h-3) unstable; urgency=medium
   * Fix debian-rules-sets-dpkg-architecture-variable.
   * Let VCS-* point to salsa.d.o.
   * Don't build the binary package in binary-indep mode.
+  * Update to policy 4.1.4
+    - only Suggest: libssl-doc instead Recommends (only documentation and
+      example code is shipped).
+    - drop Priority: important.
+    - use signing-key.asc and a https links for downloads
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 17 May 2018 20:54:10 +0200
 
