@@ -9,6 +9,8 @@ openssl (1.1.1~~pre6-3) UNRELEASED; urgency=medium
     - drop Priority: important.
     - use signing-key.asc and a https links for downloads
   * Use compat 11.
+    - this moves the examples to /usr/share/doc/libssl-{doc->dev}/demos but it
+      seems to make sense.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 29 May 2018 22:04:14 +0200
 
