@@ -14,6 +14,8 @@ openssl (1.1.0h-3) unstable; urgency=medium
     - drop Priority: important.
     - use signing-key.asc and a https links for downloads
   * Use compat 11.
+    - this moves the examples to /usr/share/doc/libssl-{doc->dev}/demos but it
+      seems to make sense.
   * Fix CVE-2018-0737 (Closes: #895844).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 17 May 2018 20:54:10 +0200
