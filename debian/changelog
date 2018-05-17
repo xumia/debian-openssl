@@ -5,7 +5,9 @@ openssl (1.1.0h-3) unstable; urgency=medium
   * Fix regression with session cache use by clients (See: #895035).
   * openssl rehash: exit 0 on warnings, same as c_rehash (See: #895473 and
     #895482).
-  * Fix debian-rules-sets-dpkg-architecture-variable
+  * Fix debian-rules-sets-dpkg-architecture-variable.
+  * Let VCS-* point to salsa.d.o.
+  * Don't build the binary package in binary-indep mode.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 17 May 2018 20:54:10 +0200
 
