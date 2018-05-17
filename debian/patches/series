@@ -8,3 +8,4 @@ Fix-typo-in-OPENSSL_LH_new-compat-API.patch
 Revert-util-dofile.pl-only-quote-stuff-that-actually-need.patch
 Fix-regression-with-session-cache-use-by-clients.patch
 openssl-rehash-exit-0-on-warnings-same-as-c_rehash.patch
+RSA-key-generation-ensure-BN_mod_inverse-and-BN_mod_exp_m.patch
