@@ -56,16 +56,13 @@ override_dh_auto_build-indep:
 	@echo skipping binary build build
 
 override_dh_auto_build-arch:
-	@echo Building static
 	$(MAKE) -C build_static all
 	test -z "$(OPTS)" || for opt in $(OPTS); \
 	do \
 		set -xe; \
-		@echo Building variant $$opt; \
 		$(MAKE) -C build_$$opt all; \
 	done
 	ln -sf apps/openssl.pod crypto/crypto.pod ssl/ssl.pod doc/
-	@echo Building shared
 	$(MAKE) -C build_shared all
 
 override_dh_auto_test-indep:
