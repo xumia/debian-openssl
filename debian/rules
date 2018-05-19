@@ -53,7 +53,7 @@ override_dh_auto_configure:
 	mkdir build_shared; cd build_shared; HASHBANGPERL=/usr/bin/perl ../Configure shared $(CONFARGS) debian-$(DEB_HOST_ARCH)
 
 override_dh_auto_build-indep:
-	@echo skipping binary build build
+	$(MAKE) -C build_shared all
 
 override_dh_auto_build-arch:
 	$(MAKE) -C build_static all

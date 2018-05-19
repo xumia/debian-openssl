@@ -1,3 +1,10 @@
+openssl (1.1.0h-4) UNRELEASED; urgency=medium
+
+  * Build the binary in indep mode again, so we can install the documentation
+    again.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 19 May 2018 11:56:14 +0200
+
 openssl (1.1.0h-3) unstable; urgency=medium
 
   * Drop afalgeng on kfreebsd-* which go enabled because they inherit from
