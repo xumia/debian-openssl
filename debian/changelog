@@ -1,9 +1,12 @@
-openssl (1.1.0h-4) UNRELEASED; urgency=medium
+openssl (1.1.0h-4) unstable; urgency=medium
 
   * Build the binary in indep mode again, so we can install the documentation
     again.
+  * Drop @echo in flavour so it builds again on Alpha
+  * Add a 25-test_verify.t for autopkgtest which runs against intalled
+    openssl binary.
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 19 May 2018 11:56:14 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 23 May 2018 14:42:14 +0200
 
 openssl (1.1.0h-3) unstable; urgency=medium
 
