@@ -11,6 +11,8 @@ openssl (1.1.1~~pre6-3) UNRELEASED; urgency=medium
   * Use compat 11.
     - this moves the examples to /usr/share/doc/libssl-{doc->dev}/demos but it
       seems to make sense.
+  * Add a 25-test_verify.t for autopkgtest which runs against intalled
+    openssl binary.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 29 May 2018 22:04:14 +0200
 
