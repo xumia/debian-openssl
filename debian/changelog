@@ -1,3 +1,11 @@
+openssl (1.1.1~~pre6-3) UNRELEASED; urgency=medium
+
+  * Drop afalgeng on kfreebsd-* which go enabled because they inherit from
+    the linux target.
+  * Fix debian-rules-sets-dpkg-architecture-variable.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 29 May 2018 22:04:14 +0200
+
 openssl (1.1.1~~pre6-2) experimental; urgency=medium
 
   * Update libssl1.1.symbols
