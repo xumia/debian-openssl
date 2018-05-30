@@ -13,6 +13,7 @@ openssl (1.1.1~~pre7-1) UNRELEASED; urgency=medium
       seems to make sense.
   * Add a 25-test_verify.t for autopkgtest which runs against intalled
     openssl binary.
+  * Fix CVE-2018-0737 (Closes: #895844).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 29 May 2018 22:04:14 +0200
 
