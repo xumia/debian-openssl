@@ -1050,7 +1050,8 @@ int set_name_ex(unsigned long *flags, const char *arg)
     };
     if (set_multi_opts(flags, arg, ex_tbl) == 0)
         return 0;
-    if ((*flags & XN_FLAG_SEP_MASK) == 0)
+    if (*flags != XN_FLAG_COMPAT
+        && (*flags & XN_FLAG_SEP_MASK) == 0)
         *flags |= XN_FLAG_SEP_CPLUS_SPC;
     return 1;
 }
@@ -1187,16 +1188,15 @@ void print_bignum_var(BIO *out, const BIGNUM *in, const char *var,
 {
     BIO_printf(out, "    static unsigned char %s_%d[] = {", var, len);
     if (BN_is_zero(in)) {
-        BIO_printf(out, "\n\t0x00");
+        BIO_printf(out, "\n        0x00");
     } else {
         int i, l;
 
         l = BN_bn2bin(in, buffer);
         for (i = 0; i < l; i++) {
-            if ((i % 10) == 0)
-                BIO_printf(out, "\n\t");
+            BIO_printf(out, (i % 10) == 0 ? "\n        " : " ");
             if (i < l - 1)
-                BIO_printf(out, "0x%02X, ", buffer[i]);
+                BIO_printf(out, "0x%02X,", buffer[i]);
             else
                 BIO_printf(out, "0x%02X", buffer[i]);
         }
@@ -2486,7 +2486,7 @@ BIO *dup_bio_err(int format)
     return b;
 }
 
-void destroy_prefix_method()
+void destroy_prefix_method(void)
 {
     BIO_meth_free(prefix_method);
     prefix_method = NULL;

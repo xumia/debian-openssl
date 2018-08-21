@@ -63,7 +63,8 @@ size_t rand_pool_length(RAND_POOL *pool);
 
 size_t rand_pool_entropy_available(RAND_POOL *pool);
 size_t rand_pool_entropy_needed(RAND_POOL *pool);
-size_t rand_pool_bytes_needed(RAND_POOL *pool, unsigned int entropy_per_byte);
+/* |entropy_factor| expresses how many bits of data contain 1 bit of entropy */
+size_t rand_pool_bytes_needed(RAND_POOL *pool, unsigned int entropy_factor);
 size_t rand_pool_bytes_remaining(RAND_POOL *pool);
 
 int rand_pool_add(RAND_POOL *pool,
@@ -109,5 +110,22 @@ int rand_pool_add_nonce_data(RAND_POOL *pool);
  * Returns 1 on success and 0 on failure.
  */
 int rand_pool_add_additional_data(RAND_POOL *pool);
+
+/*
+ * Initialise the random pool reseeding sources.
+ *
+ * Returns 1 on success and 0 on failure.
+ */
+int rand_pool_init(void);
+
+/*
+ * Finalise the random pool reseeding sources.
+ */
+void rand_pool_cleanup(void);
+
+/*
+ * Control the random pool use of open file descriptors.
+ */
+void rand_pool_keep_random_devices_open(int keep);
 
 #endif
