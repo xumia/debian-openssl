@@ -1,4 +1,4 @@
-openssl (1.1.1-1) UNRELEASED; urgency=medium
+openssl (1.1.1-1) unstable; urgency=medium
 
   * New upstream version.
    - Update symbol file for 1.1.1
@@ -9,7 +9,7 @@ openssl (1.1.1-1) UNRELEASED; urgency=medium
     - Less verbose testsuite with terse
     - Use RRR=no
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 11 Sep 2018 23:34:01 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 12 Sep 2018 20:39:24 +0200
 
 openssl (1.1.1~~pre9-1) unstable; urgency=medium
 
