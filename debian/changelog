@@ -2,7 +2,7 @@ openssl (1.1.1-1) UNRELEASED; urgency=medium
 
   * New upstream version.
    - Update symbol file for 1.1.1
-  * Add Breaks on python-httplib2 (Closes: #907015)
+  * Add Breaks on python-httplib2 (Addresses: #907015)
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 11 Sep 2018 23:34:01 +0200
 
