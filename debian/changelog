@@ -4,6 +4,9 @@ openssl (1.1.1-1) UNRELEASED; urgency=medium
    - Update symbol file for 1.1.1
   * Add Breaks on python-httplib2 (Addresses: #907015)
   * Add hardening=+all.
+  * Update to policy 4.2.1
+    - Less verbose testsuite with terse
+    - Use RRR=no
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 11 Sep 2018 23:34:01 +0200
 
