@@ -2,6 +2,7 @@ openssl (1.1.1-1) UNRELEASED; urgency=medium
 
   * New upstream version.
    - Update symbol file for 1.1.1
+   - CVE-2018-0732 (actually since pre8).
   * Add Breaks on python-httplib2 (Addresses: #907015)
   * Add hardening=+all.
   * Update to policy 4.2.1
