@@ -1,8 +1,12 @@
 openssl (1.1.1-2) UNRELEASED; urgency=medium
 
+  [ Sebastian Andrzej Siewior ]
   * Add Breaks on isync and erlang-p1-tls (Addresses: #907015)
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 25 Sep 2018 23:33:30 +0200
+  [ Kurt Roeckx ]
+  * Add Breaks on python-imaplib2 (Addresses: #907015)
+
+ -- Kurt Roeckx <kurt@roeckx.be>  Sun, 30 Sep 2018 12:12:58 +0200
 
 openssl (1.1.1-1) unstable; urgency=medium
 
