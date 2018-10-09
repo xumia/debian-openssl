@@ -2,7 +2,6 @@ openssl (1.1.1-2) UNRELEASED; urgency=medium
 
   [ Sebastian Andrzej Siewior ]
   * Add Breaks on isync (See: #906955)
-  * Add Breaks on erlang-p1-tls (See: #907055)
   * Fix autopkgtest (Closes: #910459)
 
   [ Kurt Roeckx ]
