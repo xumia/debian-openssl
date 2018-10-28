@@ -3,6 +3,8 @@ openssl (1.1.1-2) UNRELEASED; urgency=medium
   [ Sebastian Andrzej Siewior ]
   * Add Breaks on isync (See: #906955)
   * Fix autopkgtest (Closes: #910459)
+  * Add news entry regarding TLS1.2 being minimum system wide and RSA keys
+    with 2048 bits (Closes: #875423, #907631, #911389, #912067).
 
   [ Kurt Roeckx ]
   * Add Breaks on python-imaplib2 (See: #907079)

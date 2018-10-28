@@ -1,3 +1,26 @@
+openssl (1.1.1-2) unstable; urgency=medium
+
+  As part of hardening TLS, PCI DSS requires the minimum of TLSv1.1. Also BSI
+  suggests in TR-02102-2 the minimum of TLSv1.2 because of the lack of anything
+  stronger than SHA1 in TLSv1.1. Mozilla, Microsoft, Google and Apple plan to
+  deprecate TLSv1.1 and earlier around March 2020.
+  Due this and other considerations, libssl1.1 user are configured system wide
+  by default to use TLSv1.2 as the smallest possible protocol version. The
+  security level has been increased to two which contains 112 bits of security
+  of security (as a result RSA, DSA and DH keys shorter than 2048 bits and ECC
+  keys shorter than 224 bits are prohibited).
+  Should you encounter a limitation due this restrictions please contact the
+  remote side (which provides the service) to reconsider their security
+  settings and provide a decent and up to date security capabilities.
+  It is possible, as a last resort, to enable the old behaviour and enable
+  lower security level on per application basis (or system wide) by editing
+  /etc/ssl/openssl.cnf. Please see
+    https://www.openssl.org/docs/man1.1.1/man5/config.html
+    https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+  for configurations details of `MinProtocol' and `CipherString'.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 28 Oct 2018 10:48:46 +0100
+
 openssl (1.1.0f-5) unstable; urgency=medium
 
   By default the minimum supported TLS version is 1.2. If you still need to
