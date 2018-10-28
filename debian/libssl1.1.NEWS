@@ -4,9 +4,9 @@ openssl (1.1.1-2) unstable; urgency=medium
   suggests in TR-02102-2 the minimum of TLSv1.2 because of the lack of anything
   stronger than SHA1 in TLSv1.1. Mozilla, Microsoft, Google and Apple plan to
   deprecate TLSv1.1 and earlier around March 2020.
-  Due this and other considerations, libssl1.1 user are configured system wide
+  Due to this and other considerations, libssl1.1 user is configured system wide
   by default to use TLSv1.2 as the smallest possible protocol version. The
-  security level has been increased to two which contains 112 bits of security
+  security level has been increased to `2' which contains 112 bits of security
   of security (as a result RSA, DSA and DH keys shorter than 2048 bits and ECC
   keys shorter than 224 bits are prohibited).
   Should you encounter a limitation due this restrictions please contact the
@@ -17,6 +17,6 @@ openssl (1.1.1-2) unstable; urgency=medium
   /etc/ssl/openssl.cnf. Please see
     https://www.openssl.org/docs/man1.1.1/man5/config.html
     https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
-  for configurations details of `MinProtocol' and `CipherString'.
+  for configuration details of `MinProtocol' and `CipherString'.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 28 Oct 2018 10:48:46 +0100
