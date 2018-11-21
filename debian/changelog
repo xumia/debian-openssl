@@ -4,6 +4,7 @@ openssl (1.1.1a-1) UNRELEASED; urgency=medium
   * New upstream version
    - CVE-2018-0734 (Timing vulnerability in DSA signature generation)
    - CVE-2018-0735 (Timing vulnerability in ECDSA signature generation)
+   - Update symbol file for 1.1.1a
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 07 Nov 2018 20:31:31 +0100
 
