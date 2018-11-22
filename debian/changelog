@@ -1,4 +1,4 @@
-openssl (1.1.1a-1) UNRELEASED; urgency=medium
+openssl (1.1.1a-1) unstable; urgency=medium
 
   * Add Breaks on python-boto (See: #909545)
   * New upstream version
@@ -6,7 +6,7 @@ openssl (1.1.1a-1) UNRELEASED; urgency=medium
    - CVE-2018-0735 (Timing vulnerability in ECDSA signature generation)
    - Update symbol file for 1.1.1a
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Wed, 07 Nov 2018 20:31:31 +0100
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 22 Nov 2018 19:40:54 +0100
 
 openssl (1.1.1-2) unstable; urgency=medium
 
