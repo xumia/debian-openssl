@@ -1,10 +1,10 @@
-openssl (1.1.1c-1) UNRELEASED; urgency=medium
+openssl (1.1.1c-1) unstable; urgency=medium
 
   * New upstream version
    - CVE-2019-1543 (Prevent over long nonces in ChaCha20-Poly1305)
   * Update symbol list
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 30 May 2019 17:10:11 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 30 May 2019 17:27:48 +0200
 
 openssl (1.1.1b-2) unstable; urgency=medium
 
