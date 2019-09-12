@@ -6,6 +6,7 @@ openssl (1.1.1d-1) UNRELEASED; urgency=medium
      construction).
    - CVE-2019-1563 (Fixed a padding oracle in PKCS7_dataDecode and
      CMS_decrypt_set1_pkey).
+  * Update symbol list
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 12 Sep 2019 21:44:38 +0200
 
