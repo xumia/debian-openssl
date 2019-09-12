@@ -1,3 +1,14 @@
+openssl (1.1.1d-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+   - CVE-2019-1549 (Fixed a fork protection issue).
+   - CVE-2019-1547 (Compute ECC cofactors if not provided during EC_GROUP
+     construction).
+   - CVE-2019-1563 (Fixed a padding oracle in PKCS7_dataDecode and
+     CMS_decrypt_set1_pkey).
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 12 Sep 2019 21:44:38 +0200
+
 openssl (1.1.1c-1) unstable; urgency=medium
 
   * New upstream version
