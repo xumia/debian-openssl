@@ -1,4 +1,4 @@
-openssl (1.1.1d-1) UNRELEASED; urgency=medium
+openssl (1.1.1d-1) unstable; urgency=medium
 
   * New upstream version
    - CVE-2019-1549 (Fixed a fork protection issue).
@@ -8,7 +8,7 @@ openssl (1.1.1d-1) UNRELEASED; urgency=medium
      CMS_decrypt_set1_pkey).
   * Update symbol list
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 12 Sep 2019 21:44:38 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 14 Sep 2019 00:38:12 +0200
 
 openssl (1.1.1c-1) unstable; urgency=medium
 
