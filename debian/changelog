@@ -1,3 +1,9 @@
+openssl (1.1.1d-3) UNRELEASED; urgency=medium
+
+  * Use dh-compat level 12.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 22 Feb 2020 18:12:49 +0100
+
 openssl (1.1.1d-2) unstable; urgency=medium
 
   * Reenable AES-CBC-HMAC-SHA ciphers (Closes: #941987).
