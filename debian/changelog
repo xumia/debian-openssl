@@ -1,6 +1,9 @@
-openssl (1.1.1d-3) UNRELEASED; urgency=medium
+openssl (1.1.1e-1) UNRELEASED; urgency=medium
 
   * Use dh-compat level 12.
+  * New upstream version
+    - CVE-2019-1551 (Overflow in the x64_64 Montgomery squaring procedure),
+    (Closes: #947949).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 22 Feb 2020 18:12:49 +0100
 
