@@ -5,6 +5,7 @@ openssl (1.1.1e-1) UNRELEASED; urgency=medium
     - CVE-2019-1551 (Overflow in the x64_64 Montgomery squaring procedure),
     (Closes: #947949).
   * Update symbol list.
+  * Update Standards-Version to 4.5.0. No changes required.
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 22 Feb 2020 18:12:49 +0100
 
