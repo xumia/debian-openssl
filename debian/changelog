@@ -6,6 +6,7 @@ openssl (1.1.1e-1) UNRELEASED; urgency=medium
     (Closes: #947949).
   * Update symbol list.
   * Update Standards-Version to 4.5.0. No changes required.
+  * Add musl configurations (Closes: #941765).
 
  -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 22 Feb 2020 18:12:49 +0100
 
