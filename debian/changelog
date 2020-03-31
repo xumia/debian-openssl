@@ -1,10 +1,10 @@
-openssl (1.1.1f-1) UNRELEASED; urgency=medium
+openssl (1.1.1f-1) unstable; urgency=medium
 
   * New upstream version
    - Revert the change of EOF detection to avoid regressions in applications.
      (Closes: #955442).
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 31 Mar 2020 23:50:10 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 31 Mar 2020 23:59:59 +0200
 
 openssl (1.1.1e-1) unstable; urgency=medium
 
