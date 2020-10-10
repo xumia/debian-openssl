@@ -1,3 +1,9 @@
+openssl (1.1.1h-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 10 Oct 2020 23:42:09 +0200
+
 openssl (1.1.1g-1) unstable; urgency=medium
 
   * New upstream version
