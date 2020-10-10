@@ -1,8 +1,9 @@
-openssl (1.1.1h-1) UNRELEASED; urgency=medium
+openssl (1.1.1h-1) unstable; urgency=medium
 
   * New upstream version
+  * Disable CAPI engine, it is designed for Windows.
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 10 Oct 2020 23:42:09 +0200
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 11 Oct 2020 00:00:47 +0200
 
 openssl (1.1.1g-1) unstable; urgency=medium
 
