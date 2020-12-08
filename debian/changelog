@@ -1,3 +1,12 @@
+openssl (1.1.1i-1) UNRELEASED; urgency=medium
+
+  * New upstream version.
+    - CVE-2020-1971 (EDIPARTYNAME NULL pointer de-reference).
+    - Restore rejection of expired trusted (root) certificate
+      (Closes: #976465).
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 08 Dec 2020 19:27:38 +0100
+
 openssl (1.1.1h-1) unstable; urgency=medium
 
   * New upstream version
