@@ -1,3 +1,9 @@
+openssl (1.1.1i-2) unstable; urgency=medium
+
+  * Apply two patches from upstream to address x509 related regressions.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sun, 17 Jan 2021 20:08:26 +0100
+
 openssl (1.1.1i-1) unstable; urgency=medium
 
   * New upstream version.
