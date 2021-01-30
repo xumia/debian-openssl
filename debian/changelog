@@ -1,3 +1,9 @@
+openssl (1.1.1i-3) UNRELEASED; urgency=medium
+
+  * Cherry-pick a patch from upstream to address #13931.
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 30 Jan 2021 14:02:17 +0100
+
 openssl (1.1.1i-2) unstable; urgency=medium
 
   * Apply two patches from upstream to address x509 related regressions.
