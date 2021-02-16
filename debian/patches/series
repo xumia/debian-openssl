@@ -4,6 +4,3 @@ no-symbolic.patch
 pic.patch
 c_rehash-compat.patch
 Set-systemwide-default-settings-for-libssl-users.patch
-x509_vfy.c-Fix-a-regression-in-find_isser.patch
-X509_cmp-Fix-comparison-in-case-x509v3_cache_extensions-f.patch
-check_sig_alg_match-weaken-sig-nid-comparison-to-base-alg.patch

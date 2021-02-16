@@ -1,3 +1,12 @@
+openssl (1.1.1j-1) UNRELEASED; urgency=medium
+
+  * New upstream version.
+   - CVE-2021-23841 (NULL pointer deref in X509_issuer_and_serial_hash()).
+   - CVE-2021-23840 (Possible overflow of the output length argument in
+     EVP_CipherUpdate(), EVP_EncryptUpdate() and EVP_DecryptUpdate()).
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Tue, 16 Feb 2021 20:34:42 +0100
+
 openssl (1.1.1i-3) unstable; urgency=medium
 
   * Cherry-pick a patch from upstream to address #13931.
