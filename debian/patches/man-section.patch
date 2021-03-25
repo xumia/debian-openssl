@@ -8,7 +8,7 @@ Subject: man-section
  2 files changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/Configurations/unix-Makefile.tmpl b/Configurations/unix-Makefile.tmpl
-index 3a24d551359b..d0c90cb2546c 100644
+index 41648c952667..e013d464bd73 100644
 --- a/Configurations/unix-Makefile.tmpl
 +++ b/Configurations/unix-Makefile.tmpl
 @@ -281,7 +281,8 @@ HTMLDIR=$(DOCDIR)/html
