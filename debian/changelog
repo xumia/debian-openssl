@@ -1,10 +1,10 @@
-openssl (1.1.1k-1) UNRELEASED; urgency=medium
+openssl (1.1.1k-1) unstable; urgency=medium
 
   * New upstream version.
     - CVE-2021-3450 (CA certificate check bypass with X509_V_FLAG_X509_STRICT).
     - CVE-2021-3449 (NULL pointer deref in signature_algorithms processing).
 
- -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 25 Mar 2021 21:36:26 +0100
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Thu, 25 Mar 2021 21:49:34 +0100
 
 openssl (1.1.1j-1) unstable; urgency=medium
 
