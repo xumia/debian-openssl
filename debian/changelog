@@ -1,3 +1,10 @@
+openssl (1.1.1k-1+deb11u1) UNRELEASED; urgency=medium
+
+  * CVE-2021-3711 (SM2 Decryption Buffer Overflow).
+  * CVE-2021-3712 (Read buffer overruns processing ASN.1 strings).
+
+ -- Sebastian Andrzej Siewior <sebastian@breakpoint.cc>  Sat, 21 Aug 2021 21:10:53 +0200
+
 openssl (1.1.1k-1) unstable; urgency=medium
 
   * New upstream version.
