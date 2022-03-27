@@ -612,6 +612,62 @@ void OPENSSL_cleanup(void)
     base_inited = 0;
 }
 
+#define BUZZ_SIZE 4096
+#define PROC_CMDLINE "/proc/cmdline"
+#define FIPS_ENABLE_CONF "/etc/fips/fips_enable"
+# Check if the fips is enabled by command line
+int ossl_fips_enabled_by_cmd(){
+    int enabled = 0;
+    FILE * fp = NULL;
+    char buff[BUZZ_SIZE] = "";
+    if(fp = fopen (PROC_CMDLINE, "r")){
+        fgets(buff, BUZZ_SIZE, fp);
+        char * token = strtok(buff, " \n");
+        int i = 0;
+        while( token != NULL ) {
+            if (strcmp(token, "fips=1") == 0){
+                enabled = 1;
+                break;
+            }
+            token = strtok(NULL, " \n");
+        }
+
+        fclose(fp);
+    }
+
+    return enabled;
+}
+
+# Check if fips is enabled by config
+int ossl_fips_enabled_by_conf(){
+    int enabled = 0;
+    FILE * fp = NULL;
+    char buff[BUZZ_SIZE] = "";
+    if(fp = fopen (FIPS_ENABLE_CONF, "r")){
+        fgets(buff, BUZZ_SIZE, fp);
+        if (strlen(buff) > 0 && buff[0] == '1') {
+            enabled = 1;
+        }
+
+        fclose(fp);
+    }
+
+    return enabled;
+}
+
+# Check if fips is enabled
+int ossl_fips_enabled(){
+    if (ossl_fips_enabled_by_cmd() > 0){
+        return 1;
+    }
+
+    if (ossl_fips_enabled_by_conf() > 0){
+        return 1;
+    }
+
+    return 0;
+}
+
 /*
  * If this function is called with a non NULL settings value then it must be
  * called prior to any threads making calls to any OpenSSL functions,
@@ -623,6 +679,11 @@ int OPENSSL_init_crypto(uint64_t opts, const OPENSSL_INIT_SETTINGS *settings)
         if (!(opts & OPENSSL_INIT_BASE_ONLY))
             CRYPTOerr(CRYPTO_F_OPENSSL_INIT_CRYPTO, ERR_R_INIT_FAIL);
         return 0;
+    }
+
+    int fips_enabled = ossl_fips_enabled();
+    if (fips_enabled) {
+        opts |= OPENSSL_INIT_LOAD_CONFIG;
     }
 
     /*
