@@ -9,8 +9,12 @@
 
 #include "internal/cryptlib.h"
 
+extern int g_fips_mode_enabled;
 int FIPS_mode(void)
 {
+    if (g_fips_mode_enabled != 0){
+        return g_fips_mode_enabled;
+    }
     /* This version of the library does not support FIPS mode. */
     return 0;
 }

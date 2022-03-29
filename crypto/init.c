@@ -615,7 +615,8 @@ void OPENSSL_cleanup(void)
 #define BUZZ_SIZE 4096
 #define PROC_CMDLINE "/proc/cmdline"
 #define FIPS_ENABLE_CONF "/etc/fips/fips_enable"
-# Check if the fips is enabled by command line
+int g_fips_mode_enabled = 0;
+// Check if the fips is enabled by command line
 int ossl_fips_enabled_by_cmd(){
     int enabled = 0;
     FILE * fp = NULL;
@@ -638,7 +639,7 @@ int ossl_fips_enabled_by_cmd(){
     return enabled;
 }
 
-# Check if fips is enabled by config
+// Check if fips is enabled by config
 int ossl_fips_enabled_by_conf(){
     int enabled = 0;
     FILE * fp = NULL;
@@ -655,13 +656,16 @@ int ossl_fips_enabled_by_conf(){
     return enabled;
 }
 
-# Check if fips is enabled
+// Check if fips is enabled
 int ossl_fips_enabled(){
+    g_fips_mode_enabled = 0;
     if (ossl_fips_enabled_by_cmd() > 0){
+        g_fips_mode_enabled = 1;
         return 1;
     }
 
     if (ossl_fips_enabled_by_conf() > 0){
+        g_fips_mode_enabled = 1;
         return 1;
     }
 
